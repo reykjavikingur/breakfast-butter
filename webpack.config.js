@@ -18,6 +18,7 @@ function getPlugins(isDev) {
     plugins.push(new webpack.NoErrorsPlugin());
   } else {
     plugins.push(new webpack.optimize.DedupePlugin());
+    /*
     plugins.push(new webpack.optimize.UglifyJsPlugin({
       minimize: true,
       sourceMap: false,
@@ -25,6 +26,7 @@ function getPlugins(isDev) {
         warnings: false,
       },
     }));
+    //*/
   }
 
   return plugins;
