@@ -1,32 +1,33 @@
 {
-  "name": "butter",
-  "version": "1.3.1",
-  "description": "A tool for building website UI toolkits",
+  "name": "@breakfast/butter",
+  "version": "1.0.0",
+  "description": "Atomic design toolkit generator supporting path to functional prototyping",
   "license": "MIT",
-  "homepage": "http://fbrctr.github.io/",
+  "homepage": "http://resource.github.io/",
   "scripts": {
-    "prestart": "npm install",
-    "build": "npm run prestart && gulp",
+    "build": "gulp",
     "start": "gulp --dev",
-    "test": "npm run build"
+    "test": "gulp"
   },
   "keywords": [
-    "toolkit",
-    "styleguide",
-    "framework",
-    "scaffold",
+    "atomic design",
+    "css",
+    "design",
     "patterns",
-    "library"
+    "sass",
+    "styleguide",
+    "toolkit",
+    "ui",
+    "ux"
   ],
-  "author": "Luke Askew",
+  "author": "Andrew Strader",
   "licenses": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fbrctr/fabricator.git"
+    "url": "https://github.com/reykjavikingur/breakfast-butter"
   },
   "engines": {
-    "node": ">=7.5.0",
-    "npm": ">=2.0.0"
+    "node": ">=6.6.0"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",

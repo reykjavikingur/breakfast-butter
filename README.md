@@ -1,4 +1,5 @@
 # Butter
+
 <p align="center">
   <img src="http://media3.giphy.com/media/nQYnLFII2sFcQ/giphy.gif" width="500">
 </p>
@@ -10,11 +11,17 @@ Butter is a tool for building website UI toolkits - _think ["Custom Bootstrap, f
 
 ## Quick Start
 
+Just like every NPM module ever created.
+
 ```shell
+$ npm install
 $ npm start
 ```
 
-This will run the commands `$ npm install` and `$ gulp --dev` so that you can always be sure that if someone makes a
-commit with a new npm module included, it will be installed on your local machine. But if you can't stand waiting the
-5 seconds for npm install to check for updates, then feel free to run `$ gulp --dev` instead, just make sure
-that if your build stops working you try `$ npm install` before you come crying to me.
+The "start" command will start a local web server hosting the view on your development assets.
+
+
+## References
+
+http://bradfrost.com/blog/post/atomic-web-design/
+
