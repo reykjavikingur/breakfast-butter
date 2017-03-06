@@ -1,0 +1,64 @@
+---
+{
+  "title": "Layout",
+  "fabricator": true,
+}
+
+---
+<header class="mb-3">
+  <h1>{{title}}</h1>
+</header>
+
+<section class="mb-5">
+<p>
+  Quickly manage the layout, alignment, and sizing of columns, navigation, components, and more with a full suite of responsive utilities.
+</p>
+</section>
+
+<h2>Grid</h2>
+<p>
+  Bootstrap includes a powerful mobile-first flexbox grid system for building layouts of all shapes and sizes. It’s based on a 12 column layout and has multiple tiers, one for each media query range. You can use it with Sass mixins or our predefined classes.
+</p>
+<p>
+  Bootstrap’s grid system uses a series of containers, rows, and columns to layout and align content. It’s built with flexbox and is fully responsive. Below is an example and an in-depth look at how the grid comes together.
+  <div><cite>See <a href="https://v4-alpha.getbootstrap.com/layout/grid/">Bootstrap Grid System</a> for more in-depth documentation.</cite></div>
+</p>
+<section class="mb-3">
+  <div class="f-grid">
+    <div class="row">
+      {{#loop 1 12 1}}
+      <div class="col-md-1">.col-md-1</div>
+      {{/loop}}
+    </div>
+    <div class="row">
+      {{#loop 1 6 1}}
+      <div class="col-md-2">.col-md-2</div>
+      {{/loop}}
+    </div>
+    <div class="row">
+      {{#loop 1 4 1}}
+      <div class="col-md-3">.col-md-3</div>
+      {{/loop}}
+    </div>
+    <div class="row">
+      {{#loop 1 3 1}}
+      <div class="col-md-4">.col-md-4</div>
+      {{/loop}}
+    </div>
+    <div class="row">
+      <div class="col-md-6">.col-md-6</div>
+      <div class="col-md-6">.col-md-6</div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">.col-md-8</div>
+      <div class="col-md-4">.col-md-4</div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">.col-md-10</div>
+      <div class="col-md-2">.col-md-2</div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">.col-md-12</div>
+    </div>
+  </div>
+</section>

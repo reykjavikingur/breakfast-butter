@@ -1,0 +1,17 @@
+<script type="text/x-handlebars-template" id="uploadTemplate">
+	<div class="dz-preview dz-file-preview">
+		<div class="dz-details">
+			<div class="flex-row form-control"><span data-dz-name></span> <small class="dz-size" data-dz-size></small></div>
+			<div class="flex-row"><input type="text" name="name" class="form-control" placeholder="name" /></div>
+			<div class="flex-row"><input type="text" name="tags" class="form-control" placeholder="tags" /></div>
+			<div class="flex-row"><textarea name="notes" class="form-control" placeholder="notes"></textarea></div>
+		</div>
+		<span>
+			<div class="dz-image">
+				<img data-dz-thumbnail />
+				<div class="dz-progress"><div class="dz-upload" data-dz-uploadprogress></div></div>
+				<button type="button" class="dz-remove btn btn-danger btn-sm" data-dz-remove>Remove</button>
+			</div>
+		</span>
+	</div>
+</script>

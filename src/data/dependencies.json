@@ -1,0 +1,474 @@
+{
+  "helix": {
+    "src/materials/buttons/00.button.html": {
+      "dna": ["btn", "btn-primary", "btn-secondary", "btn-success", "btn-info", "btn-warning", "btn-outline-primary", "btn-outline-secondary", "btn-outline-success", "btn-outline-info", "btn-outline-warning"],
+      "id": "btn",
+      "dependents": {
+        "src/materials/buttons/01-button-states/active.html": [".btn", ".btn-primary", ".btn-secondary", ".btn-success", ".btn-info", ".btn-warning", ".btn-outline-primary", ".btn-outline-secondary", ".btn-outline-success", ".btn-outline-info", ".btn-outline-warning"],
+        "src/materials/buttons/01-button-states/disabled.html": [".btn", ".btn-primary", ".btn-secondary", ".btn-success", ".btn-info", ".btn-warning"],
+        "src/materials/buttons/01-button-states/toggle.html": [".btn", ".btn-primary"],
+        "src/materials/buttons/button-groups/01.horizontal.html": [".btn", ".btn-primary", ".btn-outline-primary"],
+        "src/materials/buttons/button-groups/01.vertical.html": [".btn", ".btn-primary", ".btn-outline-primary"],
+        "src/materials/buttons/button-groups/checkbox.html": [".btn", ".btn-primary"],
+        "src/materials/buttons/button-groups/radio.html": [".btn", ".btn-primary"],
+        "src/materials/form/input-group.html": [".btn", ".btn-secondary"],
+        "src/materials/molecules/card.html": [".btn", ".btn-primary"],
+        "src/materials/molecules/collapse.html": [".btn", ".btn-primary"],
+        "src/materials/molecules/dropdown.html": [".btn"],
+        "src/materials/molecules/jumbotron.html": [".btn", ".btn-primary"],
+        "src/materials/molecules/modal.html": [".btn", ".btn-primary", ".btn-secondary"],
+        "src/materials/molecules/popover.html": [".btn"],
+        "src/materials/molecules/tooltip.html": [".btn", ".btn-outline-primary"],
+        "src/materials/organisms/example-organism.html": ["data-dna=btn"],
+        "src/views/creative.html": [".btn", ".btn-outline-primary"]
+      },
+      "dependencies": {}
+    },
+    "src/materials/buttons/01-button-states/active.html": {
+      "dna": ["btn-active"],
+      "id": "btn-active",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary", ".btn-secondary", ".btn-success", ".btn-info", ".btn-warning", ".btn-outline-primary", ".btn-outline-secondary", ".btn-outline-success", ".btn-outline-info", ".btn-outline-warning"]
+      }
+    },
+    "src/materials/buttons/01-button-states/disabled.html": {
+      "dna": ["btn-disabled"],
+      "id": "btn-disabled",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary", ".btn-secondary", ".btn-success", ".btn-info", ".btn-warning"]
+      }
+    },
+    "src/materials/buttons/01-button-states/toggle.html": {
+      "dna": ["btn-toggle"],
+      "id": "btn-toggle",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary"]
+      }
+    },
+    "src/materials/buttons/button-groups/01.horizontal.html": {
+      "dna": ["btn-group"],
+      "id": "btn-group",
+      "dependents": {
+        "src/materials/buttons/button-groups/checkbox.html": [".btn-group"],
+        "src/materials/buttons/button-groups/radio.html": [".btn-group"],
+        "src/materials/molecules/dropdown.html": [".btn-group"],
+        "src/materials/molecules/tooltip.html": [".btn-group"],
+        "src/views/creative.html": [".btn-group"]
+      },
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary", ".btn-outline-primary"]
+      }
+    },
+    "src/materials/buttons/button-groups/01.vertical.html": {
+      "dna": ["btn-group-vertical"],
+      "id": "btn-group-vertical",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary", ".btn-outline-primary"]
+      }
+    },
+    "src/materials/buttons/button-groups/checkbox.html": {
+      "dna": ["btn-group-checkbox"],
+      "id": "btn-group-checkbox",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary"],
+        "src/materials/buttons/button-groups/01.horizontal.html": [".btn-group"]
+      }
+    },
+    "src/materials/buttons/button-groups/radio.html": {
+      "dna": ["btn-group-radio"],
+      "id": "btn-group-radio",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary"],
+        "src/materials/buttons/button-groups/01.horizontal.html": [".btn-group"]
+      }
+    },
+    "src/materials/form/checkbox.html": {
+      "dna": ["form-check", "form-check-inline"],
+      "id": "form-check",
+      "dependents": {
+        "src/materials/form/radio.html": [".form-check", ".form-check-inline"]
+      },
+      "dependencies": {}
+    },
+    "src/materials/form/email.html": {
+      "dna": ["form-email"],
+      "id": "form-email",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/input-group.html": {
+      "dna": ["input-group", "input-group-addon", "input-group-btn"],
+      "id": "input-group",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-secondary"],
+        "src/materials/molecules/dropdown.html": [".dropdown-toggle", "data-dna=dropdown-menu", ".dropdown-menu", ".dropdown-divider"]
+      }
+    },
+    "src/materials/form/input.html": {
+      "dna": ["form-input"],
+      "id": "form-input",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/password.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/radio.html": {
+      "dna": ["form-radio"],
+      "id": "form-radio",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/form/checkbox.html": [".form-check", ".form-check-inline"]
+      }
+    },
+    "src/materials/form/select.html": {
+      "dna": ["form-select"],
+      "id": "form-select",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/textarea.html": {
+      "dna": ["form-textarea"],
+      "id": "form-textarea",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/validation-states.html": {
+      "dna": ["form-validation", "has-success", "has-warning", "has-danger"],
+      "id": "form-validation",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/icons/linear-icons.html": {
+      "dna": ["lnr"],
+      "id": "lnr",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/molecules/accordion.html": {
+      "dna": ["accordion"],
+      "id": "accordion",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/molecules/card.html": ["data-dna=card", ".card", ".card-header", ".card-block"],
+        "src/materials/molecules/collapse.html": [".collapse"]
+      }
+    },
+    "src/materials/molecules/alerts.html": {
+      "dna": ["alert", "alert-success", "alert-info", "alert-danger", "alert-warning"],
+      "id": "alert",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/molecules/badge.html": {
+      "dna": ["badge", "badge-default", "badge-primary", "badge-success", "badge-info", "badge-warning", "badge-danger"],
+      "id": "badge",
+      "dependents": {
+        "src/materials/typeography/lists/99.list-group.html": [".badge", ".badge-danger"]
+      },
+      "dependencies": {}
+    },
+    "src/materials/molecules/breadcrumb.html": {
+      "dna": ["breadcrumb", "breadcrumb-item"],
+      "id": "breadcrumb",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/molecules/card.html": {
+      "dna": ["card", "card-img-top", "card-block", "card-title", "card-text", "card-header", "card-footer"],
+      "id": "card",
+      "dependents": {
+        "src/materials/molecules/accordion.html": ["data-dna=card", ".card", ".card-header", ".card-block"],
+        "src/materials/molecules/collapse.html": [".card", ".card-block"],
+        "src/materials/organisms/example-organism.html": ["data-dna=card", ".card", ".card-img-top", ".card-block"]
+      },
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary"],
+        "src/materials/typeography/lists/99.list-group.html": [".list-group", ".list-group-item"]
+      }
+    },
+    "src/materials/molecules/collapse.html": {
+      "dna": ["collapse"],
+      "id": "collapse",
+      "dependents": {
+        "src/materials/molecules/accordion.html": [".collapse"]
+      },
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary"],
+        "src/materials/molecules/card.html": [".card", ".card-block"]
+      }
+    },
+    "src/materials/molecules/dropdown.html": {
+      "dna": ["dropdown-menu", "dropdown-iterm", "dropdown-divider", "dropdown-toggle", "dropdown-toggle-split"],
+      "id": "dropdown-menu",
+      "dependents": {
+        "src/materials/form/input-group.html": [".dropdown-toggle", "data-dna=dropdown-menu", ".dropdown-menu", ".dropdown-divider"]
+      },
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn"],
+        "src/materials/buttons/button-groups/01.horizontal.html": [".btn-group"]
+      }
+    },
+    "src/materials/molecules/jumbotron.html": {
+      "dna": ["jumbotron"],
+      "id": "jumbotron",
+      "dependents": {
+        "src/materials/organisms/example-organism.html": ["data-dna=jumbotron", ".jumbotron"]
+      },
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary"]
+      }
+    },
+    "src/materials/molecules/modal.html": {
+      "dna": ["modal", "modal-dialog", "modal-content", "modal-header", "modal-footer", "modal-title"],
+      "id": "modal",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-primary", ".btn-secondary"]
+      }
+    },
+    "src/materials/molecules/pagination.html": {
+      "dna": ["pagination", "page-item", "page-link"],
+      "id": "pagination",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/molecules/pills.html": {
+      "dna": ["nav-pills", "nav-item", "nav-link"],
+      "id": "nav-pills",
+      "dependents": {
+        "src/materials/molecules/tabs.html": [".nav-item", ".nav-link"]
+      },
+      "dependencies": {}
+    },
+    "src/materials/molecules/popover.html": {
+      "dna": ["popover"],
+      "id": "popover",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn"]
+      }
+    },
+    "src/materials/molecules/progress.html": {
+      "dna": ["progress", "progress-bar", "progress-bar-striped", "progress-bar-animated"],
+      "id": "progress",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/molecules/tabs.html": {
+      "dna": ["nav-tabs"],
+      "id": "nav-tabs",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/molecules/pills.html": [".nav-item", ".nav-link"]
+      }
+    },
+    "src/materials/molecules/tooltip.html": {
+      "dna": ["tooltip"],
+      "id": "tooltip",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-outline-primary"],
+        "src/materials/buttons/button-groups/01.horizontal.html": [".btn-group"]
+      }
+    },
+    "src/materials/organisms/example-organism.html": {
+      "dna": ["example-organism"],
+      "id": "example-organism",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": ["data-dna=btn"],
+        "src/materials/molecules/card.html": ["data-dna=card", ".card", ".card-img-top", ".card-block"],
+        "src/materials/molecules/jumbotron.html": ["data-dna=jumbotron", ".jumbotron"],
+        "src/materials/typeography/lists/99.list-group.html": ["data-dna=list-group", ".list-group", ".list-group-item"]
+      }
+    },
+    "src/materials/tables/00.table.html": {
+      "dna": ["table"],
+      "id": "table",
+      "dependents": {
+        "src/materials/tables/01.table-bordered.html": [".table"],
+        "src/materials/tables/01.table-striped.html": [".table"]
+      },
+      "dependencies": {}
+    },
+    "src/materials/tables/01.table-bordered.html": {
+      "dna": ["table-bordered"],
+      "id": "table-bordered",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/tables/00.table.html": [".table"]
+      }
+    },
+    "src/materials/tables/01.table-striped.html": {
+      "dna": ["table-striped"],
+      "id": "table-striped",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/tables/00.table.html": [".table"]
+      }
+    },
+    "src/materials/typeography/00.headings.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/typeography/01.paragraph.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/typeography/01.text-link.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/typeography/blockquote.html": {
+      "dna": ["blockquote"],
+      "id": "blockquote",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/typeography/inline-code.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/typeography/lists/01.ordered.html": {
+      "dna": ["list-ordered"],
+      "id": "list-ordered",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/typeography/lists/02.unordered.html": {
+      "dna": ["list-unordered"],
+      "id": "list-unordered",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/typeography/lists/99.list-group.html": {
+      "dna": ["list-group", "list-group-item"],
+      "id": "list-group",
+      "dependents": {
+        "src/materials/molecules/card.html": [".list-group", ".list-group-item"],
+        "src/materials/organisms/example-organism.html": ["data-dna=list-group", ".list-group", ".list-group-item"]
+      },
+      "dependencies": {
+        "src/materials/molecules/badge.html": [".badge", ".badge-danger"]
+      }
+    },
+    "src/views/buttons.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/creative.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {
+        "src/materials/buttons/00.button.html": [".btn", ".btn-outline-primary"],
+        "src/materials/buttons/button-groups/01.horizontal.html": [".btn-group"]
+      }
+    },
+    "src/views/docs.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/form.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/helpers.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/helpers/borders.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/helpers/colors.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/helpers/layout.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/icons.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/index.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/molecules.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/organisms.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/tables.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/templates.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/templates/single-post.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/typeography.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    }
+  }
+}

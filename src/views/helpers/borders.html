@@ -1,0 +1,73 @@
+---
+title: "Borders"
+fabricator: true
+---
+<header class="mb-3">
+  <h1>{{title}}</h1>
+</header>
+
+<section class="mb-5">
+  <p>
+    You can apply a border to any element by specifying:
+    <kbd>bd-{t/r/b/l}-{1/2/3/4/5}</kbd>
+  </p>
+</section>
+
+<section class="mb-2 f-border-demo">
+  <span class="bd-1 bdc-danger">.bd-1</span>
+  <span class="bd-t-1 bdc-danger">.bd-t-1</span>
+  <span class="bd-r-1 bdc-danger">.bd-r-1</span>
+  <span class="bd-b-1 bdc-danger">.bd-b-1</span>
+  <span class="bd-l-1 bdc-danger">.bd-l-1</span>
+</section>
+
+<section class="mb-5 f-border-demo">
+  <span class="bd-5 bdc-danger">.bd-5</span>
+  <span class="bd-t-5 bdc-danger">.bd-t-5</span>
+  <span class="bd-r-5 bdc-danger">.bd-r-5</span>
+  <span class="bd-b-5 bdc-danger">.bd-b-5</span>
+  <span class="bd-l-5 bdc-danger">.bd-l-5</span>
+</section>
+
+<h2 class="mb-3">Border Colors</h2>
+<p>
+  You can colorize the border by applying:
+  <kbd>bdc-{color}</kbd>
+  <div class="small">See <a href="{{baseurl}}/helpers/colors.html">colors</a> for a full list of color names.</div>
+</p>
+<section class="mb-5 f-border-demo">
+  <span class="bd-5 bdc-primary">.bdc-primary</span>
+  <span class="bd-5 bdc-success">.bdc-success</span>
+  <span class="bd-5 bdc-warning">.bdc-warning</span>
+  <span class="bd-5 bdc-danger">.bdc-danger</span>
+  <span class="bd-5 bdc-info">.bdc-info</span>
+</section>
+
+<h2 class="mb-3">Removing Borders</h2>
+<p>
+  You can individually remove borders by applying:
+  <kbd>bd-{t/r/b/l}-0</kbd>
+</p>
+<section class="mb-5 f-border-demo">
+  <span class="bd-5 bdc-primary bd-0">.bd-0</span>
+  <span class="bd-5 bdc-success bd-t-0">.bd-t-0</span>
+  <span class="bd-5 bdc-warning bd-r-0">.bd-r-0</span>
+  <span class="bd-5 bdc-danger bd-b-0">.bd-b-0</span>
+  <span class="bd-5 bdc-info bd-l-0">.bd-l-0</span>
+</section>
+
+
+<h2 class="mb-3">Border Radius</h2>
+<p>
+  You can add border-radius to an element by applying:
+  <kbd>rounded-{top/right/bottom/left/circle/0}</kbd>
+</p>
+<section class="mb-5 f-border-demo">
+  <span class="txtc-white bgc-inverse rounded-0">.rounded-0</span>
+  <span class="txtc-white bgc-primary rounded">.rounded</span>
+  <span class="txtc-white bgc-success rounded-top">.rounded-top</span>
+  <span class="txtc-white bgc-warning rounded-right">.rounded-right</span>
+  <span class="txtc-white bgc-danger rounded-bottom">.rounded-bottom</span>
+  <span class="txtc-white bgc-info rounded-left">.rounded-left</span>
+  <span class="txtc-white bgc-gray rounded-circle">.rounded-circle</span>
+</section>

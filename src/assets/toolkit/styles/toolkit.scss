@@ -1,0 +1,23 @@
+/**
+ * toolkit.scss
+ * @description Main style sheet
+ */
+
+
+/**
+ * -------------------
+ *  1.0 - Frameworks
+ * -------------------
+ */
+// Bootstrap
+@import 'vendor/bootstrap/bootstrap';
+@import 'vendor/tagsinput';
+
+
+
+/**
+ * -------------------
+ *  2.0 - Theme
+ * -------------------
+ */
+@import 'themes/default/style';

@@ -1,0 +1,16 @@
+@for $i from 0 through 5 {
+  @if ($i == 0) {
+    .bd-#{$i} { border: none !important; }
+    .bd-t-#{$i} { border-top: none !important; }
+    .bd-r-#{$i} { border-right: none !important; }
+    .bd-b-#{$i} { border-bottom: none !important; }
+    .bd-l-#{$i} { border-left: none !important; }
+  } @else {
+    .bd-#{$i} { border: #{$i}px solid; }
+    .bd-t-#{$i} { border-top: #{$i}px solid; }
+    .bd-r-#{$i} { border-right: #{$i}px solid; }
+    .bd-b-#{$i} { border-bottom: #{$i}px solid; }
+    .bd-l-#{$i} { border-left: #{$i}px solid; }
+  }
+
+}

@@ -1,0 +1,64 @@
+<div class="f-item-dependencies">
+  {{#hasDependents this.data.dna @root.dependencies.helix}}
+  <div class="f-item-column">
+	<strong>Dependents</strong>
+	<table class="table">
+	  <thead>
+		<tr>
+		  <th style="width: 60%;">Files</th>
+		  <th>Selectors</th>
+		  <th style="width: 40px;"></th>
+		</tr>
+	  </thead>
+	  <tbody>
+		{{#dependents this.data.dna @root.dependencies.helix}}
+		<tr>
+		  <td>
+			<a href="{{baseurl}}{{this.link}}" title="{{baseurl}}{{this.link}}">{{this.file}}</a>
+		  </td>
+		  <td>
+			{{#each this.selectors}}
+			<div>{{this}}</div>
+			{{/each}}
+		  </td>
+		  <td>
+			<span class="badge badge-default">{{this.count}}</span>
+		  </td>
+		</tr>
+		{{/dependents}}
+	  </tbody>
+	</table>
+  </div>
+  {{/hasDependents}}
+  {{#hasDependencies this.data.dna @root.dependencies.helix}}
+  <div class="f-item-column">
+	<strong>Dependencies</strong>
+	<table class="table">
+	  <thead>
+		<tr>
+		  <th style="width: 60%;">Files</th>
+		  <th>Selectors</th>
+		  <th style="width: 40px;"></th>
+		</tr>
+	  </thead>
+	  <tbody>
+		{{#dependencies this.data.dna @root.dependencies.helix}}
+		<tr>
+		  <td>
+			<a href="{{baseurl}}{{this.link}}" title="{{baseurl}}{{this.link}}">{{this.file}}</a>
+		  </td>
+		  <td>
+			{{#each this.selectors}}
+			<div>{{this}}</div>
+			{{/each}}
+		  </td>
+		  <td>
+			<span class="badge badge-default">{{this.count}}</span>
+		  </td>
+		</tr>
+		{{/dependencies}}
+	  </tbody>
+	</table>
+  </div>
+  {{/hasDependencies}}
+</div>

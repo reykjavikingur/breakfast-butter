@@ -1,0 +1,67 @@
+<script type="text/x-handlebars-template" id="creative-tile-template">
+	<div id="\{{objectId}}" data-tags="\{{#if tags}}\{{#each tags}} \{{this}}\{{/each}}\{{/if}}" class="f-tile rounded">
+		<div class="f-tile-header">
+			<a href="#creative-modal"
+				title="\{{download}}"
+        data-objectid="\{{objectId}}"
+				data-toggle="modal"
+				data-action="view"
+				data-backdrop="true">
+				<img src="\{{url}}" alt="\{{download}}" />
+			</a>
+		</div>
+
+		<div class="f-tile-body">
+			\{{#if name}}
+			<div class="small mb-1">\{{name}}</div>
+			\{{/if}}
+
+			\{{#if createdAt}}
+			<div class="small mb-1 monospace">Added: <span class="float-right">\{{createdAt}}</span></div>
+			\{{/if}}
+
+			\{{#if updatedAt}}
+			<div class="small monospace">Updated: <span class="float-right">\{{updatedAt}}</span></div>
+			\{{/if}}
+		</div>
+
+		<div class="f-tile-footer">
+			<div class="btn-group">
+				\{{#if download}}
+				<a href="\{{download}}" class="btn btn-outline-secondary rounded-0" target="_blank" title="download \{{name}}">
+					<i class="lnr-download2"></i>
+				</a>
+				<a href="#creative-modal"
+					class="btn btn-outline-secondary rounded-0"
+					title="comment"
+          data-objectid="\{{objectId}}"
+					data-toggle="modal"
+					data-action="comment">
+					<i class="lnr-bubbles"></i>
+					<span class="badge badge-danger badge-pill" data-disqus-url="\{{download}}"></span>
+				</a>
+				\{{else}}
+				<a href="\{{url}}" class="btn btn-outline-secondary rounded-0" target="_blank" title="download \{{name}}">
+					<i class="lnr-download2"></i>
+				</a>
+				\{{/if}}
+
+				<a href="#creative-edit-modal"
+					class="btn btn-outline-secondary rounded-0"
+					title="edit \{{name}}"
+          data-objectid="\{{objectId}}"
+					data-toggle="modal">
+					<i class="lnr-pencil"></i>
+				</a>
+
+				<a href="#creative-modal"
+					class="btn btn-outline-secondary rounded-0"
+          data-objectid="\{{objectId}}"
+					data-toggle="modal"
+					data-action="view">
+					<i class="lnr-frame-expand"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</script>

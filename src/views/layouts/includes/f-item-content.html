@@ -1,0 +1,17 @@
+<div class="f-item-notes" data-f-toggle="notes">
+  {{#if notes}}
+	<h3>Notes</h3>
+  {{{notes}}}
+  {{/if}}
+
+  {{#if this.data.dna}}
+  {{> f-dna}}
+  {{/if}}
+</div>
+
+<div class="f-item-preview" id="preview-{{@key}}">
+	{{{material @key @root}}}
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">{{material @key @root}}</code></pre>
+</div>

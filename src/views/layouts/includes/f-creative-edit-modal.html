@@ -1,0 +1,60 @@
+<div class="modal fade" id="creative-edit-modal" tabindex="-1" role="dialog" aria-labelledby="uploadModalEditTitle" aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content rounded-0">
+			<form id="creative-edit-form">
+
+        <input type="hidden" name="version" />
+        <input type="hidden" name="project" />
+        <input type="hidden" name="url" />
+        <input type="hidden" name="objectId" />
+
+				<div class="modal-header rounded-0">
+					<h5 class="modal-title" id="uploadModalEditTitle">Edit Image <button type="button" class="btn btn-outline-danger btn-sm float-right mr-4" data-creative-delete="">Delete Image</button></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<i class="lnr-cross"></i>
+					</button>
+				</div>
+
+        <div class="creative-edit">
+          <div class="image"><img src="" /></div>
+
+          <div class="fieldset">
+            <div class="form-group">
+              <label>Name </label><input type="text" name="name" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Folder </label>
+              <select name="folder" class="form-control" data-folder-list="#folder-select-template"></select>
+            </div>
+            <div class="form-group">
+              <label>Tags </label>
+              <input type="text" name="tags" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label>Notes </label>
+              <textarea name="notes" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <div class="input-group">
+                <input type="text" name="download" class="form-control" id="download-url" readonly />
+                <div class="input-group-btn">
+                  <button type="button" class="btn btn-secondary" title="copy to clipboard" data-clipboard-target="#download-url"><i class="lnr-clipboard-empty"></i></button>
+                </div>
+                <div class="input-group-btn">
+                  <a href="#" class="btn btn-secondary download-link" title="download PSD"><i class="lnr-download2"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="mt-4">
+              <button type="submit" class="btn btn-outline-primary btn-block btn-lg">Update</button>
+            </div>
+          </div>
+        </div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script type="text/x-handlebars-template" id="folder-select-template">
+  <option value="\{{name}}">\{{name}}</option>
+</script>

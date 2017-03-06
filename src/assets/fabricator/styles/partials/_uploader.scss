@@ -1,0 +1,144 @@
+$dz-thumb-width: 202px;
+$dz-height: 200px;
+$dz-speed: .25s;
+
+.uploader {
+
+  padding: 20px;
+  cursor: pointer;
+  position: relative;
+
+  * {
+    pointer-events: none;
+  }
+
+  .dd-box {
+    width: 100%;
+    height: $dz-height;
+    display: block;
+    border: 5px dashed rgba(0, 0, 0, 0.125);
+
+    &:before {
+      top: 50%;
+      left: 50%;
+      width: 190px;
+      color: #636c72;
+      text-align: center;
+      position: absolute;
+      transform: translateX(-50%) translateY(-50%);
+      content: "Drag & Drop Files or Select a File to Upload";
+    }
+  }
+}
+
+.dropzone-previews {
+
+
+  .dz-preview {
+    width: 100%;
+    display: flex;
+    padding: 20px 15px;
+    align-items: stretch;
+    justify-content: flex-start;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+
+    > div {
+      padding-right: 25px;
+      &:last-child { padding-right: 0; }
+    }
+  }
+
+  .dz-image {
+    width: $dz-thumb-width;
+    height: $dz-thumb-width;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+
+    img {
+      top: 0;
+      left: 0;
+      opacity: .75;
+      width: 100%;
+      position: absolute;
+      transition: opacity ease-in-out $dz-speed;
+    }
+
+    .dz-remove {
+      top: 50%;
+      left: 50%;
+      display: none;
+      position: absolute;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    &:hover {
+      .dz-remove {
+        cursor: pointer;
+        display: block;
+      }
+    }
+  }
+
+  .dz-details {
+
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    div.flex-row {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    div.flex-row:last-child {
+      margin-bottom: 0;
+    }
+
+    .dz-notes {
+      position: relative;
+      flex-grow: 1;
+    }
+
+    .dz-size {
+      padding-left: 20px;
+    }
+  }
+
+  .dz-progress {
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
+    height: 10px;
+    overflow: hidden;
+    position: absolute;
+    box-shadow: inset 0 0 2px 5px rgba(0,0,0,0.1);
+
+    .dz-upload {
+      width: 0%;
+      height: 100%;
+      opacity: .8;
+      background-color: blue;
+      transition: width ease-in-out $dz-speed;
+      box-shadow: 0 0 5px 5px rgba(0,0,0,0.125);
+    }
+  }
+
+}
+
+#upload-modal {
+
+  .modal-body {
+    padding: 0;
+  }
+
+  .modal-footer {
+
+    [data-dz-start-all] {
+      width: $dz-thumb-width;
+    }
+  }
+}

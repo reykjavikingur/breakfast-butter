@@ -1,0 +1,30 @@
+.f-item-dependencies {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+
+  margin-top: 50px;
+  min-width: 906px;
+
+  .f-item-column {
+
+    width: 100%;
+    color: black;
+    margin-bottom: 20px;
+    transition: width .25s;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    strong {
+      font-size: 20px;
+    }
+
+    table {
+      margin-top: 20px;
+      padding: 20px;
+    }
+  }
+}
