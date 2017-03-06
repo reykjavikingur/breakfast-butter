@@ -47,7 +47,6 @@
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^2.0.0",
     "gulp-if": "^2.0.1",
-    "gulp-imagemin": "^3.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
