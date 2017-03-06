@@ -1,5 +1,5 @@
 {
-  "name": "@breakfast/butter",
+  "name": "breakfast-butter",
   "version": "1.0.0",
   "description": "Atomic design toolkit generator supporting path to functional prototyping",
   "license": "MIT",
