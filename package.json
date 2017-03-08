@@ -21,7 +21,7 @@
     "ux"
   ],
   "author": "Andrew Strader",
-  "licenses": "MIT",
+  "licenses": "GPL",
   "repository": {
     "type": "git",
     "url": "https://github.com/reykjavikingur/breakfast-butter"

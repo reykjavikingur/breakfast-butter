@@ -10,9 +10,9 @@ require('./search');
 const fabricator = window.fabricator = {};
 
 
-var creative = require('./creative');
-var uploader = require('./uploader');
-
+const creative = require('./creative');
+const uploader = require('./uploader');
+const menu = require('./menu');
 
 /**
  * Default options
@@ -339,6 +339,7 @@ fabricator.setInitialMenuState = () => {
 document.addEventListener("DOMContentLoaded", function(event) {
   creative.init();
   uploader.init().directories();
+  menu.init();
 });
 
 
@@ -347,7 +348,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
  */
 fabricator
  .setInitialMenuState()
- .menuToggle()
  .allItemsToggles()
  .singleItemToggle()
  .buildColorChips()

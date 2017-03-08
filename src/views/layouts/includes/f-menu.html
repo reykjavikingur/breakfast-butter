@@ -1,63 +1,67 @@
-<!-- fabricator menu -->
-<div class="f-menu">
 
+
+<!-- fabricator menu -->
+<div class="f-menu-container">
+	{{> f-navbar}}
 	{{> f-controls}}
 
-	<ul>
-		<li>
-			<a href="{{baseurl}}/index.html" class="f-menu__heading">Overview</a>
-		</li>
+	<div class="f-menu">
+		<ul>
+			<li>
+				<a href="{{baseurl}}/index.html" class="f-menu__heading">Overview</a>
+			</li>
 
-        {{#if toolkit.api}}
-        <li style="margin-left: 5px;">
-          <a href="{{baseurl}}/creative.html" class="f-menu__heading">Creative</a>
-          <ul data-folder-list="#folder-menu-template"></ul>
-        </li>
-        {{/if}}
+			{{#if toolkit.api}}
+			<li style="margin-left: 5px;">
+			  <a href="{{baseurl}}/creative.html" class="f-menu__heading">Creative</a>
+			  <ul data-folder-list="#folder-menu-template"></ul>
+			</li>
+			{{/if}}
 
 
-        <li>
-          <a href="{{baseurl}}/docs.html" class="f-menu__heading">Docs</a>
-          <ul>
-            {{#each docs}}
-            <li>
-              <a href="{{baseurl}}/docs.html#{{@key}}">{{name}}</a>
-            </li>
-            {{/each}}
-          </ul>
-        </li>
-    {{#each views}}
-		<li>
-			<a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
-			<ul>
-				{{#each items}}
+			<li>
+			  <a href="{{baseurl}}/docs.html" class="f-menu__heading">Docs</a>
+			  <ul>
+				{{#each docs}}
 				<li>
-					<a href="{{baseurl}}/{{@../key}}/{{@key}}.html">{{name}}</a>
+				  <a href="{{baseurl}}/docs.html#{{@key}}">{{name}}</a>
 				</li>
 				{{/each}}
-			</ul>
-		</li>
-		{{/each}}
+			  </ul>
+			</li>
+		{{#each views}}
+			<li>
+				<a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
+				<ul>
+					{{#each items}}
+					<li>
+						<a href="{{baseurl}}/{{@../key}}/{{@key}}.html">{{name}}</a>
+					</li>
+					{{/each}}
+				</ul>
+			</li>
+			{{/each}}
 
-		{{#each materials}}
-		<li>
-			<a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
-			<ul>
-				{{#each items}}
-				<li>
-					<a href="{{baseurl}}/{{@../key}}.html#{{@key}}">{{name}}</a>
-				</li>
-				{{/each}}
-			</ul>
-		</li>
-		{{/each}}
-	</ul>
+			{{#each materials}}
+			<li>
+				<a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
+				<ul>
+					{{#each items}}
+					<li>
+						<a href="{{baseurl}}/{{@../key}}.html#{{@key}}">{{name}}</a>
+					</li>
+					{{/each}}
+				</ul>
+			</li>
+			{{/each}}
+		</ul>
+	</div>
+	{{#if toolkit.api}}
+	<script type="text/x-handlebars-template" id="folder-menu-template">
+	  <li>
+		<a href="{{baseurl}}/creative.html#/f/\{{name}}">\{{name}}</a>
+	  </li>
+	</script>
+	{{/if}}
 </div>
-{{#if toolkit.api}}
-<script type="text/x-handlebars-template" id="folder-menu-template">
-  <li>
-    <a href="{{baseurl}}/creative.html#/f/\{{name}}">\{{name}}</a>
-  </li>
-</script>
-{{/if}}
 <!-- /fabricator menu -->

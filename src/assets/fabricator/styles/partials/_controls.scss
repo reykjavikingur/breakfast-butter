@@ -2,6 +2,12 @@
 	@include clearfix;
 	@include border-box;
 
+	width: $menu-width;
+	height: 56px;
+	z-index: 5;
+	position: absolute;
+	background-color: $gray-dark;
+
 	.f-control {
 		display: block;
 		float: left;
