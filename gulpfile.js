@@ -7,6 +7,7 @@ const fs = require('fs');
 const gulp = require('gulp');
 const gulpif = require('gulp-if');
 const gutil = require('gulp-util');
+const path = require('path');
 const prefix = require('gulp-autoprefixer');
 const reload = browserSync.reload;
 const rename = require('gulp-rename');
@@ -23,8 +24,10 @@ const webpack = require('webpack');
  * CUSTOM INCLUDES
  * ------------------------------------------------------------------------
  */
-const concat = require('gulp-concat'); // CAM: Used in vendor task
-const dna = require('fabricator-dna');
+const concat = require('gulp-concat'); 				// CAM: Used in vendor task
+const dna = require('fabricator-dna'); 				// CAM: Used for dependency injection
+const exc = require('butter-assemble-exclude'); 	// CAM: Used to exclude files from assemble
+
 
 
 /**
@@ -103,7 +106,11 @@ const config = {
 		'assembler',
 	],
 	dest: 'dist',
-	src: 'src'
+	src: 'src',
+	hooks: {
+		beforeMaterials: exc,
+		beforeViews: exc
+	}
 };
 
 // Webpack
@@ -224,7 +231,8 @@ gulp.task('assembler', (done) => {
 	assembler({
 		logErrors: config.dev,
 		dest: config.dest,
-		helpers: config.scripts.helpers
+		helpers: config.scripts.helpers,
+		hooks: config.hooks
 	});
 	done();
 });
@@ -302,12 +310,14 @@ const create_material = (params) => {
 
 	let id = slugify(String(name).toLowerCase());
 
+	let mname = (dna !== 'DNA-ID') ? dna : id;
+
 	// Create the material file
 	let mpath = __dirname + '/' + config.src + '/materials/' + id;
 
 	if (!fs.existsSync(mpath)) { fs.mkdirSync(mpath); }
 
-	let mfile = mpath + '/' + Date.now() + '-RENAME-ME.html';
+	let mfile = mpath + '/' + mname +'.html';
 	let mat = `---
 		{
 		  "atomic": "${type}",
@@ -328,7 +338,7 @@ const create_material = (params) => {
 			title: "${name}"
 			---
 
-			<h1 data-f-toggle="labels">{{title}}</h1>
+			<h1 data-f-toggle="labels" class="mt-4">{{title}}</h1>
 
 			{{#each materials.${id}.items}}
 

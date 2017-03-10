@@ -1,13 +1,86 @@
 {
   "helix": {
+    "src/materials/alerts/alert-danger.html": {
+      "dna": ["alert-danger"],
+      "id": "alert-danger",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/alerts/alert-info.html": {
+      "dna": ["alert-info"],
+      "id": "alert-info",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/alerts/alert-success.html": {
+      "dna": ["alert-success"],
+      "id": "alert-success",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/alerts/alert-warning.html": {
+      "dna": ["alert-warning"],
+      "id": "alert-warning",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/badges/00.badge-default.html": {
+      "dna": ["badge-default"],
+      "id": "badge-default",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/badges/badge-danger.html": {
+      "dna": ["badge-danger"],
+      "id": "badge-danger",
+      "dependents": {
+        "src/materials/lists/99.list-group.html": [".badge-danger"]
+      },
+      "dependencies": {}
+    },
+    "src/materials/badges/badge-info.html": {
+      "dna": ["badge-info"],
+      "id": "badge-info",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/badges/badge-primary.html": {
+      "dna": ["badge-primary"],
+      "id": "badge-primary",
+      "dependents": {
+        "src/materials/badges/pill-badge.html": [".badge-primary"]
+      },
+      "dependencies": {}
+    },
+    "src/materials/badges/badge-success.html": {
+      "dna": ["badge-success"],
+      "id": "badge-success",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/badges/badge-warning.html": {
+      "dna": ["badge-warning"],
+      "id": "badge-warning",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/badges/pill-badge.html": {
+      "dna": ["badge-pill"],
+      "id": "badge-pill",
+      "dependents": {
+        "src/materials/lists/99.list-group.html": [".badge-pill"]
+      },
+      "dependencies": {
+        "src/materials/badges/badge-primary.html": [".badge-primary"]
+      }
+    },
     "src/materials/button-groups/button-group-checkbox.html": {
       "dna": ["btn-group-checkbox"],
       "id": "btn-group-checkbox",
       "dependents": {},
       "dependencies": {
         "src/materials/button-groups/button-group-horizontal.html": [".btn-group"],
-        "src/materials/button/button-primary.html": [".btn-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-primary"]
+        "src/materials/button/button-primary.html": [".btn-primary"]
       }
     },
     "src/materials/button-groups/button-group-horizontal.html": {
@@ -21,8 +94,7 @@
         "src/views/creative.html": [".btn-group"]
       },
       "dependencies": {
-        "src/materials/button/button-primary.html": [".btn-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-primary"]
+        "src/materials/button/button-primary.html": [".btn-primary"]
       }
     },
     "src/materials/button-groups/button-group-radio.html": {
@@ -31,8 +103,7 @@
       "dependents": {},
       "dependencies": {
         "src/materials/button-groups/button-group-horizontal.html": [".btn-group"],
-        "src/materials/button/button-primary.html": [".btn-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-primary"]
+        "src/materials/button/button-primary.html": [".btn-primary"]
       }
     },
     "src/materials/button-groups/button-group-vertical.html": {
@@ -40,8 +111,7 @@
       "id": "btn-group-vertical",
       "dependents": {},
       "dependencies": {
-        "src/materials/button/button-primary.html": [".btn-outline-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-outline-primary"]
+        "src/materials/button/button-primary.html": [".btn-outline-primary"]
       }
     },
     "src/materials/button-states/button-active.html": {
@@ -54,8 +124,7 @@
         "src/materials/button/button-primary.html": [".btn-primary", ".btn-outline-primary"],
         "src/materials/button/button-secondary.html": [".btn-secondary", ".btn-outline-secondary"],
         "src/materials/button/button-success.html": [".btn-success", ".btn-outline-success"],
-        "src/materials/button/button-warning.html": [".btn-warning", ".btn-outline-warning"],
-        "src/materials/button/button.html": [".btn", ".btn-primary", ".btn-secondary", ".btn-success", ".btn-info", ".btn-warning", ".btn-outline-primary", ".btn-outline-secondary", ".btn-outline-success", ".btn-outline-info", ".btn-outline-warning"]
+        "src/materials/button/button-warning.html": [".btn-warning", ".btn-outline-warning"]
       }
     },
     "src/materials/button-states/button-disabled.html": {
@@ -68,8 +137,7 @@
         "src/materials/button/button-primary.html": [".btn-primary"],
         "src/materials/button/button-secondary.html": [".btn-secondary"],
         "src/materials/button/button-success.html": [".btn-success"],
-        "src/materials/button/button-warning.html": [".btn-warning"],
-        "src/materials/button/button.html": [".btn", ".btn-primary", ".btn-secondary", ".btn-success", ".btn-info", ".btn-warning"]
+        "src/materials/button/button-warning.html": [".btn-warning"]
       }
     },
     "src/materials/button-states/button-toggle.html": {
@@ -77,9 +145,14 @@
       "id": "btn-toggle",
       "dependents": {},
       "dependencies": {
-        "src/materials/button/button-primary.html": [".btn-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-primary"]
+        "src/materials/button/button-primary.html": [".btn-primary"]
       }
+    },
+    "src/materials/button/00.button-default.html": {
+      "dna": ["button"],
+      "id": "button",
+      "dependents": {},
+      "dependencies": {}
     },
     "src/materials/button/button-danger.html": {
       "dna": ["btn-danger", "btn-outline-danger"],
@@ -90,9 +163,7 @@
         "src/materials/misc/dropdown.html": [".btn-danger", ".btn-outline-danger"],
         "src/materials/misc/popover.html": [".btn-danger"]
       },
-      "dependencies": {
-        "src/materials/button/button.html": ["data-dna=btn", ".btn"]
-      }
+      "dependencies": {}
     },
     "src/materials/button/button-info.html": {
       "dna": ["btn-info", "btn-outline-info"],
@@ -100,11 +171,9 @@
       "dependents": {
         "src/materials/button-states/button-active.html": [".btn-info", ".btn-outline-info"],
         "src/materials/button-states/button-disabled.html": [".btn-info"],
-        "src/materials/button/button.html": [".btn-outline-info"]
+        "src/materials/button/button-sizes.html": [".btn-outline-info"]
       },
-      "dependencies": {
-        "src/materials/button/button.html": ["data-dna=btn-info", ".btn", ".btn-info", "data-dna=btn-outline-info", ".btn-outline-info"]
-      }
+      "dependencies": {}
     },
     "src/materials/button/button-primary.html": {
       "dna": ["btn-primary", "btn-outline-primary"],
@@ -117,17 +186,17 @@
         "src/materials/button-states/button-active.html": [".btn-primary", ".btn-outline-primary"],
         "src/materials/button-states/button-disabled.html": [".btn-primary"],
         "src/materials/button-states/button-toggle.html": [".btn-primary"],
-        "src/materials/button/button.html": [".btn-primary"],
+        "src/materials/button/button-sizes.html": [".btn-primary"],
         "src/materials/misc/card.html": [".btn-primary"],
         "src/materials/misc/collapse.html": [".btn-primary"],
         "src/materials/misc/jumbotron.html": [".btn-primary"],
-        "src/materials/misc/modal.html": [".btn-primary"],
         "src/materials/misc/tooltip.html": [".btn-outline-primary"],
+        "src/materials/modals/modal-lg.html": [".btn-primary"],
+        "src/materials/modals/modal-sm.html": [".btn-primary"],
+        "src/materials/modals/modal-xl.html": [".btn-primary"],
         "src/views/creative.html": [".btn-outline-primary"]
       },
-      "dependencies": {
-        "src/materials/button/button.html": ["data-dna=btn-primary", ".btn", ".btn-primary", "data-dna=btn-outline-primary", ".btn-outline-primary"]
-      }
+      "dependencies": {}
     },
     "src/materials/button/button-secondary.html": {
       "dna": ["btn-secondary", "btn-outline-secondary"],
@@ -136,10 +205,20 @@
         "src/materials/button-states/button-active.html": [".btn-secondary", ".btn-outline-secondary"],
         "src/materials/button-states/button-disabled.html": [".btn-secondary"],
         "src/materials/form/input-group.html": [".btn-secondary"],
-        "src/materials/misc/modal.html": [".btn-secondary"]
+        "src/materials/modals/modal-lg.html": [".btn-secondary"],
+        "src/materials/modals/modal-sm.html": [".btn-secondary"],
+        "src/materials/modals/modal-xl.html": [".btn-secondary"]
       },
+      "dependencies": {}
+    },
+    "src/materials/button/button-sizes.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
       "dependencies": {
-        "src/materials/button/button.html": ["data-dna=btn-secondary", ".btn", ".btn-secondary", "data-dna=btn-outline-secondary", ".btn-outline-secondary"]
+        "src/materials/button/button-info.html": [".btn-outline-info"],
+        "src/materials/button/button-primary.html": [".btn-primary"],
+        "src/materials/button/button-success.html": [".btn-outline-success"]
       }
     },
     "src/materials/button/button-success.html": {
@@ -148,11 +227,9 @@
       "dependents": {
         "src/materials/button-states/button-active.html": [".btn-success", ".btn-outline-success"],
         "src/materials/button-states/button-disabled.html": [".btn-success"],
-        "src/materials/button/button.html": [".btn-outline-success"]
+        "src/materials/button/button-sizes.html": [".btn-outline-success"]
       },
-      "dependencies": {
-        "src/materials/button/button.html": ["data-dna=btn-success", ".btn", ".btn-success", "data-dna=btn-outline-success", ".btn-outline-success"]
-      }
+      "dependencies": {}
     },
     "src/materials/button/button-warning.html": {
       "dna": ["btn-warning", "btn-outline-warning"],
@@ -161,42 +238,7 @@
         "src/materials/button-states/button-active.html": [".btn-warning", ".btn-outline-warning"],
         "src/materials/button-states/button-disabled.html": [".btn-warning"]
       },
-      "dependencies": {
-        "src/materials/button/button.html": ["data-dna=btn-warning", ".btn", ".btn-warning", "data-dna=btn-outline-warning", ".btn-outline-warning"]
-      }
-    },
-    "src/materials/button/button.html": {
-      "dna": ["btn", "btn-primary", "btn-secondary", "btn-success", "btn-info", "btn-warning", "btn-outline-primary", "btn-outline-secondary", "btn-outline-success", "btn-outline-info", "btn-outline-warning"],
-      "id": "btn",
-      "dependents": {
-        "src/materials/button-groups/button-group-checkbox.html": [".btn", ".btn-primary"],
-        "src/materials/button-groups/button-group-horizontal.html": [".btn", ".btn-primary"],
-        "src/materials/button-groups/button-group-radio.html": [".btn", ".btn-primary"],
-        "src/materials/button-groups/button-group-vertical.html": [".btn", ".btn-outline-primary"],
-        "src/materials/button-states/button-active.html": [".btn", ".btn-primary", ".btn-secondary", ".btn-success", ".btn-info", ".btn-warning", ".btn-outline-primary", ".btn-outline-secondary", ".btn-outline-success", ".btn-outline-info", ".btn-outline-warning"],
-        "src/materials/button-states/button-disabled.html": [".btn", ".btn-primary", ".btn-secondary", ".btn-success", ".btn-info", ".btn-warning"],
-        "src/materials/button-states/button-toggle.html": [".btn", ".btn-primary"],
-        "src/materials/button/button-danger.html": ["data-dna=btn", ".btn"],
-        "src/materials/button/button-info.html": ["data-dna=btn-info", ".btn", ".btn-info", "data-dna=btn-outline-info", ".btn-outline-info"],
-        "src/materials/button/button-primary.html": ["data-dna=btn-primary", ".btn", ".btn-primary", "data-dna=btn-outline-primary", ".btn-outline-primary"],
-        "src/materials/button/button-secondary.html": ["data-dna=btn-secondary", ".btn", ".btn-secondary", "data-dna=btn-outline-secondary", ".btn-outline-secondary"],
-        "src/materials/button/button-success.html": ["data-dna=btn-success", ".btn", ".btn-success", "data-dna=btn-outline-success", ".btn-outline-success"],
-        "src/materials/button/button-warning.html": ["data-dna=btn-warning", ".btn", ".btn-warning", "data-dna=btn-outline-warning", ".btn-outline-warning"],
-        "src/materials/form/input-group.html": [".btn", ".btn-secondary"],
-        "src/materials/misc/card.html": [".btn", ".btn-primary"],
-        "src/materials/misc/collapse.html": [".btn", ".btn-primary"],
-        "src/materials/misc/dropdown.html": [".btn"],
-        "src/materials/misc/jumbotron.html": [".btn", ".btn-primary"],
-        "src/materials/misc/modal.html": [".btn", ".btn-primary", ".btn-secondary"],
-        "src/materials/misc/popover.html": [".btn"],
-        "src/materials/misc/tooltip.html": [".btn", ".btn-outline-primary"],
-        "src/views/creative.html": [".btn", ".btn-outline-primary"]
-      },
-      "dependencies": {
-        "src/materials/button/button-info.html": [".btn-outline-info"],
-        "src/materials/button/button-primary.html": [".btn-primary"],
-        "src/materials/button/button-success.html": [".btn-outline-success"]
-      }
+      "dependencies": {}
     },
     "src/materials/form/checkbox.html": {
       "dna": ["form-check", "form-check-inline"],
@@ -218,7 +260,6 @@
       "dependents": {},
       "dependencies": {
         "src/materials/button/button-secondary.html": [".btn-secondary"],
-        "src/materials/button/button.html": [".btn", ".btn-secondary"],
         "src/materials/misc/dropdown.html": [".dropdown-toggle", "data-dna=dropdown-menu", ".dropdown-menu", ".dropdown-divider"]
       }
     },
@@ -260,6 +301,24 @@
       "dependents": {},
       "dependencies": {}
     },
+    "src/materials/helpers/borders.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/helpers/colors.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/helpers/layout.html": {
+      "dna": ["layout"],
+      "id": "layout",
+      "dependents": {},
+      "dependencies": {}
+    },
     "src/materials/icons/linear-icons.html": {
       "dna": ["lnr"],
       "id": "lnr",
@@ -285,7 +344,8 @@
         "src/materials/misc/card.html": [".list-group", ".list-group-item"]
       },
       "dependencies": {
-        "src/materials/misc/badge.html": [".badge", ".badge-danger"]
+        "src/materials/badges/badge-danger.html": [".badge-danger"],
+        "src/materials/badges/pill-badge.html": [".badge-pill"]
       }
     },
     "src/materials/misc/accordion.html": {
@@ -296,20 +356,6 @@
         "src/materials/misc/card.html": ["data-dna=card", ".card", ".card-header", ".card-block"],
         "src/materials/misc/collapse.html": [".collapse"]
       }
-    },
-    "src/materials/misc/alerts.html": {
-      "dna": ["alert", "alert-success", "alert-info", "alert-danger", "alert-warning"],
-      "id": "alert",
-      "dependents": {},
-      "dependencies": {}
-    },
-    "src/materials/misc/badge.html": {
-      "dna": ["badge", "badge-default", "badge-primary", "badge-success", "badge-info", "badge-warning", "badge-danger"],
-      "id": "badge",
-      "dependents": {
-        "src/materials/lists/99.list-group.html": [".badge", ".badge-danger"]
-      },
-      "dependencies": {}
     },
     "src/materials/misc/breadcrumb.html": {
       "dna": ["breadcrumb", "breadcrumb-item"],
@@ -326,7 +372,6 @@
       },
       "dependencies": {
         "src/materials/button/button-primary.html": [".btn-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-primary"],
         "src/materials/lists/99.list-group.html": [".list-group", ".list-group-item"]
       }
     },
@@ -338,7 +383,6 @@
       },
       "dependencies": {
         "src/materials/button/button-primary.html": [".btn-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-primary"],
         "src/materials/misc/card.html": [".card", ".card-block"]
       }
     },
@@ -350,8 +394,7 @@
       },
       "dependencies": {
         "src/materials/button-groups/button-group-horizontal.html": [".btn-group"],
-        "src/materials/button/button-danger.html": [".btn-danger", ".btn-outline-danger"],
-        "src/materials/button/button.html": [".btn"]
+        "src/materials/button/button-danger.html": [".btn-danger", ".btn-outline-danger"]
       }
     },
     "src/materials/misc/jumbotron.html": {
@@ -359,18 +402,7 @@
       "id": "jumbotron",
       "dependents": {},
       "dependencies": {
-        "src/materials/button/button-primary.html": [".btn-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-primary"]
-      }
-    },
-    "src/materials/misc/modal.html": {
-      "dna": ["modal", "modal-dialog", "modal-content", "modal-header", "modal-footer", "modal-title"],
-      "id": "modal",
-      "dependents": {},
-      "dependencies": {
-        "src/materials/button/button-primary.html": [".btn-primary"],
-        "src/materials/button/button-secondary.html": [".btn-secondary"],
-        "src/materials/button/button.html": [".btn", ".btn-primary", ".btn-secondary"]
+        "src/materials/button/button-primary.html": [".btn-primary"]
       }
     },
     "src/materials/misc/pagination.html": {
@@ -392,8 +424,7 @@
       "id": "popover",
       "dependents": {},
       "dependencies": {
-        "src/materials/button/button-danger.html": [".btn-danger"],
-        "src/materials/button/button.html": [".btn"]
+        "src/materials/button/button-danger.html": [".btn-danger"]
       }
     },
     "src/materials/misc/progress.html": {
@@ -416,8 +447,34 @@
       "dependents": {},
       "dependencies": {
         "src/materials/button-groups/button-group-horizontal.html": [".btn-group"],
-        "src/materials/button/button-primary.html": [".btn-outline-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-outline-primary"]
+        "src/materials/button/button-primary.html": [".btn-outline-primary"]
+      }
+    },
+    "src/materials/modals/modal-lg.html": {
+      "dna": ["modal-lg"],
+      "id": "modal-lg",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/button/button-primary.html": [".btn-primary"],
+        "src/materials/button/button-secondary.html": [".btn-secondary"]
+      }
+    },
+    "src/materials/modals/modal-sm.html": {
+      "dna": ["modal-sm"],
+      "id": "modal-sm",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/button/button-primary.html": [".btn-primary"],
+        "src/materials/button/button-secondary.html": [".btn-secondary"]
+      }
+    },
+    "src/materials/modals/modal-xl.html": {
+      "dna": ["modal-xl"],
+      "id": "modal-xl",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/button/button-primary.html": [".btn-primary"],
+        "src/materials/button/button-secondary.html": [".btn-secondary"]
       }
     },
     "src/materials/tables/00.table.html": {
@@ -444,6 +501,12 @@
       "dependencies": {
         "src/materials/tables/00.table.html": [".table"]
       }
+    },
+    "src/materials/test-atom/test.html": {
+      "dna": ["test"],
+      "id": "test",
+      "dependents": {},
+      "dependencies": {}
     },
     "src/materials/typeography/00.headings.html": {
       "dna": [],
@@ -475,6 +538,18 @@
       "dependents": {},
       "dependencies": {}
     },
+    "src/views/alerts.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/badges.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
     "src/views/button-groups.html": {
       "dna": [],
       "id": null,
@@ -499,8 +574,7 @@
       "dependents": {},
       "dependencies": {
         "src/materials/button-groups/button-group-horizontal.html": [".btn-group"],
-        "src/materials/button/button-primary.html": [".btn-outline-primary"],
-        "src/materials/button/button.html": [".btn", ".btn-outline-primary"]
+        "src/materials/button/button-primary.html": [".btn-outline-primary"]
       }
     },
     "src/views/docs.html": {
@@ -516,24 +590,6 @@
       "dependencies": {}
     },
     "src/views/helpers.html": {
-      "dna": [],
-      "id": null,
-      "dependents": {},
-      "dependencies": {}
-    },
-    "src/views/helpers/borders.html": {
-      "dna": [],
-      "id": null,
-      "dependents": {},
-      "dependencies": {}
-    },
-    "src/views/helpers/colors.html": {
-      "dna": [],
-      "id": null,
-      "dependents": {},
-      "dependencies": {}
-    },
-    "src/views/helpers/layout.html": {
       "dna": [],
       "id": null,
       "dependents": {},
@@ -563,13 +619,7 @@
       "dependents": {},
       "dependencies": {}
     },
-    "src/views/molecules.html": {
-      "dna": [],
-      "id": null,
-      "dependents": {},
-      "dependencies": {}
-    },
-    "src/views/organisms.html": {
+    "src/views/modals.html": {
       "dna": [],
       "id": null,
       "dependents": {},
@@ -593,13 +643,7 @@
       "dependents": {},
       "dependencies": {}
     },
-    "src/views/templates/test.html": {
-      "dna": [],
-      "id": null,
-      "dependents": {},
-      "dependencies": {}
-    },
-    "src/views/testing-this.html": {
+    "src/views/test-atom.html": {
       "dna": [],
       "id": null,
       "dependents": {},

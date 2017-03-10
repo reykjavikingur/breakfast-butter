@@ -1,5 +1,5 @@
 
-Fabricator module that creates a dependency tracker within the notes section of each material.
+Module that creates a dependency tracker within the notes section of each material.
 
 -------------------------------
 ##### Usage

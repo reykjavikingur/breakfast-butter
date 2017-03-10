@@ -3,14 +3,8 @@ title: Butter | Overview
 fabricator: true
 ---
 
-<section class="mb-5">
+<section class="mb-5 mt-4">
 	<h1 class="mb-4">Overview</h1>
-
-  <h2 class="mb-0">Built on Bootstrap</h2>
-  <div class="mb-3"><small>{{toolkit.bootstrap}}</small></div>
-
-	<p>Bootstrap is the world’s most popular framework for building responsive, mobile-first sites and applications. Inside you’ll find high quality HTML, CSS, and JavaScript to make starting any project easier than ever.</p>
-  <p>Head on over to the <a href="https://v4-alpha.getbootstrap.com/getting-started/introduction/" target="_blank">documentation</a> for more information about Bootstrap {{toolkit.bootstrap}}</p>
 </section>
 
 <section class="mb-5">
@@ -18,8 +12,54 @@ fabricator: true
 
   <p class="mb-4">This guide contains real working examples, code snippets, documentation, and style guidelines.<br />
   Start by adding the following files to your page:</p>
-<script src="{{baseurl}}/assets/toolkit/scripts/vendor.js"></script>
 	<pre class="language-markup"><code class="language-markup">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/toolkit/styles/toolkit.css&quot;&gt;</code></pre>
 	<pre class="language-markup"><code class="language-markup">&lt;script src=&quot;assets/toolkit/scripts/vendor.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt;</code></pre>
+</section>
+<section class="mb-5">
+	<h2>Creating A New Material</h2>
+	<p class="mb-4">Creating a new material consists of creating a new <kbd>~/src/views/*.html</kbd> file and a <kbd>~/src/materials/</kbd> directory with your new material <kbd>.html</kbd> file in it.<br />
+	For instance, say you want to create a new atom called <kbd>'My Atom'</kbd>:</p>
+	<ol class="mb-4">
+		<li>
+			In the <kbd>~/src/views/</kbd> directory create a new file: <kbd>my-atom.html</kbd> with the following code:
+<pre class="language-markup"><code class="language-markup">
+---
+ fabricator: true
+ title: "My Atom"
+ ---
+
+ &lt;h1 data-f-toggle="labels" class="mb-4"&gt;\{{title}}&lt;/h1&gt;
+
+ \{{#each materials.my-atom.items}}
+
+ \{{> f-item this}}
+
+ \{{/each}}
+</code></pre>
+		</li>
+		<li>
+			Create a new material category directory <kbd>~/src/materials/my-atom/</kbd>.
+			<div><em><small>You can skip this step if your new material will be added to an existing category.</small></em></div>
+		</li>
+		<li>
+			Create a new <kbd>.html</kbd> file in your material category directory: <kbd>~/src/materials/my-atom/my-atom.html</kbd>
+		</li>
+		<li>
+			Start your new material file <kbd>~/src/materials/my-atoms/my-atom.html</kbd> with the following code:
+<pre class="language-markup"><code class="language-markup">
+---
+ {
+  "atomic": "atom",
+  "dna": "my-atom"
+ }
+ ---
+
+ &lt;div data-dna="my-atom"&gt;The Atom Structure&lt;/div&gt;
+</code></pre>
+		</li>
+	</ol>
+	<p class="mb-4">That seems like a lot of work, so for laziness sake; there is a built in Gulp tasks to create new materials:</p>
+	<pre class="language-markup"><code class="language-markup">gulp create:material --type "atom" --name "My Atom"</code></pre>
+	<div><em><small>If the material already exists, you will get a notification and the task will exit.</em></small></div>
 </section>
