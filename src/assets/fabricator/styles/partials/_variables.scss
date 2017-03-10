@@ -50,6 +50,7 @@ $theme: $theme-light !default;
 $colors: map-merge($base-colors, $theme);
 
 $menu-width: map-get($settings, menu-width);
+$navbar-width: map-get($settings, navbar-width);
 
 
 $f-grey:        #999999;

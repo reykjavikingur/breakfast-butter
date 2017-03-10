@@ -1,15 +1,19 @@
 const assembler = require('butter-assemble');
+const beautify = require('js-beautify').js_beautify;
 const browserSync = require('browser-sync');
 const csso = require('gulp-csso');
 const del = require('del');
+const fs = require('fs');
 const gulp = require('gulp');
-const gutil = require('gulp-util');
 const gulpif = require('gulp-if');
+const gutil = require('gulp-util');
 const prefix = require('gulp-autoprefixer');
-const rename = require('gulp-rename');
 const reload = browserSync.reload;
+const rename = require('gulp-rename');
 const runSequence = require('run-sequence');
 const sass = require('gulp-sass');
+const slugify = require('slugify');
+const source = require('vinyl-source-stream');
 const sourcemaps = require('gulp-sourcemaps');
 const webpack = require('webpack');
 
@@ -98,7 +102,8 @@ const config = {
 		'fonts',
 		'assembler',
 	],
-	dest: 'dist'
+	dest: 'dist',
+	src: 'src'
 };
 
 // Webpack
@@ -273,6 +278,158 @@ gulp.task('serve', () => {
 
 });
 
+/**
+ *
+ * create:material
+ *
+ * @author Cam Tullos cam@tullos.ninja
+ * @since 1.0.1
+ *
+ * @description Creates a new ~/src/materials/*.html file
+ * and the cooresponding ~/src/views/*.html file.
+ *
+ * @param params {Object} The configuration object.
+ * @property --name The name of the material. The name will be slugified before file creation.
+ * @property --type The atomic design type (atom, molecule, organism).
+ * @property --dna The DNA ID used for dependency checking.
+ */
+const create_material = (params) => {
+	let name = params['name'];
+	if (!name) { return; }
+
+	let type = params['type'] || 'TYPE';
+	let dna = params['dna'] || 'DNA-ID';
+
+	let id = slugify(String(name).toLowerCase());
+
+	// Create the material file
+	let mpath = __dirname + '/' + config.src + '/materials/' + id;
+
+	if (!fs.existsSync(mpath)) { fs.mkdirSync(mpath); }
+
+	let mfile = mpath + '/' + Date.now() + '-RENAME-ME.html';
+	let mat = `---
+		{
+		  "atomic": "${type}",
+		  "dna": "${dna}"
+		}
+		---
+		<div data-dna="${dna}"></div>`
+
+	mat = mat.replace(/\t/g, '');
+
+	fs.writeFileSync(mfile, mat);
+
+	// Create the view file
+	let vfile = __dirname + '/' + config.src + '/views/' + id + '.html';
+	if (!fs.existsSync(vfile)) {
+		let view = `---
+			fabricator: true
+			title: "${name}"
+			---
+
+			<h1 data-f-toggle="labels">{{title}}</h1>
+
+			{{#each materials.${id}.items}}
+
+			{{> f-item this}}
+
+			{{/each}}`
+
+		view = view.replace(/\t/g, '');
+
+		fs.writeFileSync(vfile, view);
+	}
+
+    return;
+}
+gulp.task('create:material', () => {
+
+	if (!gutil.env.name) { return; }
+
+	let name = gutil.env.name;
+	let dna = gutil.env.dna;
+	let type = gutil.env.type;
+
+    return create_material({name: name, type: type, dna: dna});
+});
+
+/**
+ *
+ * create:template
+ *
+ * @author Cam Tullos cam@tullos.ninja
+ * @since 1.0.1
+ *
+ * @description Creates a new ~/src/views/templates/*.html file
+ */
+gulp.task('create:template', () => {
+	if (!gutil.env.name) { return; }
+
+	let name = gutil.env.name || Date.now();
+	let id = slugify(String(name).toLowerCase());
+
+	let file = __dirname + '/' + config.src + '/views/templates/' + id + '.html';
+
+	// Exit if the file already exists;
+	if (fs.existsSync(file)) {
+		console.log(`[00:00:00] [NOTICE] 'create:template' ${file} already exists.`);
+		return;
+	}
+
+
+	let tmp = `---
+		title: "${name}"
+		---`
+
+	tmp = tmp.replace(/\t/g, '');
+
+	fs.writeFileSync(file, tmp);
+
+	return;
+
+});
+
+
+/**
+ *
+ * create:helper
+ *
+ * @author Cam Tullos cam@tullos.ninja
+ * @since 1.0.1
+ *
+ * @description Creates a new ~/src/views/templates/*.html file
+ */
+gulp.task('create:helper', () => {
+	if (!gutil.env.name) { return; }
+
+	let name = gutil.env.name || Date.now();
+	let id = slugify(String(name).toLowerCase());
+
+	let file = __dirname + '/' + config.src + '/views/helpers/' + id + '.html';
+
+	// Exit if the file already exists;
+	if (fs.existsSync(file)) {
+		console.log(`[00:00:00] [NOTICE] 'create:helper' ${file} already exists.`);
+		return;
+	}
+
+
+	let tmp = `---
+		title: "${name}"
+		fabricator: true
+		---
+		<header class="mb-3">
+		  <h1>{{title}}</h1>
+		</header>`
+
+	tmp = tmp.replace(/\t/g, '');
+
+	fs.writeFileSync(file, tmp);
+
+	return;
+
+});
 
 // default build task
 gulp.task('default', ['clean'], () => {

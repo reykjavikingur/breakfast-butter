@@ -5,11 +5,14 @@
 	{{> f-navbar}}
 	{{> f-controls}}
 
+	<form data-search="[data-tags]">
+		<div class="search">
+			<input type="search" placeholder="search" name="find" autocomplete="off" autocorrect="off" />
+		</div>
+	</form>
+
 	<div class="f-menu">
 		<ul>
-			<li>
-				<a href="{{baseurl}}/index.html" class="f-menu__heading">Overview</a>
-			</li>
 
 			{{#if toolkit.api}}
 			<li style="margin-left: 5px;">
@@ -19,22 +22,42 @@
 			{{/if}}
 
 
-			<li>
+			{{#each materials}}
+			<li data-tags="materials {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}">
+				<a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
+				<ul>
+					{{#each items}}
+					<li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}">
+						<a href="{{baseurl}}/{{@../key}}.html#{{@key}}">{{name}}</a>
+					</li>
+					{{/each}}
+				</ul>
+			</li>
+			{{/each}}
+
+
+			<li data-tags="docs{{#each docs}} {{name}}{{/each}}">
+
 			  <a href="{{baseurl}}/docs.html" class="f-menu__heading">Docs</a>
 			  <ul>
+				<li data-tags="docs overview">
+					<a href="{{baseurl}}/index.html">Overview</a>
+				</li>
 				{{#each docs}}
-				<li>
+				<li data-tags="{{../name}} {{name}}">
 				  <a href="{{baseurl}}/docs.html#{{@key}}">{{name}}</a>
 				</li>
 				{{/each}}
 			  </ul>
 			</li>
-		{{#each views}}
-			<li>
+
+
+			{{#each views}}
+			<li data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}">
 				<a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
 				<ul>
 					{{#each items}}
-					<li>
+					<li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}">
 						<a href="{{baseurl}}/{{@../key}}/{{@key}}.html">{{name}}</a>
 					</li>
 					{{/each}}
@@ -42,18 +65,6 @@
 			</li>
 			{{/each}}
 
-			{{#each materials}}
-			<li>
-				<a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
-				<ul>
-					{{#each items}}
-					<li>
-						<a href="{{baseurl}}/{{@../key}}.html#{{@key}}">{{name}}</a>
-					</li>
-					{{/each}}
-				</ul>
-			</li>
-			{{/each}}
 		</ul>
 	</div>
 	{{#if toolkit.api}}

@@ -283,6 +283,7 @@ fabricator.singleItemToggle = () => {
  * Automatically select code when code block is clicked
  */
 fabricator.bindCodeAutoSelect = () => {
+  /*
 
   const codeBlocks = document.querySelectorAll('.f-item-code');
 
@@ -297,6 +298,7 @@ fabricator.bindCodeAutoSelect = () => {
   for (let i = codeBlocks.length - 1; i >= 0; i--) {
     codeBlocks[i].addEventListener('click', select.bind(this, codeBlocks[i]));
   }
+  */
 
 };
 
