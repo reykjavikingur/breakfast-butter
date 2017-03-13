@@ -502,12 +502,6 @@
         "src/materials/tables/00.table.html": [".table"]
       }
     },
-    "src/materials/test-atom/test.html": {
-      "dna": ["test"],
-      "id": "test",
-      "dependents": {},
-      "dependencies": {}
-    },
     "src/materials/typeography/00.headings.html": {
       "dna": [],
       "id": null,
@@ -638,12 +632,6 @@
       "dependencies": {}
     },
     "src/views/templates/single-post.html": {
-      "dna": [],
-      "id": null,
-      "dependents": {},
-      "dependencies": {}
-    },
-    "src/views/test-atom.html": {
       "dna": [],
       "id": null,
       "dependents": {},
