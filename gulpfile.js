@@ -1,22 +1,22 @@
-const assembler = require('butter-assemble');
-const beautify = require('js-beautify').js_beautify;
-const browserSync = require('browser-sync');
-const csso = require('gulp-csso');
-const del = require('del');
-const fs = require('fs');
-const gulp = require('gulp');
-const gulpif = require('gulp-if');
-const gutil = require('gulp-util');
-const path = require('path');
-const prefix = require('gulp-autoprefixer');
-const reload = browserSync.reload;
-const rename = require('gulp-rename');
-const runSequence = require('run-sequence');
-const sass = require('gulp-sass');
-const slugify = require('slugify');
-const source = require('vinyl-source-stream');
-const sourcemaps = require('gulp-sourcemaps');
-const webpack = require('webpack');
+const assembler      = require('butter-assemble');
+const beautify       = require('js-beautify').js_beautify;
+const browserSync    = require('browser-sync');
+const csso           = require('gulp-csso');
+const del            = require('del');
+const fs             = require('fs');
+const gulp           = require('gulp');
+const gulpif         = require('gulp-if');
+const gutil          = require('gulp-util');
+const path           = require('path');
+const prefix         = require('gulp-autoprefixer');
+const reload         = browserSync.reload;
+const rename         = require('gulp-rename');
+const runSequence    = require('run-sequence');
+const sass           = require('gulp-sass');
+const slugify        = require('slugify');
+const source         = require('vinyl-source-stream');
+const sourcemaps     = require('gulp-sourcemaps');
+const webpack        = require('webpack');
 
 
 /**
@@ -24,9 +24,9 @@ const webpack = require('webpack');
  * CUSTOM INCLUDES
  * ------------------------------------------------------------------------
  */
-const concat = require('gulp-concat'); 				// CAM: Used in vendor task
-const dna = require('fabricator-dna'); 				// CAM: Used for dependency injection
-const exc = require('butter-assemble-exclude'); 	// CAM: Used to exclude files from assemble
+const concat    = require('gulp-concat'); 				// CAM: Used in vendor task
+const dna       = require('fabricator-dna'); 			// CAM: Used for dependency injection
+const exc       = require('butter-assemble-exclude'); 	// CAM: Used to exclude files from assemble
 
 
 
