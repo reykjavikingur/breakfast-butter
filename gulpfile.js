@@ -1,8 +1,16 @@
+/**
+ * -----------------------------------------------------------------------------
+ * Imports
+ * -----------------------------------------------------------------------------
+ */
 const assembler      = require('butter-assemble');
 const beautify       = require('js-beautify').js_beautify;
 const browserSync    = require('browser-sync');
+const concat         = require('gulp-concat');
 const csso           = require('gulp-csso');
 const del            = require('del');
+const dna            = require('fabricator-dna');
+const exc            = require('butter-assemble-exclude');
 const fs             = require('fs');
 const gulp           = require('gulp');
 const gulpif         = require('gulp-if');
@@ -17,17 +25,6 @@ const slugify        = require('slugify');
 const source         = require('vinyl-source-stream');
 const sourcemaps     = require('gulp-sourcemaps');
 const webpack        = require('webpack');
-
-
-/**
- * ------------------------------------------------------------------------
- * CUSTOM INCLUDES
- * ------------------------------------------------------------------------
- */
-const concat    = require('gulp-concat'); 				// CAM: Used in vendor task
-const dna       = require('fabricator-dna'); 			// CAM: Used for dependency injection
-const exc       = require('butter-assemble-exclude'); 	// CAM: Used to exclude files from assemble
-
 
 
 /**
@@ -258,13 +255,6 @@ gulp.task('serve', () => {
 	gulp.task('images:watch', ['images'], browserSync.reload);
 	gulp.watch(config.images.toolkit.watch, ['images:watch']);
 
-
-	/**
-	 * ------------------------------------------------------------------------
-	 * CUSTOM WATCHES
-	 * ------------------------------------------------------------------------
-	 */
-
 	/**
 	 * CAM: Added the 'dna' task to the assembler's watch so that when a file is
 	 * changed, it regens the dependencies.json file
@@ -350,8 +340,6 @@ const create_material = (params) => {
 
 		fs.writeFileSync(vfile, view);
 	}
-
-    return;
 }
 gulp.task('create:material', () => {
 
@@ -390,13 +378,11 @@ gulp.task('create:template', () => {
 
 	let tmp = `---
 		title: "${name}"
-		---`
+		---`;
 
 	tmp = tmp.replace(/\t/g, '');
 
 	fs.writeFileSync(file, tmp);
-
-	return;
 
 });
 
@@ -436,8 +422,6 @@ gulp.task('create:helper', () => {
 	tmp = tmp.replace(/\t/g, '');
 
 	fs.writeFileSync(file, tmp);
-
-	return;
 
 });
 
