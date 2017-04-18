@@ -502,31 +502,31 @@
         "src/materials/tables/00.table.html": [".table"]
       }
     },
-    "src/materials/typeography/00.headings.html": {
+    "src/materials/typography/00.headings.html": {
       "dna": [],
       "id": null,
       "dependents": {},
       "dependencies": {}
     },
-    "src/materials/typeography/01.paragraph.html": {
+    "src/materials/typography/01.paragraph.html": {
       "dna": [],
       "id": null,
       "dependents": {},
       "dependencies": {}
     },
-    "src/materials/typeography/01.text-link.html": {
+    "src/materials/typography/01.text-link.html": {
       "dna": [],
       "id": null,
       "dependents": {},
       "dependencies": {}
     },
-    "src/materials/typeography/blockquote.html": {
+    "src/materials/typography/blockquote.html": {
       "dna": [],
       "id": null,
       "dependents": {},
       "dependencies": {}
     },
-    "src/materials/typeography/inline-code.html": {
+    "src/materials/typography/inline-code.html": {
       "dna": [],
       "id": null,
       "dependents": {},
@@ -637,7 +637,7 @@
       "dependents": {},
       "dependencies": {}
     },
-    "src/views/typeography.html": {
+    "src/views/typography.html": {
       "dna": [],
       "id": null,
       "dependents": {},
