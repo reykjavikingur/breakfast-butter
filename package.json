@@ -6,7 +6,7 @@
   "homepage": "http://resource.github.io/",
   "scripts": {
     "build": "gulp",
-    "start": "node app.js",
+    "start": "node index.js",
     "test": "npm install && gulp --dev"
   },
   "keywords": [

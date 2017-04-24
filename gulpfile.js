@@ -318,23 +318,24 @@ gulp.task('serve', () => {
  * @property --dna The DNA ID used for dependency checking.
  */
 const create_material = (params) => {
-	let name = params['name'];
-	if (!name) { return; }
+    let name = params['name'];
+    if (!name) { return; }
 
-	let type = params['type'] || 'TYPE';
-	let dna = params['dna'] || 'DNA-ID';
+    let type = params['type'] || 'TYPE';
+    let dna = params['dna'] || 'DNA-ID';
 
-	let id = slugify(String(name).toLowerCase());
+    let id = slugify(String(name).toLowerCase());
 
-	let mname = (dna !== 'DNA-ID') ? dna : id;
+    let mname = (dna !== 'DNA-ID') ? dna : id;
 
-	// Create the material file
-	let mpath = __dirname + '/' + config.src + '/materials/' + id;
+    // Create the material file
+    let dir = (params.hasOwnProperty('dir')) ? slugify(String(params.dir).toLowerCase()) : id;
+    let mpath = __dirname + '/' + config.src + '/materials/' + dir;
 
-	if (!fs.existsSync(mpath)) { fs.mkdirSync(mpath); }
+    if (!fs.existsSync(mpath)) { fs.mkdirSync(mpath); }
 
-	let mfile = mpath + '/' + mname +'.html';
-	let mat = `---
+    let mfile = mpath + '/' + mname +'.html';
+    let mat = `---
 		{
 		  "atomic": "${type}",
 		  "dna": "${dna}"
@@ -342,31 +343,32 @@ const create_material = (params) => {
 		---
 		<div data-dna="${dna}"></div>`;
 
-	mat = mat.replace(/\t/g, '');
+    mat = mat.replace(/\t/g, '');
 
-	fs.writeFileSync(mfile, mat);
+    fs.writeFileSync(mfile, mat);
 
-	// Create the view file
-	let vfile = __dirname + '/' + config.src + '/views/' + id + '.html';
-	if (!fs.existsSync(vfile)) {
-		let view = `---
+    // Create the view file
+    let vfile = __dirname + '/' + config.src + '/views/' + dir + '.html';
+    if (!fs.existsSync(vfile)) {
+        let view = `---
 			fabricator: true
-			title: "${name}"
+			title: "${dir}"
 			---
 
 			<h1 data-f-toggle="labels" class="mt-4">{{title}}</h1>
 
-			{{#each materials.${id}.items}}
+			{{#each materials.${dir}.items}}
 
 			{{> f-item this}}
 
 			{{/each}}`;
 
-		view = view.replace(/\t/g, '');
+        view = view.replace(/\t/g, '');
 
-		fs.writeFileSync(vfile, view);
-	}
-}
+        fs.writeFileSync(vfile, view);
+    }
+};
+
 gulp.task('create:material', () => {
 
 	if (!gutil.env.name) { return; }
