@@ -302,9 +302,11 @@
       "dependencies": {}
     },
     "src/materials/helpers/borders.html": {
-      "dna": [],
-      "id": null,
-      "dependents": {},
+      "dna": ["bd", "bd-1", "bd-2", "bd-3", "bd-4", "bd-5", "rounded"],
+      "id": "bd",
+      "dependents": {
+        "src/views/templates/single-post.html": [".bd-2"]
+      },
       "dependencies": {}
     },
     "src/materials/helpers/colors.html": {
@@ -635,7 +637,9 @@
       "dna": [],
       "id": null,
       "dependents": {},
-      "dependencies": {}
+      "dependencies": {
+        "src/materials/helpers/borders.html": [".bd-2"]
+      }
     },
     "src/views/typography.html": {
       "dna": [],
