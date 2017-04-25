@@ -27,13 +27,31 @@
 			  </ul>
 			</li>
 
-			{{#if toolkit.api}}
-			<li style="margin-left: 5px;">
-			  <a href="{{baseurl}}/creative.html" class="f-menu__heading">Creative</a>
-			  <ul data-folder-list="#folder-menu-template"></ul>
-			</li>
-			{{/if}}
+            {{#each views}}
+            <li data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}">
+                <a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
+                <ul>
+                    {{#each items}}
+                    <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}">
+                        <a href="{{baseurl}}/{{@../key}}/{{@key}}.html">{{name}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+            {{/each}}
 
+            {{#if pages}}
+            <li data-tags="pages page">
+                <a href="#pages" class="f-menu__heading">Pages</a>
+                <ul>
+                    {{#each pages}}
+                    <li data-tags="pages page {{label}}">
+                        <a href="{{url}}" title="visit page">{{label}}</a>
+                    </li>
+                    {{/each}}
+                </ul>
+            </li>
+            {{/if}}
 
 			{{#each materials}}
 			<li data-tags="materials {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}">
@@ -49,18 +67,7 @@
 			{{/each}}
 
 
-			{{#each views}}
-			<li data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}">
-				<a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
-				<ul>
-					{{#each items}}
-					<li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}">
-						<a href="{{baseurl}}/{{@../key}}/{{@key}}.html">{{name}}</a>
-					</li>
-					{{/each}}
-				</ul>
-			</li>
-			{{/each}}
+
 
 		</ul>
 	</div>
