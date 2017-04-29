@@ -31,92 +31,31 @@ const nodemon        = require('nodemon');
 /**
  * configuration
  */
-const config = {
-	dev: gutil.env.dev,
-	materials: ['src/materials/**/*'],
-	views: ['src/views/**/*', '!src/views/+(layouts)/**'],
-	dna: 'src/data/dependencies.json',
-    port: {
-        browsersync    : 3000,
-        proxy          : 3030
-    },
-	styles: {
-		browsers: 'last 1 version',
-		fabricator: {
-			src: 'src/assets/fabricator/styles/fabricator.scss',
-			dest: 'dist/assets/fabricator/styles',
-			watch: 'src/assets/fabricator/styles/**/*.scss',
-		},
-		toolkit: {
-			src: 'src/assets/toolkit/styles/toolkit.scss',
-			dest: 'dist/assets/toolkit/styles',
-			watch: 'src/assets/toolkit/styles/**/*.scss',
-		}
-	},
-	scripts: {
-		fabricator: {
-			src: './src/assets/fabricator/scripts/fabricator.js',
-			dest: 'dist/assets/fabricator/scripts',
-			watch: 'src/assets/fabricator/scripts/**/*',
-		},
-		toolkit: {
-			src: './src/assets/toolkit/scripts/toolkit.js',
-			dest: 'dist/assets/toolkit/scripts',
-			watch: 'src/assets/toolkit/scripts/**/*',
-		},
-		vendor: {
-			dest: 'dist/assets/toolkit/scripts',
-			watch: 'src/assets/toolkit/scripts/vendor/**/*'
-		},
-		helpers: {
-			"cond": require('handlebars-cond').cond,
-			"lipsum": require('handlebars-lipsum'),
-			"loop": require('handlebars-loop'),
-			"dependencies": dna.dependencies,
-			"dependents": dna.dependents,
-			"hasDependencies": dna.hasDependencies,
-			"hasDependents": dna.hasDependents
-		}
-	},
-	images: {
-		fabricator: {
-			src: ['src/assets/fabricator/images/**/*', 'src/favicon.ico'],
-			dest: 'dist/assets/fabricator/images',
-			watch: 'src/assets/fabricator/images/**/*',
-		},
-		toolkit: {
-			src: ['src/assets/toolkit/images/**/*', 'src/favicon.ico'],
-			dest: 'dist/assets/toolkit/images',
-			watch: 'src/assets/toolkit/images/**/*',
-		}
-	},
-	fonts: {
-		src: './src/assets/toolkit/fonts/**/*',
-		dest: 'dist/assets/toolkit/fonts',
-		watch: 'src/assets/toolkit/fonts/**/*'
-	},
-	templates: {
-		watch: ['src/**/*.{html,md,json,yml}', '!src/data/dependencies.json'],
-	},
-	tasks: [
-		'dna',
-		'styles',
-		'vendor',
-		'scripts',
-		'images',
-		'fonts',
-		'assembler'
-	],
-	dest: 'dist',
-	src: 'src',
-	hooks: {
-		beforeMaterials: exc,
-		beforeViews: exc
-	}
+
+const config    = require(__dirname + '/gulp.config.json');
+config.dev      = gutil.env.dev;
+config.hooks    = {
+    beforeMaterials    : exc,
+    beforeViews        : exc
+};
+config.scripts.helpers = {
+    "cond"               : require('handlebars-cond').cond,
+    "lipsum"             : require('handlebars-lipsum'),
+    "loop"               : require('handlebars-loop'),
+    "dependencies"       : dna.dependencies,
+    "dependents"         : dna.dependents,
+    "hasDependencies"    : dna.hasDependencies,
+    "hasDependents"      : dna.hasDependents
 };
 
+if (gutil.env.port) {
+    config.port.browsersync = Number(gutil.env.port);
+    config.port.proxy = Number(gutil.env.port) + 30;
+}
+
+
 // Webpack
-const webpackConfig = require('./webpack.config')(config);
+const webpackConfig = require(__dirname + '/webpack.config')(config);
 
 
 // clean
@@ -246,6 +185,9 @@ gulp.task('nodemon', (done) => {
     let callbackCalled = false;
     nodemon({
         watch : config.dest,
+        env: {
+          port: config.port.proxy
+        },
         script: __dirname + '/index.js',
         ext: 'js ejs json jsx html css scss'
     }).on('start', function () {

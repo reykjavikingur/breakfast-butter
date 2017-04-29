@@ -5,7 +5,10 @@
 const express    = require('express');
 const fs         = require('fs');
 const app        = express();
-const port       = 3030;
+const config     = require(__dirname + '/gulp.config.json');
+
+let port    = config.port.proxy;
+port        = (process.env.hasOwnProperty('port')) ? process.env.port : port;
 
 // Use basic auth if .htpasswd file is present
 if (fs.existsSync(__dirname + '/.htpasswd')) {
@@ -25,6 +28,5 @@ app.use(express.static(__dirname + '/dist'));
 
 // start server on the specified port and binding host
 app.listen(port, '0.0.0.0', function() {
-    // print a message when the server starts listening
-    console.log("[00:00:00] Server running on port " + port);
+    console.log("Server running...");
 });
