@@ -90,8 +90,7 @@
         "src/materials/button-groups/button-group-checkbox.html": [".btn-group"],
         "src/materials/button-groups/button-group-radio.html": [".btn-group"],
         "src/materials/misc/dropdown.html": [".btn-group"],
-        "src/materials/misc/tooltip.html": [".btn-group"],
-        "src/views/creative.html": [".btn-group"]
+        "src/materials/misc/tooltip.html": [".btn-group"]
       },
       "dependencies": {
         "src/materials/button/button-primary.html": [".btn-primary"]
@@ -193,8 +192,7 @@
         "src/materials/misc/tooltip.html": [".btn-outline-primary"],
         "src/materials/modals/modal-lg.html": [".btn-primary"],
         "src/materials/modals/modal-sm.html": [".btn-primary"],
-        "src/materials/modals/modal-xl.html": [".btn-primary"],
-        "src/views/creative.html": [".btn-outline-primary"]
+        "src/materials/modals/modal-xl.html": [".btn-primary"]
       },
       "dependencies": {}
     },
@@ -563,15 +561,6 @@
       "id": null,
       "dependents": {},
       "dependencies": {}
-    },
-    "src/views/creative.html": {
-      "dna": [],
-      "id": null,
-      "dependents": {},
-      "dependencies": {
-        "src/materials/button-groups/button-group-horizontal.html": [".btn-group"],
-        "src/materials/button/button-primary.html": [".btn-outline-primary"]
-      }
     },
     "src/views/docs.html": {
       "dna": [],

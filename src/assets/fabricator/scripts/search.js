@@ -43,7 +43,7 @@ search.initListeners = () => {
 /**
  * Page load listener
  */
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function() {
   search.initListeners();
 });
 

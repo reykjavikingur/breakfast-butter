@@ -1,6 +1,6 @@
+
 require('./prism');
 require('./colors');
-
 require('./search');
 
 /**
@@ -10,8 +10,6 @@ require('./search');
 const fabricator = window.fabricator = {};
 
 
-const creative = require('./creative');
-const uploader = require('./uploader');
 const menu = require('./menu');
 
 /**
@@ -280,30 +278,6 @@ fabricator.singleItemToggle = () => {
 
 
 /**
- * Automatically select code when code block is clicked
- */
-fabricator.bindCodeAutoSelect = () => {
-  /*
-
-  const codeBlocks = document.querySelectorAll('.f-item-code');
-
-  const select = (block) => {
-    const selection = window.getSelection();
-    const range = document.createRange();
-    range.selectNodeContents(block.querySelector('code'));
-    selection.removeAllRanges();
-    selection.addRange(range);
-  };
-
-  for (let i = codeBlocks.length - 1; i >= 0; i--) {
-    codeBlocks[i].addEventListener('click', select.bind(this, codeBlocks[i]));
-  }
-  */
-
-};
-
-
-/**
  * Open/Close menu based on session var.
  * Also attach a media query listener to close the menu when resizing to smaller screen.
  */
@@ -338,10 +312,10 @@ fabricator.setInitialMenuState = () => {
 /**
  * Page load listener
  */
-document.addEventListener("DOMContentLoaded", function(event) {
-  creative.init();
-  uploader.init().directories();
-  menu.init();
+document.addEventListener("DOMContentLoaded", function() {
+    menu.init();
+
+
 });
 
 
@@ -353,5 +327,4 @@ fabricator
  .allItemsToggles()
  .singleItemToggle()
  .buildColorChips()
- .setActiveItem()
- .bindCodeAutoSelect();
+ .setActiveItem();

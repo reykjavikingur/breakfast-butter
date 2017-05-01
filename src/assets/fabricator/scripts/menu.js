@@ -8,7 +8,7 @@ const _ = require('underscore');
 const menu = {};
 
 
-menu.toggle = (e) => {
+menu.toggle = () => {
 	$('.f-menu-container').toggleClass('active');
 };
 
