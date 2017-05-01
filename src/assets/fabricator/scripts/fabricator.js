@@ -1,3 +1,4 @@
+
 require('./prism');
 require('./colors');
 require('./search');
@@ -311,8 +312,10 @@ fabricator.setInitialMenuState = () => {
 /**
  * Page load listener
  */
-document.addEventListener("DOMContentLoaded", function(event) {
+document.addEventListener("DOMContentLoaded", function() {
     menu.init();
+
+
 });
 
 
