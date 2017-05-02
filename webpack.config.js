@@ -4,81 +4,49 @@ const path              = require('path');
 const webpack           = require('webpack');
 const UglifyJSPlugin    = require('uglifyjs-webpack-plugin');
 
-/**
- * Define plugins based on environment
- * @param {boolean} isDev If in development mode
- * @return {Array}
- */
-function getPlugins(isDev) {
+module.exports = (config) => {
 
-    const plugins = [
-        new webpack.optimize.OccurenceOrderPlugin(),
-        new webpack.DefinePlugin({}),
-    ];
+    let plugins  = [];
+    let devtools = '';
 
-    if (isDev) {
-        plugins.push(new webpack.NoErrorsPlugin());
-        plugins.push(new UglifyJSPlugin({
-            minimize        : false,
-            sourceMap       : true,
-            compress        : {
-                warnings    : false,
-            },
-        }));
+    if (!config.dev) {
+        plugins.push(new UglifyJSPlugin());
     } else {
-        plugins.push(new webpack.optimize.DedupePlugin());
-        plugins.push(new UglifyJSPlugin({
-            minimize        : true,
-            sourceMap       : false,
-            compress        : {
-                warnings    : false,
-            },
-        }));
+        devtools = 'source-map';
     }
 
-    return plugins;
+    let env = (config.dev) ? 'development' : 'production';
 
-}
-
-
-/**
- * Define loaders
- * @return {Array}
- */
-function getLoaders() {
-
-    return [{
-        test:    /(\.js)/,
-        exclude: /(node_modules)/,
-        loaders: ['babel?presets[]=react&presets[]=es2015'],
-    }, {
-        test:   /(\.jpg|\.png)$/,
-        loader: 'url-loader?limit=10000',
-    }, {
-        test:   /\.json/,
-        loader: 'json-loader',
-    }];
-}
+    plugins.push(new webpack.DefinePlugin({
+        "process.env": {
+            NODE_ENV: JSON.stringify(env)
+        }
+    }));
 
 
-module.exports = (config) => {
     return {
-        target: 'node',
-        entry: {
+        target:  'node',
+        entry:   {
             'fabricator/scripts/f': config.scripts.fabricator.src,
             'toolkit/scripts/toolkit': config.scripts.toolkit.src
         },
-        output: {
-            path: path.resolve(__dirname, config.dest, 'assets'),
-            filename: '[name].js',
+        output:  {
+            path:     path.resolve(__dirname, config.dest, 'assets'),
+            filename: '[name].js'
         },
-        devtool: 'source-map',
-        resolve: {
-            extensions: ['', '.js'],
-        },
-        plugins: getPlugins(config.dev),
-        module: {
-            loaders: getLoaders(),
-        },
+        devtool: devtools,
+        plugins: plugins,
+        module:  {
+            loaders: [
+                {
+                    test:    [/\.js$/, /\.es6$/, /\.jsx?S/],
+                    loader:  'babel-loader',
+                    exclude: /node_modules/,
+                    query:   {
+                        presets: ['react', 'es2015']
+                    }
+                }
+            ]
+        }
     };
 };

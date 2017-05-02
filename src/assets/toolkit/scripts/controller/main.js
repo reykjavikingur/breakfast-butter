@@ -16,4 +16,5 @@ $(function () {
    * Tags Input
    */
   $('input[type="tags"]').tagsInput({delimiter: [',', ';', ' ']});
+
 });
