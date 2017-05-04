@@ -94,6 +94,12 @@
       "dependents": {},
       "dependencies": {}
     },
+    "src/materials/typography/code.html": {
+      "dna": ["code"],
+      "id": "code",
+      "dependents": {},
+      "dependencies": {}
+    },
     "src/materials/typography/inline-code.html": {
       "dna": [],
       "id": null,

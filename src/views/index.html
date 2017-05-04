@@ -1,65 +1,131 @@
 ---
-title: Butter | Overview
-fabricator: true
+title         : Butter | Overview
+fabricator    : true
 ---
 
-<section class="mb-5 mt-4">
-	<h1 class="mb-4">Overview</h1>
+<section class="mt-4">
+    <h1 class="mb-4">Atomic Thinking</h1>
+    <p>
+        Atomic design is a methodology composed of five distinct stages working together to create interface design systems in a
+        more deliberate and hierarchical manner.
+    </p>
+</section>
+<section class="mt-5">
+    <h2><a id="stages"></a>5 Stages of Atomic Design</h2>
+    <hr />
+    <img src="http://daigofuji.github.io/abcd-digipub-2014/img/atomic-web-design.gif"/>
+    <hr />
+</section>
+<section class="mt-5">
+    <h3 class="mt-5"><a id="atoms"></a>Atoms</h3>
+    <p>
+        Atoms serve as the foundational building blocks that comprise all our user interfaces. These atoms include basic HTML
+        elements like form labels, inputs, buttons, and others that can’t be broken down any further without ceasing to be
+        functional.
+    </p>
+    <br />
+    <h4><a id="Creating_an_Atom_13"></a>Creating an Atom</h4>
+    <p>
+        Run the <a href="https://github.com/reykjavikingur/breakfast-butter/wiki/The-Butter-CLI">Butter-CLI</a>
+        <kbd>create</kbd> command and follow the prompts.
+    </p>
+    <pre><code class="language-sh">$ butter create atom</code></pre>
+
+    <p>Alternatively you can skip the prompts by specifying flags with the create command</p>
+    <pre><code class="language-sh">$ butter create atom --name button-primary --group button --dna btn-primary --style button-primary</code></pre>
+
+    <p>When the command above executes three things will happen:</p>
+    <ol>
+        <li>
+            A new <kbd>~/src/materials/</kbd> file will be created: <kbd>button-primary.html</kbd> with some starter code.
+        </li>
+        <li>
+            A new <kbd>~/src/views/</kbd> file will be created: <kbd>button.html</kbd> with code that adds your element
+            group to the Butter menu.
+        </li>
+        <li>
+            A new <kbd>~/src/assets/toolkit/styles/themes/default/</kbd> file will be created:
+            <kbd>_button-primary.scss</kbd> and included in your theme’s <kbd>_style.scss</kbd>.
+        </li>
+    </ol>
+    <blockquote class="blockquote">
+        <small>
+            If any of the files already exist, they will be skipped.<br />
+            The theme in this case: <strong>default</strong>, can be changed by setting the Butter config value for theme:<br />
+            <kbd>butter set --key theme --value &quot;my-theme&quot;</kbd>
+        </small>
+    </blockquote>
+</section>
+<section class="mt-5">
+    <h3><a id="Molecules_30"></a>Molecules</h3>
+    <p>
+        Molecules are relatively simple groups of UI elements functioning together as a unit. For example, a form label,
+        search input, and button can join together to create a search form molecule.
+    </p>
+    <br />
+    <h4><a id="Creating_a_Molecule_33"></a>Creating a Molecule</h4>
+    <p>
+        Using the <a href="https://github.com/reykjavikingur/breakfast-butter/wiki/The-Butter-CLI">Butter-CLI</a> to generate
+        a molecule is the same as creating an atom except use the ‘molecule’ keyword.
+    </p>
+    <pre><code class="language-sh">$ butter create molecule</code></pre>
+</section>
+<section class="mt-5">
+    <h3><a id="Organisms_39"></a>Organisms</h3>
+    <p>
+        Organisms are relatively complex UI components composed of groups of molecules and/or atoms and/or other organisms.
+        These organisms form distinct sections of an interface.
+    </p>
+    <br />
+    <h4><a id="Creating_an_Organism_42"></a>Creating an Organism</h4>
+    <p>
+        Using the <a href="https://github.com/reykjavikingur/breakfast-butter/wiki/The-Butter-CLI">Butter-CLI</a> to generate
+        an organism is the same as creating an atom or molecule except use the ‘organism’ keyword.
+    </p>
+    <pre><code class="language-sh">$ butter create organism</code></pre>
 </section>
 
-<section class="mb-5">
-	<h2>Getting Started</h2>
-
-  <p class="mb-4">This guide contains real working examples, code snippets, documentation, and style guidelines.<br />
-  Start by adding the following files to your page:</p>
-	<pre class="language-markup"><code class="language-markup">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/toolkit/styles/toolkit.css&quot;&gt;</code></pre>
-	<pre class="language-markup"><code class="language-markup">&lt;script src=&quot;assets/toolkit/scripts/vendor.js&quot;&gt;&lt;/script&gt;
-&lt;script src=&quot;assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt;</code></pre>
+<section class="mt-5">
+    <h3><a id="Templates_48"></a>Templates</h3>
+    <p>
+        Templates are page-level objects that place components into a layout. An important characteristic of templates is
+        that they focus on the page’s underlying content structure rather than the page’s final content.
+    </p>
+    <br />
+    <h4><a id="Creating_a_Template_51"></a>Creating a Template</h4>
+    <p>
+        Using the <a href="https://github.com/reykjavikingur/breakfast-butter/wiki/The-Butter-CLI">Butter-CLI</a> to create a
+        template is similar to creating an atom, molecule, or organism except use the ‘template’ keyword and don’t worry
+        about setting the <em>group</em> as all templates will be grouped under the ‘Templates’ section of the menu.
+    </p>
+    <pre><code class="language-sh">$ butter create template</code></pre>
 </section>
-<section class="mb-5">
-	<h2>Creating A New Material</h2>
-	<p class="mb-4">Creating a new material consists of creating a new <kbd>~/src/views/*.html</kbd> file and a <kbd>~/src/materials/</kbd> directory with your new material <kbd>.html</kbd> file in it.<br />
-	For instance, say you want to create a new atom called <kbd>'My Atom'</kbd>:</p>
-	<ol class="mb-4">
-		<li>
-			In the <kbd>~/src/views/</kbd> directory create a new file: <kbd>my-atom.html</kbd> with the following code:
-<pre class="language-markup"><code class="language-markup">
----
- fabricator: true
- title: "My Atom"
- ---
+<section class="mt-5">
+    <h3><a id="Pages_57"></a>Pages</h3>
+    <p>
+        Pages are specific instances of templates that show what a UI looks like with real representative content in
+        place.
+    </p>
+    <p>
+        In addition to demonstrating the final interface as your users will see it, pages are essential for testing the
+        effectiveness of the underlying design system. It is at the page stage that we’re able to take a look at how all
+        those patterns hold up when real content is applied to the design system. Does everything look great and function as
+        it should? If the answer is no, then we can loop back and modify our molecules, organisms, and templates to better
+        address our content’s needs.
+    </p>
+    <p>
+        Butter does not have a mechanism for displaying pages as we have found that having content in the toolkit leads to a
+        host of problems with delivering the toolkit as living documentation. Instead, we’ve created a means to add links to
+        the Butter menu which can lead to actual pages where a template is being used.
+    </p>
+    <br />
+    <h4><a id="Creating_a_Page_Link_64"></a>Creating a Page Link</h4>
+    <p>
+        Run the <a href="https://github.com/reykjavikingur/breakfast-butter/wiki/The-Butter-CLI">Butter-CLI</a>
+        <kbd>page</kbd> command and follow the prompts:
+    </p>
+    <pre><code class="language-sh">$ butter page</code></pre>
 
- &lt;h1 data-f-toggle="labels" class="mb-4"&gt;\{{title}}&lt;/h1&gt;
-
- \{{#each materials.my-atom.items}}
-
- \{{> f-item this}}
-
- \{{/each}}
-</code></pre>
-		</li>
-		<li>
-			Create a new material category directory <kbd>~/src/materials/my-atom/</kbd>.
-			<div><em><small>You can skip this step if your new material will be added to an existing category.</small></em></div>
-		</li>
-		<li>
-			Create a new <kbd>.html</kbd> file in your material category directory: <kbd>~/src/materials/my-atom/my-atom.html</kbd>
-		</li>
-		<li>
-			Start your new material file <kbd>~/src/materials/my-atoms/my-atom.html</kbd> with the following code:
-<pre class="language-markup"><code class="language-markup">
----
- {
-  "atomic": "atom",
-  "dna": "my-atom"
- }
- ---
-
- &lt;div data-dna="my-atom"&gt;The Atom Structure&lt;/div&gt;
-</code></pre>
-		</li>
-	</ol>
-	<p class="mb-4">That seems like a lot of work, so for laziness sake; there is a built in Gulp tasks to create new materials:</p>
-	<pre class="language-markup"><code class="language-markup">gulp create:material --type "atom" --name "My Atom"</code></pre>
-	<div><em><small>If the material already exists, you will get a notification and the task will exit.</em></small></div>
+    <p>Alternatively you can skip the prompts by specifing the <kbd>--label</kbd> and <kbd>--url</kbd> flags:</p>
+    <pre><code class="language-sh">$ butter page --label Home Page" --url "http://www.mysite.com/index.html"</code></pre>
 </section>

@@ -23,7 +23,10 @@
         "toolkit": {
             "src": "src/assets/toolkit/styles/toolkit.scss",
             "dest": "dist/assets/toolkit/styles",
-            "watch": "src/assets/toolkit/styles/**/*.scss"
+            "watch": [
+              "src/assets/toolkit/styles/**/*.scss",
+              "src/lib/**/*.scss"
+            ]
         }
     },
     "scripts": {
@@ -39,7 +42,10 @@
         },
         "vendor": {
             "dest": "dist/assets/toolkit/scripts",
-            "watch": "src/assets/toolkit/scripts/vendor/**/*"
+            "watch": [
+              "src/assets/toolkit/scripts/vendor/**/*.js",
+              "src/lib/**/*.js"
+            ]
         },
         "helpers": {}
     },
