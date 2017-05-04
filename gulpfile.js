@@ -5,8 +5,7 @@
  * Imports
  * -----------------------------------------------------------------------------
  */
-//const assembler      = require('butter-assemble');
-const assembler      = require('/Users/ctullos/Development/Breakfast/Butter Assemble');
+const assembler      = require('butter-assemble');
 const beautify       = require('js-beautify').js_beautify;
 const browsersync    = require('browser-sync');
 const concat         = require('gulp-concat');
