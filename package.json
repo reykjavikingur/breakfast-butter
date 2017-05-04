@@ -36,7 +36,6 @@
     "babel-preset-stage-2": "^6.5.0",
     "browser-sync": "^2.13.0",
     "butter-assemble": "^1.2.8",
-    "butter-assemble-exclude": "^1.0.0",
     "clipboard": "^1.5.16",
     "del": "^2.2.1",
     "eslint": "^2.13.1",

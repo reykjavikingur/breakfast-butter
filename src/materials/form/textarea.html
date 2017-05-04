@@ -1,14 +1,9 @@
 ---
 {
-  "atomic": "atom",
-  "dna": "form-textarea"
+    "atomic"     : "atom",
+    "dna"        : "textarea"
 }
 ---
-<div class="row">
-  <div class="col-xs-12 col-sm-6">
-    <div data-dna="form-textarea" class="form-group">
-      <label for="exampleTextarea">Example textarea</label>
-      <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
-    </div>
-  </div>
-</div>
+<label>Label:<br />
+<textarea data-dna="textarea" rows="10">{{lipsum 200 200}}</textarea>
+</label>

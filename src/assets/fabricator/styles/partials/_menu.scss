@@ -179,6 +179,7 @@ $shadow-x: $navbar-width / -4;
 		background-color: lighten($gray-darker, 2%);
 		margin: 0 12px 12px 12px;
 		border-radius: 4px;
+        display: block;
 
 		&:hover {
 			color: color(normal);
