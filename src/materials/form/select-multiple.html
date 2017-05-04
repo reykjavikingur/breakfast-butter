@@ -1,10 +1,10 @@
 ---
 {
     "atomic"     : "atom",
-    "dna"        : "select"
+    "dna"        : "select-multiple"
 }
 ---
-<select name="select" data-dna="select">
+<select name="multi-select" data-dna="select-multiple" multiple>
     {{#loop 1 6 1}}
     <option value="{{this}}">Option {{this}}</option>
     {{/loop}}

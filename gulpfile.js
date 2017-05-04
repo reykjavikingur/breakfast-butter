@@ -12,7 +12,6 @@ const concat         = require('gulp-concat');
 const csso           = require('gulp-csso');
 const del            = require('del');
 const dna            = require('fabricator-dna');
-const exc            = require('butter-assemble-exclude');
 const fs             = require('fs');
 const gulp           = require('gulp');
 const gulpif         = require('gulp-if');
@@ -28,7 +27,7 @@ const source         = require('vinyl-source-stream');
 const sourcemaps     = require('gulp-sourcemaps');
 const webpack        = require('webpack');
 const nodemon        = require('nodemon');
-
+const log            = console.log.bind(console);
 
 /**
  * configuration
@@ -36,10 +35,7 @@ const nodemon        = require('nodemon');
 
 const config    = require(__dirname + '/gulp.config.json');
 config.dev      = gutil.env.dev;
-config.hooks    = {
-    beforeMaterials    : exc,
-    beforeViews        : exc
-};
+
 config.scripts.helpers = {
     "cond"               : require('handlebars-cond').cond,
     "lipsum"             : require('handlebars-lipsum'),
@@ -51,10 +47,75 @@ config.scripts.helpers = {
 };
 
 if (gutil.env.port) {
-    config.port.browsersync = Number(gutil.env.port);
-    config.port.proxy = Number(gutil.env.port) + 30;
+    config.port.browsersync    = Number(gutil.env.port);
+    config.port.proxy          = Number(gutil.env.port) + 30;
 }
 
+config.hooks = {
+    beforeMaterials: (options, data) => {
+        let libs = libScan('materials');
+        return data.files.concat(libs);
+    },
+    beforeViews: (options, data) => {
+        let libs = libScan('views');
+        return data.files.concat(libs);
+    }
+};
+
+// libScan
+const libScan = (action) => {
+    if (!action) { return []; }
+
+    let libs      = [];
+    let output    = [];
+    let lpath     = config.src + '/lib/';
+    action        = String(action).toLowerCase();
+
+    fs.readdirSync(lpath).forEach((result) => {
+        if (result.substr(0, 1) === '.') { return; }
+        if (result.substr(0, 2) === '__') { return; }
+
+        let dpath = lpath + result;
+        if (!fs.lstatSync(dpath).isDirectory()) { return; }
+        libs.push(dpath);
+    });
+
+    libs.forEach((lpath) => {
+
+        switch (action) {
+            case 'vendor':
+                try {
+                    fs.readdirSync(lpath + '/assets/scripts').forEach((file) => {
+                        if (String(file).toLowerCase().substr(file.length - 7) === '.min.js') {
+                            output.push(lpath+ '/assets/scripts/' + file);
+                        }
+                    });
+                } catch (err) { }
+
+                break;
+
+            case 'materials':
+            case 'views':
+                try {
+                    let mpath = lpath + '/' + action;
+                    fs.readdirSync(mpath).forEach((result) => {
+                        let fpath = mpath + '/' + result;
+                        if (fs.lstatSync(fpath).isDirectory()) {
+                            fs.readdirSync(fpath).forEach((file) => {
+                                output.push(fpath + '/' + file);
+                            });
+                        } else {
+                            output.push(mpath + '/' + result);
+                        }
+                    });
+                } catch (err) { }
+
+                break;
+        }
+    });
+
+    return output;
+};
 
 // Webpack
 const webpackConfig = require(__dirname + '/webpack.config')(config);
@@ -120,7 +181,6 @@ gulp.task('images:toolkit', ['favicon'], () => {
 
 gulp.task('images', ['images:fabricator', 'images:toolkit']);
 
-
 gulp.task('favicon', () => {
 	return gulp.src('src/favicon.ico')
 		.pipe(gulp.dest(config.dest));
@@ -139,10 +199,18 @@ gulp.task('favicon', () => {
  * .js file (typically name like: myscript.min.js).
  */
 gulp.task('vendor', (done) => {
-	gulp.src(config.scripts.vendor.watch)
-		.pipe(concat('vendor.js'))
-		.pipe(gulp.dest(config.scripts.vendor.dest));
+    if (config.scripts.hasOwnProperty('vendor')) {
 
+        let files = (typeof config.scripts.vendor.watch === 'string') ? [config.scripts.vendor.watch] : config.scripts.vendor.watch;
+
+        // Add lib vendor scripts
+        libScan('vendor').forEach((file) => { files.push(file); });
+
+        gulp.src(files)
+        .pipe(concat('vendor.js'))
+        .pipe(gulp.dest(config.scripts.vendor.dest));
+
+    }
 	done();
 });
 
@@ -165,11 +233,7 @@ gulp.task('dna', (done) => {
 	done();
 });
 
-
 // assembler
-/**
- * CAM: Added custom helpers from config.scripts.helpers object
- */
 gulp.task('assembler', (done) => {
 	assembler({
 		logErrors: config.dev,
@@ -243,157 +307,6 @@ gulp.task('serve', () => {
 	 */
 	gulp.task('fonts:watch', ['fonts'], browsersync.reload);
 	gulp.watch(config.fonts.watch, ['fonts:watch']);
-
-});
-
-/**
- *
- * create:material
- *
- * @author Cam Tullos cam@tullos.ninja
- * @since 1.0.1
- *
- * @description Creates a new ~/src/materials/*.html file
- * and the cooresponding ~/src/views/*.html file.
- *
- * @param params {Object} The configuration object.
- * @property --name The name of the material. The name will be slugified before file creation.
- * @property --type The atomic design type (atom, molecule, organism).
- * @property --dna The DNA ID used for dependency checking.
- */
-const create_material = (params) => {
-    let name = params['name'];
-    if (!name) { return; }
-
-    let type = params['type'] || 'TYPE';
-    let dna = params['dna'] || 'DNA-ID';
-
-    let id = slugify(String(name).toLowerCase());
-
-    let mname = (dna !== 'DNA-ID') ? dna : id;
-
-    // Create the material file
-    let dir = (params.hasOwnProperty('dir')) ? slugify(String(params.dir).toLowerCase()) : id;
-    let mpath = __dirname + '/' + config.src + '/materials/' + dir;
-
-    if (!fs.existsSync(mpath)) { fs.mkdirSync(mpath); }
-
-    let mfile = mpath + '/' + mname +'.html';
-    let mat = `---
-		{
-		  "atomic": "${type}",
-		  "dna": "${dna}"
-		}
-		---
-		<div data-dna="${dna}"></div>`;
-
-    mat = mat.replace(/\t/g, '');
-
-    fs.writeFileSync(mfile, mat);
-
-    // Create the view file
-    let vfile = __dirname + '/' + config.src + '/views/' + dir + '.html';
-    if (!fs.existsSync(vfile)) {
-        let view = `---
-			fabricator: true
-			title: "${dir}"
-			---
-
-			<h1 data-f-toggle="labels" class="mt-4">{{title}}</h1>
-
-			{{#each materials.${dir}.items}}
-
-			{{> f-item this}}
-
-			{{/each}}`;
-
-        view = view.replace(/\t/g, '');
-
-        fs.writeFileSync(vfile, view);
-    }
-};
-
-gulp.task('create:material', () => {
-
-	if (!gutil.env.name) { return; }
-
-	let name = gutil.env.name;
-	let dna = gutil.env.dna;
-	let type = gutil.env.type;
-
-    return create_material({name: name, type: type, dna: dna});
-});
-
-/**
- *
- * create:template
- *
- * @author Cam Tullos cam@tullos.ninja
- * @since 1.0.1
- *
- * @description Creates a new ~/src/views/templates/*.html file
- */
-gulp.task('create:template', () => {
-	if (!gutil.env.name) { return; }
-
-	let name = gutil.env.name || Date.now();
-	let id = slugify(String(name).toLowerCase());
-
-	let file = __dirname + '/' + config.src + '/views/templates/' + id + '.html';
-
-	// Exit if the file already exists;
-	if (fs.existsSync(file)) {
-		console.log(`[00:00:00] [NOTICE] 'create:template' ${file} already exists.`);
-		return;
-	}
-
-
-	let tmp = `---
-		title: "${name}"
-		---`;
-
-	tmp = tmp.replace(/\t/g, '');
-
-	fs.writeFileSync(file, tmp);
-
-});
-
-
-/**
- *
- * create:helper
- *
- * @author Cam Tullos cam@tullos.ninja
- * @since 1.0.1
- *
- * @description Creates a new ~/src/views/templates/*.html file
- */
-gulp.task('create:helper', () => {
-	if (!gutil.env.name) { return; }
-
-	let name = gutil.env.name || Date.now();
-	let id = slugify(String(name).toLowerCase());
-
-	let file = __dirname + '/' + config.src + '/views/helpers/' + id + '.html';
-
-	// Exit if the file already exists;
-	if (fs.existsSync(file)) {
-		console.log(`[00:00:00] [NOTICE] 'create:helper' ${file} already exists.`);
-		return;
-	}
-
-
-	let tmp = `---
-		title: "${name}"
-		fabricator: true
-		---
-		<header class="mb-3">
-		  <h1>{{title}}</h1>
-		</header>`;
-
-	tmp = tmp.replace(/\t/g, '');
-
-	fs.writeFileSync(file, tmp);
 
 });
 
