@@ -29,11 +29,11 @@
 
             {{#each views}}
             <li data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}">
-                <a href="{{baseurl}}/{{@key}}.html" class="f-menu__heading">{{name}}</a>
+                <a class="f-menu__heading" href="javascript:void(0);">{{name}}</a>
                 <ul>
                     {{#each items}}
                     <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}">
-                        <a href="{{baseurl}}/{{@../key}}/{{@key}}.html">{{name}}</a>
+                        <a href="{{baseurl}}/{{@../key}}/{{@key}}.html" target="_blank">{{name}}</a>
                     </li>
                     {{/each}}
                 </ul>

@@ -1,18 +1,20 @@
-var _ = require('underscore');
+'use strict';
+
+const _ = require('underscore');
 
 /**
  * Constructor
  * @namespace
  */
-var search = {
+const search = {
   submit: function (e) {
     e.preventDefault();
 
-    var elms = $($(this).data('search'));
+    let elms = $($(this).data('search'));
     if (elms.length < 1) { return; }
 
 
-    var d = $(this).serializeArray().reduce(function(obj, item) {
+    let d = $(this).serializeArray().reduce(function(obj, item) {
       obj[item.name] = item.value;
       return obj;
     }, {});
@@ -21,14 +23,14 @@ var search = {
     if (d.find.length < 1) { elms.show(); return; }
     else { elms.hide(); }
 
-    var f = String(d.find).toLowerCase().split(' ');
+    let f = String(d.find).toLowerCase().split(' ');
 
     elms.each(function () {
-      var tags = $(this).data('tags');
+      let tags = $(this).data('tags');
           tags = String(tags).toLowerCase().split(' ');
 
-      var matches = _.intersection(f, tags);
-      if (matches.length == f.length) {
+      let matches = _.intersection(f, tags);
+      if (matches.length === f.length) {
         $(this).show();
       }
     });

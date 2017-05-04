@@ -1,5 +1,69 @@
 {
   "helix": {
+    "src/materials/buttons/default-button.html": {
+      "dna": ["button"],
+      "id": "button",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/checkbox.html": {
+      "dna": ["checkbox", "label"],
+      "id": "checkbox",
+      "dependents": {
+        "src/materials/form/radio.html": ["data-dna=label", "data-dna=checkbox"]
+      },
+      "dependencies": {}
+    },
+    "src/materials/form/file.html": {
+      "dna": ["file"],
+      "id": "file",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/input-password.html": {
+      "dna": ["input-password"],
+      "id": "input-password",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/input-text.html": {
+      "dna": ["input-text"],
+      "id": "input-text",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/radio.html": {
+      "dna": ["radio"],
+      "id": "radio",
+      "dependents": {},
+      "dependencies": {
+        "src/materials/form/checkbox.html": ["data-dna=label", "data-dna=checkbox"]
+      }
+    },
+    "src/materials/form/select-multiple.html": {
+      "dna": ["select-multiple"],
+      "id": "select-multiple",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/select.html": {
+      "dna": ["select"],
+      "id": "select",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/submit.html": {
+      "dna": ["submit"],
+      "id": "submit",
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/materials/form/textarea.html": {
+      "dna": ["textarea"],
+      "id": "textarea",
+      "dependents": {},
+      "dependencies": {}
+    },
     "src/materials/icons/linear-icons.html": {
       "dna": ["lnr"],
       "id": "lnr",
@@ -36,7 +100,19 @@
       "dependents": {},
       "dependencies": {}
     },
+    "src/views/buttons.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
     "src/views/docs.html": {
+      "dna": [],
+      "id": null,
+      "dependents": {},
+      "dependencies": {}
+    },
+    "src/views/form.html": {
       "dna": [],
       "id": null,
       "dependents": {},
@@ -60,7 +136,7 @@
       "dependents": {},
       "dependencies": {}
     },
-    "src/views/templates/single-post.html": {
+    "src/views/templates/page.html": {
       "dna": [],
       "id": null,
       "dependents": {},
