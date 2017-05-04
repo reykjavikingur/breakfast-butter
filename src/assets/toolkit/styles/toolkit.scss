@@ -3,21 +3,13 @@
  * @description Main style sheet
  */
 
+/** 0.0 - UI Toolkits **/
+@import '../../../lib/bootstrap/assets/styles/bootstrap';
 
-/**
- * -------------------
- *  1.0 - Frameworks
- * -------------------
- */
-// Bootstrap
-@import 'vendor/bootstrap/bootstrap';
+
+/** 1.0 - Components **/
 @import 'vendor/tagsinput';
 
 
-
-/**
- * -------------------
- *  2.0 - Theme
- * -------------------
- */
+/** 2.0 - Theme **/
 @import 'themes/default/style';

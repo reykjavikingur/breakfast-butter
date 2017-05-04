@@ -1,7 +1,8 @@
 {
     "dev": false,
     "materials": [
-        "src/materials/**/*"
+        "src/materials/**/*",
+        "libs/*/materials/**/*"
     ],
     "views": [
         "src/views/**/*",
@@ -68,6 +69,7 @@
     "templates": {
         "watch": [
             "src/**/*.{html,md,json,yml}",
+            "src/libs/**/*.{html,md,json,yml}",
             "!src/data/dependencies.json"
         ]
     },

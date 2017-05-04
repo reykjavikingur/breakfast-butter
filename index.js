@@ -28,5 +28,5 @@ app.use(express.static(__dirname + '/dist'));
 
 // start server on the specified port and binding host
 app.listen(port, '0.0.0.0', function() {
-    console.log("Server running...");
+    console.log("[00:00:00] Server running...");
 });
