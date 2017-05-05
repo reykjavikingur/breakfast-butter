@@ -3,9 +3,8 @@
  * @description Main style sheet
  */
 
-/** 0.0 - UI Toolkits **/
-@import './src/lib/bootstrap-4/assets/styles/bootstrap';
+/** 1.0 - UI Toolkits **/
+@import 'libs';
 
-
-/** 2.0 - Theme **/
+/** 2.0 - Themes **/
 @import 'themes/default/style';
