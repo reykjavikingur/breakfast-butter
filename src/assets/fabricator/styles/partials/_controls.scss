@@ -1,11 +1,10 @@
 .f-controls {
-	@include clearfix;
-	@include border-box;
 
 	width: $menu-width;
+    //width: 100%;
 	height: 56px;
-	z-index: 5;
-	position: absolute;
+	//z-index: 5;
+	//position: absolute;
 	background-color: $gray-dark;
 
 	.f-control {
@@ -35,7 +34,6 @@
 }
 
 .f-control {
-	@include border-box;
 	display: inline-block;
 	cursor: pointer;
 	margin-left: 0.66rem;
@@ -55,7 +53,6 @@
 }
 
 .f-control-bar {
-	@include clearfix;
 	padding: 1rem 0;
 }
 

@@ -2,6 +2,7 @@
 require('./prism');
 require('./colors');
 require('./search');
+require('./nanoscroll');
 
 /**
  * Global `fabricator` object
@@ -314,8 +315,6 @@ fabricator.setInitialMenuState = () => {
  */
 document.addEventListener("DOMContentLoaded", function() {
     menu.init();
-
-
 });
 
 

@@ -1,6 +1,6 @@
 'use strict';
-
 const _ = require('underscore');
+
 
 /**
  * -----------------------------------------------------------------------------
@@ -51,7 +51,6 @@ menu.initListeners = () => {
 menu.active = () => {
 	let active = $('.f-active');
 	if (active.length < 1) { return; }
-
 	active.focus().blur();
 };
 
@@ -59,6 +58,9 @@ menu.active = () => {
 menu.init = () => {
 	menu.initListeners();
 	setTimeout(menu.active, 200);
+    $('.f-menu').nanoScroller({
+        iOSNativeScrolling: true
+    });
 };
 
 
