@@ -1,0 +1,27 @@
+---
+{
+  "atomic": "molecule",
+  "dna": ["list-group", "list-group-item"]
+}
+---
+<div class="row">
+  <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
+    <ul data-dna="list-group" class="list-group mb-5">
+    {{#loop 1 5 1}}
+      {{#cond this '===' 2}}
+      <li class="list-group-item active">{{lipsum "random" 50}}. [active]</li>
+      {{else}}
+      <li class="list-group-item">{{lipsum "random" 50}}.</li>
+      {{/cond}}
+    {{/loop}}
+    </ul>
+
+    <ul data-dna="list-group" class="list-group">
+      <li class="list-group-item justify-content-between">{{lipsum "random" 50}}. <span class="badge badge-danger badge-pill">14</span></li>
+      <li class="list-group-item list-group-item-success">{{lipsum "random" 50}}.</li>
+      <li class="list-group-item list-group-item-info">{{lipsum "random" 50}}.</li>
+      <li class="list-group-item list-group-item-warning">{{lipsum "random" 50}}.</li>
+      <li class="list-group-item list-group-item-danger">{{lipsum "random" 50}}.</li>
+    </ul>
+  </div>
+</div>

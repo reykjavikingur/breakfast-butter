@@ -25,30 +25,11 @@ $hover-width: 20px;
     font-family: "Helvetica", Arial, sans-serif !important;
     position: fixed;
     top: 0;
-    left: calc(-#{$navbar-width} + -#{$menu-width});
     width: calc(#{$navbar-width} + #{$menu-width});
     height: 100vh;
     z-index: 100;
-    transition: left ease-in-out .125s;
-
-    &:hover,
-    &:focus,
-    &:active,
-    &.active {
-        left: 0;
-        transition: left ease-in-out .25s;
-        box-shadow: 1px 0 20px 5px rgba(0, 0, 0, .5);
-    }
-
-    &:after {
-        content: " ";
-        position: absolute;
-        width: $hover-width;
-        height: 100%;
-        top: 0;
-        right: -#{$hover-width};
-        background-color: transparent;
-    }
+    font-size: 1rem;
+    color: #FFFFFF;
 
     [data-search] {
         width: $menu-width;
@@ -72,25 +53,100 @@ $hover-width: 20px;
         }
     }
 }
+.f-menu-container.left {
+    left                       : calc(-#{$navbar-width} + -#{$menu-width});
+    transition                 : left ease-in-out .125s;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        left                   : 0;
+        transition             : left ease-in-out .25s;
+        box-shadow             : 1px 0 20px 5px rgba(0, 0, 0, .5);
+    }
+
+    &:before {
+        content                : " ";
+        position               : absolute;
+        width                  : $hover-width;
+        height                 : 100%;
+        top                    : 0;
+        right                  : -#{$hover-width};
+        background-color       : transparent;
+    }
+
+    &:after {
+        top                    : 0;
+        content                : ' ';
+        width                  : 60px;
+        height                 : 56px;
+        right                  : -60px;
+        cursor                 : pointer;
+        position               : absolute;
+        background-position    : center center;
+        background-image       : $logo;
+        background-size        : 100% 100%;
+        background-size        : contain;
+    }
+}
+.f-menu-container.right {
+    right: calc(-#{$navbar-width} + -#{$menu-width});
+    transition: right ease-in-out .125s;
+
+    &:hover,
+    &:focus,
+    &:active,
+    &.active {
+        right: 0;
+        transition: right ease-in-out .25s;
+        box-shadow: 1px 0 20px 5px rgba(0, 0, 0, .5);
+    }
+
+    &:before {
+        content: " ";
+        position: absolute;
+        width: $hover-width;
+        height: 100%;
+        top: 0;
+        left: -#{$hover-width};
+        background-color: transparent;
+    }
+
+    &:after {
+        top                    : 0;
+        content                : ' ';
+        width                  : 60px;
+        height                 : 56px;
+        left                  : -60px;
+        cursor                 : pointer;
+        position               : absolute;
+        background-position    : center center;
+        background-image       : $logo;
+        background-size        : 100% 100%;
+        background-size        : contain;
+    }
+
+    .f-flex-columns {
+        > :first-child {
+            order: 2;
+        }
+    }
+}
 
 .f-navbar {
     background-color: $gray-darker;
     padding-top: 4px;
     width: $navbar-width;
-    //height: 100vh;
-    //position: absolute;
-    //top: 0;
-    //left: 0;
-    //z-index: 2;
-
 
     &-control {
 
         width: 100%;
         display: block;
         text-align: center;
-        color: $gray-lighter;
-        font-size: 10px;
+        color: white !important;
+        font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-size: 11px !important;
         font-weight: 100;
         padding: 16px 0 12px 0;
         transition: all .125s ease-in-out;
@@ -102,6 +158,7 @@ $hover-width: 20px;
             height: 32px;
             margin-bottom: 8px;
             transition: filter .125s ease-in-out;
+            pointer-events: none;
         }
 
         &:hover,
@@ -142,12 +199,15 @@ $hover-width: 20px;
     ul {
         margin-top: 0;
         margin-bottom: 0;
-        padding-left: 0;
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+        font-size: 1rem !important;
     }
 
     > ul {
         margin-top: 0;
         margin-bottom: 1rem;
+        margin-left: 0 !important;
 
         > li {
             margin-top: 1rem;
@@ -178,14 +238,15 @@ $hover-width: 20px;
             border-bottom: 1px solid lighten($gray-darker, 1%);
             border-top: 1px solid lighten($gray-darker, 1%);
             border-radius: 4px;
-            margin: 0 12px;
+            margin: 0 12px 12px 12px;
             padding-left: 20px;
+            color: $orange;
         }
     }
 
     .f-menu__heading {
         padding-left: 18px;
-        font-weight: 100;
+        font-weight: bold;
         font-size: 1rem;
         color: $gray-lightest;
         background-color: lighten($gray-darker, 2%);
@@ -193,12 +254,12 @@ $hover-width: 20px;
         border-radius: 4px;
         display: block;
 
-        &:hover {
-            color: color(normal);
+        &:hover,
+        &.f-active {
+            color: $orange;
         }
     }
 }
-
 
 .nano {
     position : relative;

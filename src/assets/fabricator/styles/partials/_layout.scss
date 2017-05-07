@@ -6,9 +6,8 @@ body {
 
 .f-container {
 	position: relative;
-	padding: 0 1em 50px 1em;
+	padding: 80px 1em 50px 1em;
 	z-index: 0;
-	min-height: 100vh;
 }
 
 .f-grid {
@@ -63,4 +62,8 @@ body {
 
 .btn-group > .btn {
   flex-grow: 1 !important;
+}
+
+.f-docs {
+    padding: 0 40px;
 }

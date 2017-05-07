@@ -20,9 +20,10 @@
 <body>
 
     {{#if fabricator}}
-    {{> f-icons}}
-    {{> f-menu}}
-    <div class="f-container">
+    <div class="f-container" id="f-container">
+        {{> f-branding}}
+        {{> f-icons}}
+        {{> f-menu}}
     {{/if}}
     {% body %}
     {{#if fabricator}}

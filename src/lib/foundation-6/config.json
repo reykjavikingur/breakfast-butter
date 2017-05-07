@@ -1,0 +1,11 @@
+{
+  "styles": [
+    "./src/lib/foundation-6/assets/styles/util/util",
+    "themes/foundation-6/variables",
+    "./src/lib/foundation-6/assets/styles/foundation",
+    "themes/foundation-6/foundation"
+  ],
+  "info": {
+    "version": "6.3.1"
+  }
+}

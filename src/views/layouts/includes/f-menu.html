@@ -1,7 +1,7 @@
 
 
 <!-- fabricator menu -->
-<div id="f-menu-container" class="f-menu-container">
+<div id="f-menu-container" class="f-menu-container {{#if toolkit.menu}}{{toolkit.menu}}{{else}}right{{/if}}">
     <div class="f-flex-columns">
         {{> f-navbar}}
         <div class="f-flex-rows">
