@@ -1,13 +1,6 @@
-// Bootstrap initializers
-$(function () {
-    // Tooltips
-    if (typeof $().tooltip === 'function') {
-        $('[data-toggle="tooltip"]').tooltip();
-    }
+'use strict';
 
-    // Popovers
-    if (typeof $().popover === 'function') {
-        $('[data-toggle="popover"]').popover();
-        $('[data-toggle="popover-dismissable"]').popover();
-    }
-});
+
+/**
+  * Main js file
+  */
