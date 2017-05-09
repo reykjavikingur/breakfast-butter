@@ -32,6 +32,12 @@
       "dependents": {},
       "dependencies": {}
     },
+    "src/materials/form/progress.html": {
+      "dna": ["progress"],
+      "id": "progress",
+      "dependents": {},
+      "dependencies": {}
+    },
     "src/materials/form/radio.html": {
       "dna": ["radio"],
       "id": "radio",

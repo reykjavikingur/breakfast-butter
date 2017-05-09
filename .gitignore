@@ -6,4 +6,3 @@ dist
 .sass-cache
 .DS_Store
 manifest.yml
-.gitignore
