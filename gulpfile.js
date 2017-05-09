@@ -65,6 +65,7 @@ config.hooks = {
 // libScan
 const libScan = (action) => {
     if (!action) { return []; }
+    if (!action) { return []; }
 
     let libs      = [];
     let output    = [];
@@ -214,6 +215,19 @@ gulp.task('vendor', (done) => {
 	done();
 });
 
+gulp.task('polyfill', (done) => {
+    if (config.scripts.hasOwnProperty('polyfill')) {
+
+        let files = (typeof config.scripts.polyfill.watch === 'string') ? [config.scripts.polyfill.watch] : config.scripts.polyfill.watch;
+
+        gulp.src(files)
+        .pipe(concat('polyfill.js'))
+        .pipe(gulp.dest(config.scripts.polyfill.dest));
+
+    }
+    done();
+});
+
 /**
  * @name font
  * @description CAM: Added the font task which copies the fonts directory to the
@@ -269,17 +283,6 @@ gulp.task('nodemon', (done) => {
 // server
 gulp.task('serve', () => {
 
-    browsersync({
-        notify            : false,
-        timestamps        : true,
-        reloadDelay       : 2000,
-        reloadDebounce    : 2000,
-        logPrefix         : '00:00:00',
-        port              : config.port.browsersync,
-        ui                : {port: config.port.browsersync+1},
-        proxy             : 'localhost:'+config.port.proxy
-    });
-
 	gulp.task('styles:watch', ['styles']);
 	gulp.watch([config.styles.fabricator.watch, config.styles.toolkit.watch], ['styles:watch']);
 
@@ -302,11 +305,28 @@ gulp.task('serve', () => {
 	gulp.task('vendor:watch', ['vendor'], browsersync.reload);
 	gulp.watch(config.scripts.vendor.watch, ['vendor:watch']);
 
+    /**
+     * CAM: Added so that we can get an uncompiled js file with polyfill scripts
+     */
+    gulp.task('polyfill:watch', ['polyfill'], browsersync.reload);
+    gulp.watch(config.scripts.polyfill.watch, ['polyfill:watch']);
+
 	/**
 	 * CAM: Added so that we can get the fonts copied into the dist directory
 	 */
 	gulp.task('fonts:watch', ['fonts'], browsersync.reload);
 	gulp.watch(config.fonts.watch, ['fonts:watch']);
+
+    browsersync({
+        notify            : false,
+        timestamps        : true,
+        reloadDelay       : 1000,
+        reloadDebounce    : 2000,
+        logPrefix         : '00:00:00',
+        port              : config.port.browsersync,
+        ui                : {port: config.port.browsersync+1},
+        proxy             : 'localhost:'+config.port.proxy
+    });
 
 });
 

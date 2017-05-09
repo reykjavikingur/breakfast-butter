@@ -10,15 +10,17 @@
     flex-wrap                : nowrap;
     justify-items            : flex-start;
     align-items              : center;
+    font-family              : Roboto, Helvetica, Arial, sans-serif !important;
 
     > :last-child {
         flex-grow            : 1;
     }
 
     h1 {
-        color                : $white;
-        font-size            : 24px;
-        margin               : 0 !important;
+        color          : $white !important;
+        font-size      : 24px !important;
+        margin         : 0 !important;
+        font-weight    : normal !important;
     }
 
     .ver {
