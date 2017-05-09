@@ -1,0 +1,37 @@
+---
+{
+    "atomic"     : "organism",
+    "dna"        : "top-bar",
+    "notes"      : "A top bar <kbd>.top-bar</kbd> can have two sections: a left-hand section <kbd>.top-bar-left</kbd> and a right-hand section <kbd>.top-bar-right</kbd>. On small screens, these sections stack on top of each other."
+}
+---
+<div data-dna="top-bar" class="top-bar">
+    <div class="top-bar-title">
+        <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+          <button class="menu-icon dark" type="button" data-toggle></button>
+        </span>
+        <strong>Branding</strong>
+    </div>
+    <div id="responsive-menu">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li>
+                    <a href="#">One</a>
+                    <ul class="menu vertical">
+                        <li><a href="#">One</a></li>
+                        <li><a href="#">Two</a></li>
+                        <li><a href="#">Three</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Two</a></li>
+                <li><a href="#">Three</a></li>
+            </ul>
+        </div>
+        <div class="top-bar-right">
+            <ul class="menu">
+                <li><input type="search" placeholder="Search"></li>
+                <li><button type="button" class="button">Search</button></li>
+            </ul>
+        </div>
+    </div>
+</div>

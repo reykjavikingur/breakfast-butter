@@ -1,0 +1,35 @@
+---
+{
+"atomic"    : "organism",
+"dna"       : "tab-group"
+}
+---
+<div class="small-12 medium-6 large-4 columns" data-dna="columns">
+    <div class="row collapse" data-dna="row"  data-equalizer>
+        <div class="medium-3 columns" data-equalizer-watch>
+            <ul class="tabs vertical" data-tabs="rs9bd3-tabs" id="example-tab-group-v" role="tablist">
+                <li class="tabs-title is-active" role="presentation">
+                    <a href="#panel1-v" aria-selected="true" role="tab" aria-controls="panel1" id="panel1-label-v">Tab 1</a>
+                </li>
+                {{#loop 2 5 1}}
+                <li class="tabs-title" role="presentation">
+                    <a href="#panel{{this}}-v" aria-selected="true" role="tab" aria-controls="panel{{this}}-v" id="panel{{this}}-label-v">Tab {{this}}</a>
+                </li>
+                {{/loop}}
+            </ul>
+        </div>
+        <div class="medium-9 columns" data-equalizer-watch>
+            <div class="tabs-content vertical" data-tabs-content="example-tab-group-v">
+                {{#loop 1 4 1}}
+                <div class="tabs-panel {{#cond this '==' 1}}is-active{{/cond}}" id="panel{{this}}-v" role="tabpanel" aria-hidden="true" aria-labelledby="panel{{this}}-label-v">
+                    <p>Tab {{this}}</p>
+                    <p>{{lipsum this 100}}</p>
+                </div>
+                {{/loop}}
+                <div class="tabs-panel" id="panel5-v" role="tabpanel" aria-hidden="true" aria-labelledby="panel5-label-v">
+                    <img src="/assets/toolkit/images/fpo/2x1.png">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

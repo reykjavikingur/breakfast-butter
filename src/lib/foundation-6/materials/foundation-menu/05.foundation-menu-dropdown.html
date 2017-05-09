@@ -1,0 +1,27 @@
+---
+{
+    "atomic"     : "molecule",
+    "dna"        : ["dropdown-menu"],
+    "notes"      : "Dropdown menus build on the Menu component's syntax. Add the class <kbd>.dropdown</kbd> and the attribute <kbd>data-dropdown-menu</kbd> to the menu container to set up the dropdown."
+}
+---
+<ul data-dna="dropdown-menu" class="dropdown menu" data-dropdown-menu>
+    <li class="is-dropdown-submenu-parent">
+        <a href="#">Item 1</a>
+        <ul class="menu">
+            <li><a href="#">Item 1A</a></li>
+            <li><a href="#">Item 2A</a></li>
+            <li><a href="#">Item 3A</a></li>
+        </ul>
+    </li>
+    <li class="is-dropdown-submenu-parent">
+        <a href="#">Item 2</a>
+        <ul class="menu">
+            <li><a href="#">Item 1B</a></li>
+            <li><a href="#">Item 2B</a></li>
+            <li><a href="#">Item 3B</a></li>
+        </ul>
+    </li>
+    <li><a href="#">Item 3</a></li>
+    <li><a href="#">Item 4</a></li>
+</ul>

@@ -1,0 +1,19 @@
+---
+{
+    "atomic"     : "organism",
+    "dna"        : "accordion",
+    "notes"      : "Accordion menus follow the basic Menu syntax of <kbd>&lt;ul&gt;</kbd>, <kbd>&lt;li&gt;</kbd>, and <kbd>&lt;a&gt;</kbd>. To convert a basic menu into an accordion, add the attribute data-accordion-menu. You probably also want it to be vertical, so add the class <kbd>.vertical</kbd> as well.<br />Any <kbd>&lt;a&gt;</kbd> will behave like a standard link. However, any <kbd>&lt;a&gt;</kbd> paired with a nested <kbd>&lt;ul&gt;</kbd> menu will then slide that sub-menu up and down when clicked on."
+}
+---
+<div class="small-12 medium-3 large-2 columns" data-dna="columns">
+    <ul data-dna="accordion" class="vertical menu" data-accordion-menu>
+        <li>
+            <a href="#">Item 1</a>
+            <ul class="menu vertical nested">
+                <li><a href="#">Item 1A</a></li>
+                <li><a href="#">Item 1B</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Item 2</a></li>
+    </ul>
+</div>

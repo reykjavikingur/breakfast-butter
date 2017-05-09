@@ -1,0 +1,29 @@
+---
+{
+    "atomic"     : "organism",
+    "dna"        : "tab-group"
+}
+---
+<div class="small-12 medium-6 large-4 columns" data-dna="columns">
+    <ul class="tabs" data-tabs="rs9bd2-tabs" id="example-tab-group" role="tablist">
+        <li class="tabs-title is-active" role="presentation">
+            <a href="#panel1" aria-selected="true" role="tab" aria-controls="panel1" id="panel1-label">Tab 1</a>
+        </li>
+        {{#loop 2 5 1}}
+        <li class="tabs-title" role="presentation">
+            <a href="#panel{{this}}" aria-selected="true" role="tab" aria-controls="panel{{this}}" id="panel{{this}}-label">Tab {{this}}</a>
+        </li>
+        {{/loop}}
+    </ul>
+    <div class="tabs-content" data-tabs-content="example-tab-group">
+        {{#loop 1 4 1}}
+        <div class="tabs-panel {{#cond this '==' 1}}is-active{{/cond}}" id="panel{{this}}" role="tabpanel" aria-hidden="true" aria-labelledby="panel{{this}}-label">
+            <p>Tab {{this}}</p>
+            <p>{{lipsum this 100}}</p>
+        </div>
+        {{/loop}}
+        <div class="tabs-panel" id="panel5" role="tabpanel" aria-hidden="true" aria-labelledby="panel5-label">
+            <img class="thumbnail" src="/assets/toolkit/images/fpo/2x1.png">
+        </div>
+    </div>
+</div>

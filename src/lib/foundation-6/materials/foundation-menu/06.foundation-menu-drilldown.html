@@ -1,0 +1,31 @@
+---
+{
+    "atomic"     : "organism",
+    "dna"        : "drilldown-menu",
+"notes"      : "Drilldowns use the standard Menu syntax, using <kbd>&lt;ul&gt;</kbd>, <kbd>&lt;li&gt;</kbd>, and <kbd>&lt;a&gt;</kbd>. Add data-drilldown to the root menu to set up the drilldown.<br />To create sub-menus, place a <kbd>&lt;ul&gt;</kbd> next to an <kbd>&lt;a&gt;</kbd>. Clicking that <kbd>&lt;a&gt;</kbd> will then open the <kbd>&lt;ul&gt;</kbd> that it's next to.<br /><small>Any <kbd>&lt;a&gt;</kbd> without a submenu will function like a normal link.</small>"
+}
+---
+<div class="small-12 medium-3 large-2 columns" data-dna="columns">
+    <ul data-dna="drilldown-menu" class="vertical menu" data-drilldown>
+        <li class="is-dropdown-menu">
+            <a href="#Item-1">Item 1</a>
+            <ul class="vertical menu">
+                <li><a href="#Item-1A">Item 1A</a></li>
+                <li><a href="#Item-2A">Item 2A</a></li>
+                <li><a href="#Item-3A">Item 3A</a></li>
+                <li><a href="#Item-4A">Item 4A</a></li>
+            </ul>
+        </li>
+        <li>
+            <a href="#Item-2">Item 2</a>
+            <ul class="vertical menu">
+                <li><a href="#Item-1B">Item 1B</a></li>
+                <li><a href="#Item-2B">Item 2B</a></li>
+                <li><a href="#Item-3B">Item 3B</a></li>
+                <li><a href="#Item-4B">Item 4B</a></li>
+            </ul>
+        </li>
+        <li><a href="#">Item 3</a></li>
+        <li><a href="#">Item 4</a></li>
+    </ul>
+</div>
