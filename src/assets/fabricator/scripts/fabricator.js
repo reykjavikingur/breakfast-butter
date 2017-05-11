@@ -12,12 +12,11 @@ const menu          = require('./menu');
  * @type {Object}
  */
 fabricator.options = {
-  toggles: {
-    labels: true,
-    notes: false,
-    code: false,
-  },
-  mq: '(min-width: 60em)',
+    toggles: {
+        labels    : true,
+        notes     : false,
+        code      : false
+    }
 };
 
 
