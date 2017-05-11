@@ -53,7 +53,6 @@ fabricator.getOptions = () => {
   return (fabricator.test.sessionStorage) ? JSON.parse(sessionStorage.fabricator) : fabricator.options;
 };
 
-
 /**
  * Handler for preview and code toggles
  * @return {Object} fabricator
