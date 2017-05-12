@@ -1,64 +1,63 @@
 <div class="f-item-dependencies">
-  {{#hasDependents this.data.dna @root.dependencies.helix}}
-  <div class="f-item-column">
-	<strong>Dependents</strong>
-	<table class="table">
-	  <thead>
-		<tr>
-		  <th style="width: 60%;">Files</th>
-		  <th>Selectors</th>
-		  <th style="width: 40px;"></th>
-		</tr>
-	  </thead>
-	  <tbody>
-		{{#dependents this.data.dna @root.dependencies.helix}}
-		<tr>
-		  <td>
-			<a href="{{baseurl}}{{this.link}}" title="{{baseurl}}{{this.link}}">{{this.file}}</a>
-		  </td>
-		  <td>
-			{{#each this.selectors}}
-			<div>{{this}}</div>
-			{{/each}}
-		  </td>
-		  <td>
-			<span class="badge badge-default">{{this.count}}</span>
-		  </td>
-		</tr>
-		{{/dependents}}
-	  </tbody>
-	</table>
-  </div>
-  {{/hasDependents}}
-  {{#hasDependencies this.data.dna @root.dependencies.helix}}
-  <div class="f-item-column">
-	<strong>Dependencies</strong>
-	<table class="table">
-	  <thead>
-		<tr>
-		  <th style="width: 60%;">Files</th>
-		  <th>Selectors</th>
-		  <th style="width: 40px;"></th>
-		</tr>
-	  </thead>
-	  <tbody>
-		{{#dependencies this.data.dna @root.dependencies.helix}}
-		<tr>
-		  <td>
-			<a href="{{baseurl}}{{this.link}}" title="{{baseurl}}{{this.link}}">{{this.file}}</a>
-		  </td>
-		  <td>
-			{{#each this.selectors}}
-			<div>{{this}}</div>
-			{{/each}}
-		  </td>
-		  <td>
-			<span class="badge badge-default">{{this.count}}</span>
-		  </td>
-		</tr>
-		{{/dependencies}}
-	  </tbody>
-	</table>
-  </div>
-  {{/hasDependencies}}
+    {{#if this.data.helix.dependents}}
+    <div class="f-item-column">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Dependents</th>
+                    <th>Selectors</th>
+                    <th style="width: 40px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.data.helix.dependents}}
+                <tr>
+                    <td>
+                        <a href="{{this.link}}" title="{{this.file}}">{{this.file}}</a>
+                    </td>
+                    <td>
+                        {{#each this.tags}}
+                        <div>{{this}}</div>
+                        {{/each}}
+                    </td>
+                    <td>
+                        <span class="count">{{this.count}}</span>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{/if}}
+
+    {{#if this.data.helix.dependency}}
+    <div class="f-item-column">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Dependencies</th>
+                    <th>Selectors</th>
+                    <th style="width: 40px;"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.data.helix.dependency}}
+                <tr>
+                    <td>
+                        <a href="{{this.link}}" title="{{this.file}}">{{this.file}}</a>
+                    </td>
+                    <td>
+                        {{#each this.tags}}
+                        <div>{{this}}</div>
+                        {{/each}}
+                    </td>
+                    <td>
+                        <span class="count">{{this.count}}</span>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+    {{/if}}
 </div>

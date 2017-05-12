@@ -11,7 +11,6 @@ const browsersync    = require('browser-sync');
 const concat         = require('gulp-concat');
 const csso           = require('gulp-csso');
 const del            = require('del');
-const dna            = require('fabricator-dna');
 const fs             = require('fs');
 const gulp           = require('gulp');
 const gulpif         = require('gulp-if');
@@ -39,11 +38,7 @@ config.dev      = gutil.env.dev;
 config.scripts.helpers = {
     "cond"               : require('handlebars-cond').cond,
     "lipsum"             : require('handlebars-lipsum'),
-    "loop"               : require('handlebars-loop'),
-    "dependencies"       : dna.dependencies,
-    "dependents"         : dna.dependents,
-    "hasDependencies"    : dna.hasDependencies,
-    "hasDependents"      : dna.hasDependents
+    "loop"               : require('handlebars-loop')
 };
 
 if (gutil.env.port) {
@@ -238,14 +233,6 @@ gulp.task('fonts', () => {
 		.pipe(gulp.dest(config.fonts.dest));
 });
 
-/**
- * @name dna
- * @description CAM: Added the dna task which generates the dependencies.json file
- */
-gulp.task('dna', (done) => {
-	dna.scan(config);
-	done();
-});
 
 // assembler
 gulp.task('assembler', (done) => {
@@ -292,28 +279,15 @@ gulp.task('serve', () => {
 	gulp.task('images:watch', ['images'], browsersync.reload);
 	gulp.watch(config.images.toolkit.watch, ['images:watch']);
 
-	/**
-	 * CAM: Added the 'dna' task to the assembler's watch so that when a file is
-	 * changed, it regens the dependencies.json file
-	 */
-	gulp.task('assembler:watch', ['dna', 'assembler'], browsersync.reload);
+	gulp.task('assembler:watch', ['assembler'], browsersync.reload);
 	gulp.watch(config.templates.watch, ['assembler:watch']);
 
-	/**
-	 * CAM: Added so that we can get an uncompiled js file with vendor scripts
-	 */
 	gulp.task('vendor:watch', ['vendor'], browsersync.reload);
 	gulp.watch(config.scripts.vendor.watch, ['vendor:watch']);
 
-    /**
-     * CAM: Added so that we can get an uncompiled js file with polyfill scripts
-     */
     gulp.task('polyfill:watch', ['polyfill'], browsersync.reload);
     gulp.watch(config.scripts.polyfill.watch, ['polyfill:watch']);
 
-	/**
-	 * CAM: Added so that we can get the fonts copied into the dist directory
-	 */
 	gulp.task('fonts:watch', ['fonts'], browsersync.reload);
 	gulp.watch(config.fonts.watch, ['fonts:watch']);
 

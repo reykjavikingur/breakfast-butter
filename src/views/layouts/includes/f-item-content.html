@@ -1,14 +1,16 @@
+{{#if notes}}
 <div class="f-item-notes" data-f-toggle="notes">
-  {{#if notes}}
   {{{notes}}}
-  {{/if}}
-
-  {{#if this.data.dna}}
-  {{> f-dna}}
-  {{/if}}
 </div>
+{{/if}}
 
-<div class="f-item-code f-item-hidden" data-f-toggle="code">
+{{#if this.data.helix}}
+<div class="f-item-dna" data-f-toggle="dna">
+    {{> f-dna}}
+</div>
+{{/if}}
+
+<div class="f-item-code" data-f-toggle="code">
     <pre><code class="language-markup">{{material @key @root}}</code></pre>
 </div>
 

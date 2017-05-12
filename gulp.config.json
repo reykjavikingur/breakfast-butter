@@ -86,7 +86,6 @@
     ]
   },
   "tasks": [
-    "dna",
     "styles",
     "vendor",
     "polyfill",

@@ -59,9 +59,10 @@ fabricator.getOptions = () => {
 fabricator.allItemsToggles = () => {
 
   const itemCache = {
-    labels: document.querySelectorAll('[data-f-toggle="labels"]'),
-    notes: document.querySelectorAll('[data-f-toggle="notes"]'),
-    code: document.querySelectorAll('[data-f-toggle="code"]'),
+      labels    : document.querySelectorAll('[data-f-toggle="labels"]'),
+      notes     : document.querySelectorAll('[data-f-toggle="notes"]'),
+      code      : document.querySelectorAll('[data-f-toggle="code"]'),
+      dna       : document.querySelectorAll('[data-f-toggle="dna"]'),
   };
 
   const toggleAllControls = document.querySelectorAll('.f-controls [data-f-toggle-control]');

@@ -1,11 +1,19 @@
 <div class="f-item-controls">
-	{{#cond notes 'or' this.data.dna}}
+	{{#if notes}}
 	<span class="f-control f-icon" data-f-toggle-control="notes" title="Toggle Notes">
 		<svg>
 			<use xlink:href="#f-icon-notes" />
 		</svg>
 	</span>
-	{{/cond}}
+	{{/if}}
+
+    {{#if this.data.helix}}
+	<span class="f-control f-icon" data-f-toggle-control="dna" title="Toggle DNA">
+        <svg style="transform: rotate(25deg);">
+            <use xlink:href="#f-icon-dna" />
+        </svg>
+    </span>
+    {{/if}}
 
 	<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
 		<svg>
