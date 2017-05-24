@@ -139,6 +139,8 @@ $hover-width: 20px;
     padding-top: 4px;
     width: $navbar-width;
 
+    font-family: "Helvetica", Arial, sans-serif !important;
+
     &-control {
 
         width: 100%;
@@ -147,7 +149,7 @@ $hover-width: 20px;
         color: white !important;
         font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
         font-size: 11px !important;
-        font-weight: 100;
+        font-weight: normal;
         padding: 16px 0 12px 0;
         transition: all .125s ease-in-out;
         text-decoration: none;
@@ -183,7 +185,7 @@ $hover-width: 20px;
 
         &:first-child {
             svg {
-                fill: #da7f34;
+                fill: $black;
                 stroke-width: 2px;
                 transform: rotate(25deg);
             }
@@ -260,7 +262,6 @@ $hover-width: 20px;
             color: $orange;
         }
     }
-
 }
 
 
