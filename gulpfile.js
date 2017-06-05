@@ -21,6 +21,7 @@ const reload         = browsersync.reload;
 const rename         = require('gulp-rename');
 const runSequence    = require('run-sequence');
 const sass           = require('gulp-sass');
+const sassLint       = require('gulp-sass-lint');
 const slugify        = require('slugify');
 const source         = require('vinyl-source-stream');
 const sourcemaps     = require('gulp-sourcemaps');
@@ -146,7 +147,15 @@ gulp.task('styles:toolkit', () => {
 		.pipe(gulpif(config.dev, reload({stream: true})));
 });
 
-gulp.task('styles', ['styles:fabricator', 'styles:toolkit']);
+gulp.task('styles:lint', [], function () {
+    return gulp.src(config.styles.toolkit.src)
+        .pipe(sassLint({
+            configFile: './sass-lint-config.yml'
+        }))
+        .pipe(sassLint.format());
+});
+
+gulp.task('styles', ['styles:fabricator', 'styles:toolkit', 'styles:lint']);
 
 // scripts
 gulp.task('scripts', (done) => {

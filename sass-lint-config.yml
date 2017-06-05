@@ -1,0 +1,23 @@
+rules:
+  indentation: 0
+  no-trailing-whitespace: 0
+  property-sort-order: 0
+  final-newline: 0
+  no-css-comments: 0
+  hex-length: 0
+  leading-zero: 0
+  quotes: 0
+  no-ids: 0
+  empty-line-between-blocks: 0
+  no-important: 0
+  shorthand-values: 0
+  force-element-nesting: 0
+  force-pseudo-nesting: 0
+  mixins-before-declarations: 0
+  no-qualifying-elements: 0
+  nesting-depth:
+    - 1
+    - max-depth: 4
+  no-vendor-prefixes:
+       - 0
+       - ignore-non-standard: true
