@@ -11,7 +11,7 @@
 	.f-control {
 		text-align: center;
 		margin: 0;
-		padding: 1rem 0;
+		padding: 16px 0;
         flex: 1;
 
 		&.f-active {
@@ -46,8 +46,8 @@
 	}
 
 	svg {
-		width: 0.875rem;
-		height: 0.875rem;
+		width: 16px;
+		height: 16px;
 
 		use {
 			fill: color(light);
@@ -56,7 +56,7 @@
 }
 
 .f-control-bar {
-	padding: 1rem 0;
+	padding: 16px 0;
 }
 
 .f-menu-toggle {

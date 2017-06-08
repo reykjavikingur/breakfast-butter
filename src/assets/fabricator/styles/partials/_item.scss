@@ -1,8 +1,8 @@
 .f-item-group {
 	@include clearfix;
-	margin-top: 2rem;
-	margin-bottom: 2rem;
-	padding-bottom: 2rem;
+	margin-top: 32px;
+	margin-bottom: 32px;
+	padding-bottom: 32px;
 	border-bottom: 1px solid color(light);
 
     &:first-of-type {
@@ -19,8 +19,8 @@
 	}
 
 	& > & {
-		padding-bottom: 1.5rem;
-		margin-bottom: 1.5rem;
+		padding-bottom: 32px;
+		margin-bottom: 32px;
 		border-bottom: 0;
 
 		&:first-of-type {
@@ -44,7 +44,7 @@
 
 .f-item-heading-group {
 	@include clearfix;
-	margin-bottom: 1.5rem;
+	margin-bottom: 15px;
 	vertical-align: middle;
 }
 
@@ -61,11 +61,11 @@
 .f-item-controls {
 	display: inline-block;
 	vertical-align: middle;
-	margin-left: 0.5rem;
+	margin-left: 8px;
 
 	.f-control {
-		width: 0.875rem;
-		height: 0.875rem;
+		width: 16px;
+		height: 16px;
 		display: block;
 		float: left;
 
@@ -86,11 +86,11 @@
 }
 
 .f-item-notes {
-	font-size: 0.875rem;
+	font-size: 14px;
 }
 
 h1[data-f-toggle="labels"] {
-    margin-top: 2rem;
+    margin-top: 32px;
     font-size: 24px;
 
     &:first-of-type {
