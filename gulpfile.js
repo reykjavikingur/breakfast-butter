@@ -262,7 +262,7 @@ gulp.task('nodemon', (done) => {
     nodemon({
         watch : config.dest,
         env: {
-          port: config.port.proxy
+            port: config.port.proxy
         },
         script: __dirname + '/index.js',
         ext: 'js ejs json jsx html css scss'
@@ -271,6 +271,8 @@ gulp.task('nodemon', (done) => {
             callbackCalled = true;
             done();
         }
+    }).on('quit', () => {
+        process.exit();
     }).on('restart', function () {
         browsersync.reload();
     });

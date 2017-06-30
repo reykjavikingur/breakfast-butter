@@ -24,7 +24,7 @@ menu.click = (e) => {
 	// Do search
 	let fnd = $('.f-menu-container [data-search] input');
 	let arr = fnd.val().split(' ');
-	arr = _.without(arr, 'atom', 'molecule', 'organism', 'catalyst', 'template', 'page');
+	arr = _.without(arr, 'atom', 'molecule', 'organism', 'catalyst', 'templates', 'page');
 	arr.push(trg.data('find'));
 
 	arr = _.uniq(arr);
