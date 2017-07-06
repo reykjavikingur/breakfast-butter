@@ -20,9 +20,9 @@ $ butter install
 ```
 > You will be prompted for an optional username and password which can be used to secure Butter with [Basic Authentication](https://developer.mozilla.org/en-US/docs/Web/HTTP/Authentication). If you do not wish to secure your butter URL simply press enter/return and skip the prompts. 
 
-Launch Butter by running the Butter-CLI `launch` command:
+Launch Butter:
 ```sh
-$ butter launch
+$ npm test
 ```
 
 Butter should now be running in your browser and watching for changes to your toolkit files. The default url is: 
