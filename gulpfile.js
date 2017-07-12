@@ -11,7 +11,7 @@ const browsersync    = require('browser-sync');
 const concat         = require('gulp-concat');
 const csso           = require('gulp-csso');
 const del            = require('del');
-const fs             = require('fs');
+const fs             = require('fs-extra');
 const gulp           = require('gulp');
 const gulpif         = require('gulp-if');
 const gutil          = require('gulp-util');
@@ -28,13 +28,14 @@ const sourcemaps     = require('gulp-sourcemaps');
 const webpack        = require('webpack');
 const nodemon        = require('nodemon');
 const log            = console.log.bind(console);
+const yargs          = require('yargs').argv;
 
 /**
  * configuration
  */
 
 const config    = require(__dirname + '/gulp.config.json');
-config.dev      = gutil.env.dev;
+config.dev      = yargs.dev;
 
 config.scripts.helpers = {
     "cond"               : require('handlebars-cond').cond,
@@ -42,9 +43,9 @@ config.scripts.helpers = {
     "loop"               : require('handlebars-loop')
 };
 
-if (gutil.env.port) {
-    config.port.browsersync    = Number(gutil.env.port);
-    config.port.proxy          = Number(gutil.env.port) + 30;
+if (yargs.hasOwnProperty('port')) {
+    config.port.browsersync    = Number(yargs.port);
+    config.port.proxy          = Number(yargs.port) + 30;
 }
 
 config.hooks = {
