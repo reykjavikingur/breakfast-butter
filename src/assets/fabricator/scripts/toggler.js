@@ -42,9 +42,9 @@ toggler.toggle = function (id, state) {
 };
 
 toggler.expand = function () {
-    let exp    = window.localStorage.getItem('expanded');
-    exp        = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
-    let inter = _.intersection(toggler.controls, exp);
+    let exp      = window.localStorage.getItem('expanded');
+    exp          = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
+    let inter    = _.intersection(toggler.controls, exp);
 
     $('.f-global-control').removeClass('f-active');
 
