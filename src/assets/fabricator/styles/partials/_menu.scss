@@ -262,6 +262,27 @@ $hover-width    : 20px;
             color: $orange;
         }
     }
+
+    button.f-menu-collapse {
+        top                 : 0;
+        right               : 15px;
+        width               : 34px;
+        height              : 34px;
+        border              : none;
+        position            : absolute;
+        background-color    : transparent;
+
+        &:before {
+            transform           : translate(-50%, -50%);
+            background-color    : $gray-light;
+            position            : absolute;
+            top                 : 50%;
+            left                : 50%;
+            width               : 50%;
+            height              : 3px;
+            content             : "";
+        }
+    }
 }
 
 
@@ -280,6 +301,10 @@ $hover-width    : 20px;
     right                 : 0;
     bottom                : 0;
     left                  : 0;
+
+    li {
+        position: relative;
+    }
 }
 .nano > .nano-content:focus {
     outline: thin dotted;

@@ -1,7 +1,5 @@
-
-
 <!-- fabricator menu -->
-<div id="f-menu-container" class="f-menu-container {{#if toolkit.menu}}{{toolkit.menu}}{{else}}right{{/if}}">
+<div id="f-menu-container" class="active f-menu-container {{#if toolkit.menu}}{{toolkit.menu}}{{else}}right{{/if}}">
     <div class="f-flex-columns">
         {{> f-navbar}}
         <div class="f-flex-rows">
@@ -10,27 +8,28 @@
             {{> f-menu-search}}
 
             <div class="f-menu nano">
-                <ul class="nano-content">
-                    <li data-tags="docs overview{{#each docs}} {{name}}{{/each}}">
-                      <a href="docs.html" class="f-menu__heading">Docs</a>
-                      <ul>
-                        <li data-tags="docs overview">
-                            <a href="index.html">Overview</a>
-                        </li>
-                        {{#each docs}}
-                        <li data-tags="{{../name}} {{name}}">
-                          <a href="docs.html#{{@key}}">{{#cond name '==' 'Dna'}}DNA{{else}}{{name}}{{/cond}}</a>
-                        </li>
-                        {{/each}}
-                      </ul>
+                <ul class="nano-content" role="list">
+                    <li data-tags="docs overview{{#each docs}} {{name}}{{/each}}" role="listitem">
+                        <a href="docs.html" class="f-menu__heading">Docs</a>
+                        <button class="f-menu-collapse" type="button" data-f-collapse></button>
+                        <ul role="menu">
+                            <li data-tags="docs overview" role="menuitem">
+                                <a href="index.html">Overview</a>
+                            </li>
+                            {{#each docs}}
+                            <li data-tags="{{../name}} {{name}}" role="menuitem">
+                                <a href="docs.html#{{@key}}">{{#cond name '==' 'Dna'}}DNA{{else}}{{name}}{{/cond}}</a>
+                            </li>
+                            {{/each}}
+                        </ul>
                     </li>
 
                     {{#each views}}
-                    <li data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}">
+                    <li data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem">
                         <a class="f-menu__heading" href="javascript:void(0);">{{name}}</a>
-                        <ul>
+                        <ul role="menu">
                             {{#each items}}
-                            <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}">
+                            <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}" role="menuitem">
                                 <a href="{{@../key}}/{{@key}}.html" target="_blank">{{name}}</a>
                             </li>
                             {{/each}}
@@ -39,11 +38,11 @@
                     {{/each}}
 
                     {{#if pages}}
-                    <li data-tags="pages page">
+                    <li data-tags="pages page" role="listitem">
                         <a href="#pages" class="f-menu__heading">Pages</a>
-                        <ul>
+                        <ul role="menu">
                             {{#each pages}}
-                            <li data-tags="pages page {{label}}">
+                            <li data-tags="pages page {{label}}" role="menuitem">
                                 <a href="{{url}}" title="visit page" target="_blank">{{label}}</a>
                             </li>
                             {{/each}}
@@ -52,11 +51,11 @@
                     {{/if}}
 
                     {{#each materials}}
-                    <li data-tags="materials {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}">
+                    <li data-tags="materials {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem">
                         <a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
-                        <ul>
+                        <ul role="menu">
                             {{#each items}}
-                            <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}">
+                            <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}" role="menuitem">
                                 <a href="{{@../key}}.html#{{@key}}">{{name}}</a>
                             </li>
                             {{/each}}
@@ -66,6 +65,6 @@
                 </ul>
             </div>
         </div>
-	</div>
+    </div>
 </div>
 <!-- /fabricator menu -->
