@@ -81,8 +81,7 @@
   "templates": {
     "watch": [
       "src/**/*.{html,md,json,yml}",
-      "src/libs/**/*.{html,md,json,yml}",
-      "!src/data/dependencies.json"
+      "src/libs/**/*.{html,md,json,yml}"
     ]
   },
   "tasks": [
@@ -91,8 +90,7 @@
     "polyfill",
     "scripts",
     "images",
-    "fonts",
-    "assembler"
+    "fonts"
   ],
   "dest": "dist",
   "src": "src",
