@@ -13,7 +13,6 @@ menu.toggle = () => {
 	$('.f-menu-container').toggleClass('active');
 };
 
-
 menu.click = (e) => {
 	e.preventDefault();
 
@@ -79,12 +78,23 @@ menu.change = () => {
     }
 };
 
+menu.mouseover = () => {
+    let body = $('body');
+        body.addClass('f-menu-open');
+};
+
+menu.mouseout = () => {
+    let body = $('body');
+        body.removeClass('f-menu-open');
+};
+
 menu.initListeners = () => {
     $(window).on('hashchange', menu.change).trigger('hashchange');
 	$(document).on('click', '.f-navbar-control', menu.click);
 	$(document).on('keyup', '.f-menu-container [data-search] input', menu.search);
+	$('.f-menu-container').on('mouseover', menu.mouseover);
+    $('.f-menu-container').on('mouseout', menu.mouseout);
 };
-
 
 menu.active = () => {
 	menu.change();
@@ -97,7 +107,7 @@ menu.init = () => {
     $('.f-menu').nanoScroller();
 };
 
-document.addEventListener("DOMContentLoaded", function() {
+$(function() {
     menu.init();
 });
 
