@@ -1,55 +1,56 @@
 // menu
-$shadow-x                         : $navbar-width / -4;
-$menu-margin                      : 110px;
-$hover-width: 20px;
+$shadow-x       : $navbar-width / -4;
+$menu-margin    : 110px;
+$hover-width    : 20px;
+
 .f-flex-columns {
-    display: flex;
-    justify-items: flex-start;
-    align-items: stretch;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    flex: 1;
-    height: 100vh;
+    display           : flex;
+    justify-items     : flex-start;
+    align-items       : stretch;
+    flex-direction    : row;
+    flex-wrap         : nowrap;
+    flex              : 1;
+    height            : 100vh;
 }
 
 .f-flex-rows {
-    background-color: $gray-dark;
-    display: flex;
-    flex-direction: column;
-    justify-items: flex-start;
-    height: 100%;
+    background-color    : $gray-dark;
+    display             : flex;
+    flex-direction      : column;
+    justify-items       : flex-start;
+    height              : 100%;
 }
 
 #f-menu-container,
 .f-menu-container {
-    font-family: "Helvetica", Arial, sans-serif !important;
-    position: fixed;
-    top: 0;
-    width: calc(#{$navbar-width} + #{$menu-width});
-    height: 100vh;
-    z-index: 100;
-    font-size: 16px;
-    color: #FFFFFF;
+    font-family    : "Helvetica", Arial, sans-serif !important;
+    position       : fixed;
+    top            : 0;
+    width          : calc(#{$navbar-width} + #{$menu-width});
+    height         : 100vh;
+    z-index        : 100;
+    font-size      : 16px;
+    color          : #FFFFFF;
 
     [data-search] {
-        width: $menu-width;
-        background-color: $gray-dark;
-        padding: 12px 0;
+        width               : $menu-width;
+        background-color    : $gray-dark;
+        padding             : 12px 0;
 
         div {
             text-align: center;
         }
 
         input[type="search"] {
-            width: calc(100% - 24px);
-            background-color: $gray-darker;
-            border-radius: 25px;
-            border: none;
-            margin: 0 auto;
-            padding: 8px 16px 10px 16px !important;
-            outline: none;
-            color: $gray-lightest;
-            font-size: 16px;
+            width               : calc(100% - 24px);
+            background-color    : $gray-darker;
+            border-radius       : 25px;
+            border              : none;
+            margin              : 0 auto;
+            padding             : 8px 16px 10px 16px !important;
+            outline             : none;
+            color               : $gray-lightest;
+            font-size           : 16px;
         }
     }
 }
@@ -91,26 +92,26 @@ $hover-width: 20px;
     }
 }
 .f-menu-container.right {
-    right: calc(-#{$navbar-width} + -#{$menu-width});
-    transition: right ease-in-out .125s;
+    right         : calc(-#{$navbar-width} + -#{$menu-width});
+    transition    : right ease-in-out .125s;
 
     &:hover,
     &:focus,
     &:active,
     &.active {
-        right: 0;
-        transition: right ease-in-out .25s;
-        box-shadow: 1px 0 20px 5px rgba(0, 0, 0, .5);
+        right         : 0;
+        transition    : right ease-in-out .25s;
+        box-shadow    : 1px 0 20px 5px rgba(0, 0, 0, .5);
     }
 
     &:before {
-        content: " ";
-        position: absolute;
-        width: $hover-width;
-        height: 100%;
-        top: 0;
-        left: -#{$hover-width};
-        background-color: transparent;
+        content             : " ";
+        position            : absolute;
+        width               : $hover-width;
+        height              : 100%;
+        top                 : 0;
+        left                : -#{$hover-width};
+        background-color    : transparent;
     }
 
     &:after {
@@ -118,7 +119,7 @@ $hover-width: 20px;
         content                : ' ';
         width                  : 60px;
         height                 : 56px;
-        left                  : -60px;
+        left                   : -60px;
         cursor                 : pointer;
         position               : absolute;
         background-position    : center center;
@@ -135,32 +136,31 @@ $hover-width: 20px;
 }
 
 .f-navbar {
-    background-color: $gray-darker;
-    padding-top: 4px;
-    width: $navbar-width;
-
-    font-family: "Helvetica", Arial, sans-serif !important;
+    background-color    : $gray-darker;
+    padding-top         : 4px;
+    width               : $navbar-width;
+    font-family         : "Helvetica", Arial, sans-serif !important;
 
     &-control {
 
-        width: 100%;
-        display: block;
-        text-align: center;
-        color: white !important;
-        font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-        font-size: 11px !important;
-        font-weight: normal;
-        padding: 16px 0 12px 0;
-        transition: all .125s ease-in-out;
-        text-decoration: none;
+        width              : 100%;
+        display            : block;
+        text-align         : center;
+        color              : white !important;
+        font-family        : Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
+        font-size          : 11px !important;
+        font-weight        : normal;
+        padding            : 16px 0 12px 0;
+        transition         : all .125s ease-in-out;
+        text-decoration    : none;
 
         svg {
-            opacity: .8;
-            width: 32px;
-            height: 32px;
-            margin-bottom: 8px;
-            transition: filter .125s ease-in-out;
-            pointer-events: none;
+            opacity           : .8;
+            width             : 32px;
+            height            : 32px;
+            margin-bottom     : 8px;
+            transition        : filter .125s ease-in-out;
+            pointer-events    : none;
         }
 
         &:hover,
@@ -168,12 +168,12 @@ $hover-width: 20px;
         &:active,
         &.active {
 
-            color: $gray-lightest;
-            text-decoration: none;
+            color              : $gray-lightest;
+            text-decoration    : none;
 
             svg {
-                opacity: 1;
-                filter: drop-shadow(0px 0px 3px $gray-light);
+                opacity    : 1;
+                filter     : drop-shadow(0px 0px 3px $gray-light);
             }
         }
 
@@ -185,9 +185,9 @@ $hover-width: 20px;
 
         &:first-child {
             svg {
-                fill: $black;
-                stroke-width: 2px;
-                transform: rotate(25deg);
+                fill            : $black;
+                stroke-width    : 2px;
+                transform       : rotate(25deg);
             }
         }
     }
@@ -195,67 +195,67 @@ $hover-width: 20px;
 
 .f-menu {
 
-    height: 100%;
-    overflow: hidden;
+    height      : 100%;
+    overflow    : hidden;
 
     ul {
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-left: 0 !important;
-        margin-left: 0 !important;
-        font-size: 16px !important;
+        margin-top       : 0;
+        margin-bottom    : 0;
+        padding-left     : 0 !important;
+        margin-left      : 0 !important;
+        font-size        : 16px !important;
     }
 
     > ul {
-        margin-top: 0;
-        margin-bottom: 16px;
-        margin-left: 0 !important;
+        margin-top       : 0;
+        margin-bottom    : 16px;
+        margin-left      : 0 !important;
 
         > li {
-            margin-top: 16px;
-            text-align: left;
+            margin-top    : 16px;
+            text-align    : left;
         }
     }
 
     li {
-        list-style-type: none;
-        margin-top: 0;
-        margin-bottom: 0;
+        list-style-type    : none;
+        margin-top         : 0;
+        margin-bottom      : 0;
     }
 
     a {
-        display: block;
-        padding: 5px 32px;
-        color: #ccc;
-        text-decoration: none;
-        font-size: 14px;
-        line-height: 1.5;
+        display            : block;
+        padding            : 5px 32px;
+        color              : #ccc;
+        text-decoration    : none;
+        font-size          : 14px;
+        line-height        : 1.5;
 
         &:hover {
-            color: $gray-lightest;
-            text-decoration: none;
+            color              : $gray-lightest;
+            text-decoration    : none;
         }
 
         &.f-active {
-            border-bottom: 1px solid lighten($gray-darker, 1%);
-            border-top: 1px solid lighten($gray-darker, 1%);
-            border-radius: 4px;
-            margin: 0 12px;
-            padding-left: 20px;
-            color: $orange;
+            border-bottom    : 1px solid lighten($gray-darker, 1%);
+            border-top       : 1px solid lighten($gray-darker, 1%);
+            border-radius    : 4px;
+            margin           : 0 12px;
+            padding-left     : 20px;
+            color            : $orange;
         }
     }
 
 
     .f-menu__heading {
-        padding-left: 18px;
-        font-weight: bold;
-        font-size: 16px;
-        color: $gray-lightest;
-        background-color: lighten($gray-darker, 2%);
-        margin: 0 12px 12px 12px;
-        border-radius: 4px;
-        display: block;
+        padding-left        : 18px;
+        font-weight         : bold;
+        font-size           : 16px;
+        color               : $gray-lightest;
+        background-color    : lighten($gray-darker, 2%);
+        margin              : 0 12px 12px 12px;
+        border-radius       : 4px;
+        display             : block;
 
         &:hover,
         &.f-active {
@@ -286,10 +286,12 @@ $hover-width: 20px;
 }
 .nano > .nano-content::-webkit-scrollbar {
     display: none;
+    -webkit-appearance: none;
 }
 
 .has-scrollbar > .nano-content::-webkit-scrollbar {
     display: block;
+    -webkit-appearance: normal;
 }
 .nano > .nano-pane {
     background       : rgba(0,0,0,.0125);
@@ -315,3 +317,7 @@ $hover-width: 20px;
     opacity    : 0.99;
 }
 
+
+body.f-menu-open {
+    overflow-y: hidden;
+}
