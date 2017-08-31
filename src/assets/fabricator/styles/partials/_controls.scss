@@ -1,75 +1,88 @@
 .f-controls {
 
-	width: $menu-width;
-	height: 56px;
-	background-color: $gray-dark;
+    width: $menu-width;
+    height: 56px;
+    background-color: $gray-dark;
     display: flex;
     justify-items: stretch;
     flex-direction: column;
     flex-wrap: wrap;
 
-	.f-control {
-		text-align: center;
-		margin: 0;
-		padding: 16px 0;
+    .f-control {
+        text-align: center;
+        margin: 0;
+        padding: 16px 0;
         flex: 1;
+        border: none;
+        background-color: transparent;
+        &:focus {
+            outline: none;
+        }
 
-		&.f-active {
-			box-shadow: inset 0 0.25rem 0 0 color(accent);
+        &.f-active {
+            box-shadow: inset 0 0.25rem 0 0 color(accent);
 
-			use {
-				fill: color(menu-text);
-			}
-		}
+            use {
+                fill: color(menu-text);
+            }
+        }
 
         &[data-f-toggle-control="dna"] svg {
             transform: rotate(25deg);
         }
 
-		svg {
-			vertical-align: middle;
+        svg {
+            vertical-align: middle;
 
-			use {
-				fill: if($theme == $theme-dark, color(normal), color(light) );
-			}
-		}
-	}
+            use {
+                fill: if($theme == $theme-dark, color(normal), color(light));
+            }
+        }
+    }
 }
 
 .f-control {
-	display: inline-block;
-	cursor: pointer;
-	margin-left: 0.66rem;
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 0.66rem;
 
-	&:first-child {
-		margin-left: 0;
-	}
+    &:first-child {
+        margin-left: 0;
+    }
 
-	svg {
-		width: 16px;
-		height: 16px;
+    svg {
+        width: 16px;
+        height: 16px;
 
-		use {
-			fill: color(light);
-		}
-	}
+        use {
+            fill: color(light);
+        }
+    }
 }
 
 .f-control-bar {
-	padding: 16px 0;
+    padding: 16px 0;
 }
 
 .f-menu-toggle {
-	cursor: pointer;
-	vertical-align: middle;
+    cursor: pointer;
+    vertical-align: middle;
 
-	svg {
-		display: block;
-		float: left;
-		margin-bottom: -1px;
-	}
+    svg {
+        display: block;
+        float: left;
+        margin-bottom: -1px;
+    }
 }
 
-.btn i {
-  line-height: 1.5;
+.f-container {
+    .btn i {
+        line-height: 1.5;
+    }
+}
+
+*[data-f-toggle] {
+    &[aria-expanded="false"] {
+        display: none;
+    }
 }

@@ -985,5 +985,5 @@
         });
     };
     $.fn.nanoScroller.Constructor = NanoScroll;
-})(window.jQuery, window, document);
+})(jQuery, window, document);
 

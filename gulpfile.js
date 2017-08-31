@@ -38,9 +38,9 @@ const config    = require(__dirname + '/gulp.config.json');
 config.dev      = yargs.dev;
 
 config.scripts.helpers = {
-    "cond"               : require('handlebars-cond').cond,
-    "lipsum"             : require('handlebars-lipsum'),
-    "loop"               : require('handlebars-loop')
+    "cond"      : require('handlebars-cond').cond,
+    "lipsum"    : require('handlebars-lipsum'),
+    "loop"      : require('handlebars-loop')
 };
 
 if (yargs.hasOwnProperty('port')) {
@@ -124,7 +124,7 @@ gulp.task('clean', del.bind(null, [config.dest]));
 
 // styles
 gulp.task('styles:fabricator', () => {
-	gulp.src(config.styles.fabricator.src)
+	return gulp.src(config.styles.fabricator.src)
 		.pipe(sourcemaps.init())
 		.pipe(sass().on('error', sass.logError))
 		.pipe(prefix('last 1 version'))
@@ -136,7 +136,7 @@ gulp.task('styles:fabricator', () => {
 });
 
 gulp.task('styles:toolkit', () => {
-	gulp.src(config.styles.toolkit.src)
+	return gulp.src(config.styles.toolkit.src)
 		.pipe(gulpif(config.dev, sourcemaps.init()))
 		.pipe(sass({
 			includePaths: './node_modules',
@@ -212,12 +212,13 @@ gulp.task('vendor', (done) => {
         // Add lib vendor scripts
         libScan('vendor').forEach((file) => { files.push(file); });
 
-        gulp.src(files)
+        return gulp.src(files)
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest(config.scripts.vendor.dest));
 
+    } else {
+        done();
     }
-	done();
 });
 
 gulp.task('polyfill', (done) => {
@@ -225,12 +226,13 @@ gulp.task('polyfill', (done) => {
 
         let files = (typeof config.scripts.polyfill.watch === 'string') ? [config.scripts.polyfill.watch] : config.scripts.polyfill.watch;
 
-        gulp.src(files)
+        return gulp.src(files)
         .pipe(concat('polyfill.js'))
         .pipe(gulp.dest(config.scripts.polyfill.dest));
 
+    } else {
+        done();
     }
-    done();
 });
 
 /**
@@ -247,10 +249,10 @@ gulp.task('fonts', () => {
 // assembler
 gulp.task('assembler', (done) => {
 	assembler({
-		logErrors: config.dev,
-		dest: config.dest,
-		helpers: config.scripts.helpers,
-		hooks: config.hooks
+		logErrors    : config.dev,
+		dest         : config.dest,
+        hooks        : config.hooks,
+		helpers      : config.scripts.helpers
 	});
 	done();
 });
@@ -275,7 +277,7 @@ gulp.task('nodemon', (done) => {
     }).on('quit', () => {
         process.exit();
     }).on('restart', function () {
-        browsersync.reload();
+        reload();
     });
 });
 
@@ -285,22 +287,22 @@ gulp.task('serve', () => {
 	gulp.task('styles:watch', ['styles']);
 	gulp.watch([config.styles.fabricator.watch, config.styles.toolkit.watch], ['styles:watch']);
 
-	gulp.task('scripts:watch', ['scripts'], browsersync.reload);
+	gulp.task('scripts:watch', ['scripts']);
 	gulp.watch([config.scripts.fabricator.watch, config.scripts.toolkit.watch], ['scripts:watch']);
 
-	gulp.task('images:watch', ['images'], browsersync.reload);
+	gulp.task('images:watch', ['images'], reload);
 	gulp.watch(config.images.toolkit.watch, ['images:watch']);
 
-	gulp.task('assembler:watch', ['assembler'], browsersync.reload);
+	gulp.task('assembler:watch', ['assembler']);
 	gulp.watch(config.templates.watch, ['assembler:watch']);
 
-	gulp.task('vendor:watch', ['vendor'], browsersync.reload);
+	gulp.task('vendor:watch', ['vendor']);
 	gulp.watch(config.scripts.vendor.watch, ['vendor:watch']);
 
-    gulp.task('polyfill:watch', ['polyfill'], browsersync.reload);
+    gulp.task('polyfill:watch', ['polyfill']);
     gulp.watch(config.scripts.polyfill.watch, ['polyfill:watch']);
 
-	gulp.task('fonts:watch', ['fonts'], browsersync.reload);
+	gulp.task('fonts:watch', ['fonts']);
 	gulp.watch(config.fonts.watch, ['fonts:watch']);
 
     browsersync({
@@ -320,12 +322,12 @@ gulp.task('serve', () => {
 gulp.task('default', (done) => {
 	// run build
     if (config.dev) {
-        runSequence(['clean'], config.tasks, ['nodemon'], () => {
+        runSequence(['clean'], ['assembler'], config.tasks, ['nodemon'], () => {
             gulp.start('serve');
             done();
         });
     } else {
-        runSequence(['clean'], config.tasks, () => {
+        runSequence(['clean'], ['assembler'], config.tasks, () => {
             done();
         });
     }

@@ -1,6 +1,6 @@
 <div class="f-item-controls">
 	{{#if notes}}
-	<span class="f-control f-icon" data-f-toggle-control="notes" title="Toggle Notes">
+	<span class="f-control f-icon" data-f-toggle-control="#toggle-{{id}}-notes" title="Toggle Notes">
 		<svg>
 			<use xlink:href="#f-icon-notes" />
 		</svg>
@@ -8,14 +8,14 @@
 	{{/if}}
 
     {{#if this.data.helix}}
-	<span class="f-control f-icon" data-f-toggle-control="dna" title="Toggle DNA">
+	<span class="f-control f-icon" data-f-toggle-control="#toggle-{{id}}-dna" title="Toggle DNA">
         <svg style="transform: rotate(25deg);">
             <use xlink:href="#f-icon-dna" />
         </svg>
     </span>
     {{/if}}
 
-	<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+	<span class="f-control f-icon" data-f-toggle-control="#toggle-{{id}}-code" title="Toggle Code">
 		<svg>
 			<use xlink:href="#f-icon-code" />
 		</svg>

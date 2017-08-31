@@ -38,3 +38,10 @@ colors.init = (elms) => {
 document.addEventListener("DOMContentLoaded", function () {
     colors.init();
 });
+
+/**
+ * -----------------------------------------------------------------------------
+ * Exports
+ * -----------------------------------------------------------------------------
+ */
+module.exports = colors;

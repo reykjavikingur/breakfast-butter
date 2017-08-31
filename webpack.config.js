@@ -23,12 +23,24 @@ module.exports = (config) => {
         }
     }));
 
+    try {
+        require.resolve('jquery');
+        plugins.push(new webpack.ProvidePlugin({
+            'window.jQuery': 'jquery',
+            'window.$':      'jquery',
+            'jQuery':        'jquery',
+            '$':             'jquery'
+        }));
+    } catch (e) {
+        console.log('run npm install --save jquery');
+    }
+
 
     return {
         target:  'node',
         entry:   {
-            'fabricator/scripts/f': config.scripts.fabricator.src,
-            'toolkit/scripts/toolkit': config.scripts.toolkit.src
+            'fabricator/scripts/f'       : config.scripts.fabricator.src,
+            'toolkit/scripts/toolkit'    : config.scripts.toolkit.src
         },
         output:  {
             path:     path.resolve(__dirname, config.dest, 'assets'),

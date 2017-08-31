@@ -97,6 +97,9 @@ menu.init = () => {
     $('.f-menu').nanoScroller();
 };
 
+document.addEventListener("DOMContentLoaded", function() {
+    menu.init();
+});
 
 
 /**
