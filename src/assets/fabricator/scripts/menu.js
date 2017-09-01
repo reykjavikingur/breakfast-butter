@@ -35,10 +35,6 @@ menu.click = (e) => {
 	$('.f-menu-container [data-search]').submit();
 };
 
-menu.search = () => {
-	$('.f-menu-container [data-search]').submit();
-};
-
 menu.change = () => {
     let url = window.location.href.split('/').pop();
 
@@ -140,7 +136,7 @@ menu.collapse.init = () => {
 menu.initListeners = () => {
     $(window).on('hashchange', menu.change).trigger('hashchange');
 	$(document).on('click', '.f-navbar-control', menu.click);
-	$(document).on('keyup', '.f-menu-container [data-search] input', menu.search);
+
 	$('.f-menu-container').on('mouseover', menu.mouseover);
     $('.f-menu-container').on('mouseout', menu.mouseout);
     $('[data-f-collapse]').on('click', menu.collapse.toggle);
@@ -151,6 +147,8 @@ menu.active = () => {
 };
 
 menu.init = () => {
+    if ($('.f-menu')[0].hasOwnProperty('__menu')) { return; }
+    $('.f-menu')[0].__menu = menu;
     menu.initListeners();
     menu.collapse.init();
     $('.f-menu').nanoScroller();
