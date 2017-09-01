@@ -1,5 +1,13 @@
 'use strict';
 const _          = require('underscore');
+const config     = require('../../../data/toolkit.json');
+const slugify    = require('slugify');
+
+/**
+ * -----------------------------------------------------------------------------
+ * Constructor
+ * -----------------------------------------------------------------------------
+ */
 const toggler    = {};
 
 toggler.controls = ['.f-item-notes', '.f-item-labels', '.f-item-dna', '.f-item-code'];
@@ -9,21 +17,23 @@ toggler.init = function () {
 };
 
 toggler.add = function (id) {
-    let exp    = window.localStorage.getItem('expanded');
+    let prefix = slugify(config.name.toLowerCase());
+    let exp    = window.localStorage.getItem(prefix + '-expanded');
     exp        = (exp) ? JSON.parse(exp) : [];
 
     exp.push(id);
     exp = JSON.stringify(_.uniq(exp));
 
-    window.localStorage.setItem('expanded', exp);
+    window.localStorage.setItem(prefix + '-expanded', exp);
 };
 
 toggler.remove = function (id) {
-    let exp    = window.localStorage.getItem('expanded');
+    let prefix = slugify(config.name.toLowerCase());
+    let exp    = window.localStorage.getItem(prefix + '-expanded');
     exp        = (exp) ? JSON.parse(exp) : [];
     exp        = JSON.stringify(_.without(exp, id));
 
-    window.localStorage.setItem('expanded', exp);
+    window.localStorage.setItem(prefix + '-expanded', exp);
 };
 
 toggler.toggle = function (id, state) {
@@ -42,9 +52,10 @@ toggler.toggle = function (id, state) {
 };
 
 toggler.expand = function () {
-    let exp      = window.localStorage.getItem('expanded');
-    exp          = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
-    let inter    = _.intersection(toggler.controls, exp);
+    let prefix    = slugify(config.name.toLowerCase());
+    let exp       = window.localStorage.getItem(prefix + '-expanded');
+    exp           = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
+    let inter     = _.intersection(toggler.controls, exp);
 
     $('.f-global-control').removeClass('f-active');
 
