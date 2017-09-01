@@ -5,3 +5,4 @@ require('./toggler');
 require('./search');
 require('./nanoscroll');
 require('./menu');
+require('./code');

@@ -123,3 +123,32 @@ pre[class*='language-'] {
 .namespace {
 	opacity: 0.7;
 }
+
+.f-item-code {
+    position: relative;
+}
+.f-btn-copy {
+    background-color    : #FFFFFF;
+    border-radius       : 0 0 0 8px;
+    position            : absolute;
+    cursor              : pointer;
+    border              : none;
+    width               : 35px;
+    height              : 35px;
+    top                 : 0;
+    right               : 0;
+
+    &:hover {
+        background-color: transparent;
+    }
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+
+    img {
+        width           : 18px;
+        height          : auto;
+    }
+}

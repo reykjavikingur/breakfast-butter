@@ -12,9 +12,13 @@
 
 <div class="f-item-code" data-f-toggle="code" id="toggle-{{id}}-code" aria-expanded="false">
     <pre><code class="language-markup">{{material @key @root}}</code></pre>
+    <button class="f-btn-copy" type="button" data-clipboard-target="#toggle-{{id}}-code .language-markup">
+        <img src="/assets/fabricator/images/clipboard.svg" alt="copy to clipboard" />
+    </button>
 </div>
 
 <div class="f-item-preview" id="preview-{{@key}}">
 	{{{material @key @root}}}
 </div>
+
 

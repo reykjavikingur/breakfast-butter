@@ -291,7 +291,7 @@ gulp.task('serve', () => {
 	gulp.watch([config.scripts.fabricator.watch, config.scripts.toolkit.watch], ['scripts:watch']);
 
 	gulp.task('images:watch', ['images'], reload);
-	gulp.watch(config.images.toolkit.watch, ['images:watch']);
+	gulp.watch([config.images.fabricator.watch, config.images.toolkit.watch], ['images:watch']);
 
 	gulp.task('assembler:watch', ['assembler']);
 	gulp.watch(config.templates.watch, ['assembler:watch']);
