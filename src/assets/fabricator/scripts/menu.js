@@ -1,5 +1,8 @@
 'use strict';
-const _ = require('underscore');
+
+const _          = require('underscore');
+const config     = require('../../../data/toolkit.json');
+const slugify    = require('slugify');
 
 /**
  * -----------------------------------------------------------------------------
@@ -85,21 +88,22 @@ menu.mouseout = () => {
 };
 
 menu.collapse.add = (id) => {
-    let exp    = window.localStorage.getItem('collapsed');
-    exp        = (exp) ? JSON.parse(exp) : [];
-
+    let prefix    = slugify(config.name.toLowerCase());
+    let exp       = window.localStorage.getItem(prefix + '-collapsed');
+    exp           = (exp) ? JSON.parse(exp) : [];
     exp.push(id);
     exp = JSON.stringify(_.uniq(exp));
 
-    window.localStorage.setItem('collapsed', exp);
+    window.localStorage.setItem(prefix + '-collapsed', exp);
 };
 
 menu.collapse.remove = (id) => {
-    let exp    = window.localStorage.getItem('collapsed');
-    exp        = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
-    exp        = JSON.stringify(_.without(exp, id));
+    let prefix    = slugify(config.name.toLowerCase());
+    let exp       = window.localStorage.getItem(prefix + '-collapsed');
+    exp           = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
+    exp           = JSON.stringify(_.without(exp, id));
 
-    window.localStorage.setItem('collapsed', exp);
+    window.localStorage.setItem(prefix + '-collapsed', exp);
 };
 
 menu.collapse.toggle = (e) => {
@@ -121,8 +125,9 @@ menu.collapse.toggle = (e) => {
 };
 
 menu.collapse.init = () => {
-    let exp    = window.localStorage.getItem('collapsed');
-    exp        = (exp) ? JSON.parse(exp) : [];
+    let prefix    = slugify(config.name.toLowerCase());
+    let exp       = window.localStorage.getItem(prefix + '-collapsed');
+    exp           = (exp) ? JSON.parse(exp) : [];
 
     let active = $('.f-menu .f-active').closest('li[role="listitem"]');
 
