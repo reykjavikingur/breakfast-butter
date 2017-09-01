@@ -2,7 +2,7 @@
   "colors"       : 20,
   "menu"         : "left",
   "name"         : "Butter",
-  "version"      : "1.0.19",
+  "version"      : "1.0.21",
   "bootstrap"    : "v4.0.0-alpha.6",
   "branding": {
     "logo": false,

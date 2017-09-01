@@ -6,7 +6,7 @@ const _ = require('underscore');
  * Constructor
  * -----------------------------------------------------------------------------
  */
-const menu = {};
+const menu = {collapse: {}};
 
 
 menu.toggle = () => {
@@ -88,22 +88,71 @@ menu.mouseout = () => {
         body.removeClass('f-menu-open');
 };
 
+menu.collapse.add = (id) => {
+    let exp    = window.localStorage.getItem('collapsed');
+    exp        = (exp) ? JSON.parse(exp) : [];
+
+    exp.push(id);
+    exp = JSON.stringify(_.uniq(exp));
+
+    window.localStorage.setItem('collapsed', exp);
+};
+
+menu.collapse.remove = (id) => {
+    let exp    = window.localStorage.getItem('collapsed');
+    exp        = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
+    exp        = JSON.stringify(_.without(exp, id));
+
+    window.localStorage.setItem('collapsed', exp);
+};
+
+menu.collapse.toggle = (e) => {
+    let target    = $(e.currentTarget).parent();
+    let id        = target.attr('id');
+    let state     = target.attr('aria-expanded');
+    state         = Boolean(state === 'true');
+
+    target.attr('aria-expanded', !state);
+
+    if (id) {
+        id = '#' + id;
+        if (state === true) {
+            menu.collapse.add(id);
+        } else {
+            menu.collapse.remove(id);
+        }
+    }
+};
+
+menu.collapse.init = () => {
+    let exp    = window.localStorage.getItem('collapsed');
+    exp        = (exp) ? JSON.parse(exp) : [];
+
+    let active = $('.f-menu .f-active').closest('li[role="listitem"]');
+
+    exp.forEach((item) => {
+        let target = $(item);
+        if (target.attr('id') === active.attr('id')) { return; }
+        target.attr('aria-expanded', false);
+    });
+};
+
 menu.initListeners = () => {
     $(window).on('hashchange', menu.change).trigger('hashchange');
 	$(document).on('click', '.f-navbar-control', menu.click);
 	$(document).on('keyup', '.f-menu-container [data-search] input', menu.search);
 	$('.f-menu-container').on('mouseover', menu.mouseover);
     $('.f-menu-container').on('mouseout', menu.mouseout);
+    $('[data-f-collapse]').on('click', menu.collapse.toggle);
 };
 
 menu.active = () => {
 	menu.change();
 };
 
-
 menu.init = () => {
-	menu.initListeners();
-	setTimeout(menu.active, 500);
+    menu.initListeners();
+    menu.collapse.init();
     $('.f-menu').nanoScroller();
 };
 
