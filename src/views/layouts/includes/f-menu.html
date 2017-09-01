@@ -1,5 +1,5 @@
-<!-- fabricator menu -->
-<div id="f-menu-container" class="active f-menu-container {{#if toolkit.menu}}{{toolkit.menu}}{{else}}right{{/if}}">
+<!-- Butter menu -->
+<div id="f-menu-container" class="f-menu-container {{#if toolkit.menu}}{{toolkit.menu}}{{else}}right{{/if}}">
     <div class="f-flex-columns">
         {{> f-navbar}}
         <div class="f-flex-rows">
@@ -9,7 +9,7 @@
 
             <div class="f-menu nano">
                 <ul class="nano-content" role="list">
-                    <li data-tags="docs overview{{#each docs}} {{name}}{{/each}}" role="listitem">
+                    <li id="menu-section-docs" data-tags="docs overview{{#each docs}} {{name}}{{/each}}" role="listitem" aria-expanded="true">
                         <a href="docs.html" class="f-menu__heading">Docs</a>
                         <button class="f-menu-collapse" type="button" data-f-collapse></button>
                         <ul role="menu">
@@ -25,8 +25,9 @@
                     </li>
 
                     {{#each views}}
-                    <li data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem">
+                    <li id="menu-section-{{@key}}" data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
                         <a class="f-menu__heading" href="javascript:void(0);">{{name}}</a>
+                        <button class="f-menu-collapse" type="button" data-f-collapse></button>
                         <ul role="menu">
                             {{#each items}}
                             <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}" role="menuitem">
@@ -38,8 +39,9 @@
                     {{/each}}
 
                     {{#if pages}}
-                    <li data-tags="pages page" role="listitem">
+                    <li id="menu-section-pages" data-tags="pages page" role="listitem" aria-expanded="true">
                         <a href="#pages" class="f-menu__heading">Pages</a>
+                        <button class="f-menu-collapse" type="button" data-f-collapse></button>
                         <ul role="menu">
                             {{#each pages}}
                             <li data-tags="pages page {{label}}" role="menuitem">
@@ -51,8 +53,9 @@
                     {{/if}}
 
                     {{#each materials}}
-                    <li data-tags="materials {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem">
+                    <li id="menu-section-materials-{{@key}}" data-tags="materials {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
                         <a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
+                        <button class="f-menu-collapse" type="button" data-f-collapse></button>
                         <ul role="menu">
                             {{#each items}}
                             <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}" role="menuitem">

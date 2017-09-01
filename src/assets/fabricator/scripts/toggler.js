@@ -10,7 +10,7 @@ toggler.init = function () {
 
 toggler.add = function (id) {
     let exp    = window.localStorage.getItem('expanded');
-    exp        = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
+    exp        = (exp) ? JSON.parse(exp) : [];
 
     exp.push(id);
     exp = JSON.stringify(_.uniq(exp));
@@ -20,7 +20,7 @@ toggler.add = function (id) {
 
 toggler.remove = function (id) {
     let exp    = window.localStorage.getItem('expanded');
-    exp        = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
+    exp        = (exp) ? JSON.parse(exp) : [];
     exp        = JSON.stringify(_.without(exp, id));
 
     window.localStorage.setItem('expanded', exp);

@@ -240,12 +240,12 @@ $hover-width    : 20px;
             border-bottom    : 1px solid lighten($gray-darker, 1%);
             border-top       : 1px solid lighten($gray-darker, 1%);
             border-radius    : 4px;
-            margin           : 0 12px;
+            margin-left      : 12px;
+            margin-right     : 12px;
             padding-left     : 20px;
             color            : $orange;
         }
     }
-
 
     .f-menu__heading {
         padding-left        : 18px;
@@ -257,20 +257,28 @@ $hover-width    : 20px;
         border-radius       : 4px;
         display             : block;
 
-        &:hover,
-        &.f-active {
+        &:hover {
             color: $orange;
         }
     }
 
     button.f-menu-collapse {
         top                 : 0;
-        right               : 15px;
+        padding             : 0;
+        right               : 13px;
         width               : 34px;
         height              : 34px;
         border              : none;
         position            : absolute;
         background-color    : transparent;
+
+        &:focus,
+        &:hover,
+        &:active {
+            cursor              : ns-resize;
+            outline             : none;
+            background-color    : $gray-darker;
+        }
 
         &:before {
             transform           : translate(-50%, -50%);
@@ -278,9 +286,34 @@ $hover-width    : 20px;
             position            : absolute;
             top                 : 50%;
             left                : 50%;
-            width               : 50%;
-            height              : 3px;
+            width               : 10px;
+            height              : 1px;
             content             : "";
+        }
+    }
+
+    li[aria-expanded="false"] {
+        button.f-menu-collapse {
+            background-color    : $gray-darker;
+
+            &:before {
+                background-color: $gray-lighter;
+            }
+
+            &:after {
+                transform           : translate(-50%, -50%);
+                background-color    : $gray-lighter;
+                position            : absolute;
+                top                 : 50%;
+                left                : 50%;
+                width               : 1px;
+                height              : 10px;
+                content             : "";
+            }
+        }
+
+        ul[role="menu"] {
+            display: none;
         }
     }
 }
