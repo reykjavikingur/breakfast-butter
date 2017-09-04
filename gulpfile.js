@@ -29,6 +29,7 @@ const webpack        = require('webpack');
 const nodemon        = require('nodemon');
 const log            = console.log.bind(console);
 const yargs          = require('yargs').argv;
+const zip            = require('zip-folder');
 
 /**
  * configuration
@@ -331,4 +332,15 @@ gulp.task('default', (done) => {
             done();
         });
     }
+});
+
+gulp.task('zip-dist', (done) => {
+    zip(config.dest, config.zip, function(err) {
+        if(err) {
+            console.log('oh no!', err);
+        } else {
+            console.log('zipped dist folder');
+        }
+        done();
+    });
 });
