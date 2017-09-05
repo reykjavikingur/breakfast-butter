@@ -94,5 +94,6 @@
   ],
   "dest": "dist",
   "src": "src",
+  "zip": "breakfast-butter.zip",
   "hooks": {}
 }
