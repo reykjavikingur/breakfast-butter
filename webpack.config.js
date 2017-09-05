@@ -26,10 +26,10 @@ module.exports = (config) => {
     try {
         require.resolve('jquery');
         plugins.push(new webpack.ProvidePlugin({
-            'window.jQuery': 'jquery',
-            'window.$':      'jquery',
-            'jQuery':        'jquery',
-            '$':             'jquery'
+            'window.jQuery'    : 'jquery',
+            'window.$'         : 'jquery',
+            'jQuery'           : 'jquery',
+            '$'                : 'jquery'
         }));
     } catch (e) {
         console.log('run npm install --save jquery');
@@ -37,25 +37,26 @@ module.exports = (config) => {
 
 
     return {
-        target:  'node',
-        entry:   {
+        target     : 'node',
+        entry      : {
             'fabricator/scripts/f'       : config.scripts.fabricator.src,
-            'toolkit/scripts/toolkit'    : config.scripts.toolkit.src
+            'toolkit/scripts/toolkit'    : config.scripts.toolkit.src,
+            'toolkit/scripts/catalyst'   : config.scripts.catalyst.src
         },
-        output:  {
-            path:     path.resolve(__dirname, config.dest, 'assets'),
-            filename: '[name].js'
+        output     :  {
+            path        : path.resolve(__dirname, config.dest, 'assets'),
+            filename    : '[name].js'
         },
-        devtool: devtools,
-        plugins: plugins,
+        devtool    : devtools,
+        plugins    : plugins,
         module:  {
             loaders: [
                 {
-                    test:    [/\.js$/, /\.es6$/, /\.jsx?S/],
-                    loader:  'babel-loader',
-                    exclude: /node_modules/,
-                    query:   {
-                        presets: ['react', 'es2015']
+                    test           : [/\.js$/, /\.es6$/, /\.jsx?S/],
+                    loader         : 'babel-loader',
+                    exclude        : /node_modules/,
+                    query          : {
+                        presets    : ['react', 'es2015']
                     }
                 }
             ]
