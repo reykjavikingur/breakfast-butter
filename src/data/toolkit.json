@@ -1,6 +1,6 @@
 {
   "colors"       : 20,
-  "menu"         : "left",
+  "menu"         : "right",
   "name"         : "Butter",
   "version"      : "1.0.21",
   "branding": {

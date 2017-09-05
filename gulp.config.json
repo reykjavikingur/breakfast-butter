@@ -30,6 +30,11 @@
     }
   },
   "scripts": {
+    "catalyst": {
+      "src": "./src/catalyst/catalyst.js",
+      "dest": "dist/assets/toolkit/scripts",
+      "watch": "./src/catalyst/**/*"
+    },
     "fabricator": {
       "src": "./src/assets/fabricator/scripts/fabricator.js",
       "dest": "dist/assets/fabricator/scripts",
