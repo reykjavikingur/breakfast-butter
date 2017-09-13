@@ -26,10 +26,12 @@ module.exports = (config) => {
     try {
         require.resolve('jquery');
         plugins.push(new webpack.ProvidePlugin({
-            'window.jQuery': 'jquery',
-            'window.$':      'jquery',
-            'jQuery':        'jquery',
-            '$':             'jquery'
+            'window.jQuery'    : 'jquery',
+            'window.jquery'    : 'jquery',
+            'window.$'         : 'jquery',
+            'jQuery'           : 'jquery',
+            'jquery'           : 'jquery',
+            '$'                : 'jquery'
         }));
     } catch (e) {
         console.log('run npm install --save jquery');
