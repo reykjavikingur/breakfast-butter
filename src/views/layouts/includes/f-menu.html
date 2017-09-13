@@ -25,7 +25,7 @@
                     </li>
 
                     {{#each views}}
-                    <li id="menu-section-{{@key}}" data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
+                    <li id="menu-section-{{@key}}" data-tags="views {{name}}{{#each items}} {{name}}{{#if this.data.title}} {{this.data.title}}{{/if}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
                         <a class="f-menu__heading" href="javascript:void(0);">{{name}}</a>
                         <button class="f-menu-collapse" type="button" data-f-collapse></button>
                         <ul role="menu">
@@ -57,7 +57,7 @@
                     {{/if}}
 
                     {{#each materials}}
-                    <li id="menu-section-materials-{{@key}}" data-tags="materials {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
+                    <li id="menu-section-materials-{{@key}}" data-tags="materials {{name}}{{#each items}} {{name}}{{#if this.data.title}} {{this.data.title}}{{/if}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
                         <a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
                         <button class="f-menu-collapse" type="button" data-f-collapse></button>
                         <ul role="menu">
