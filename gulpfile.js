@@ -289,7 +289,7 @@ gulp.task('serve', () => {
 	gulp.watch([config.styles.fabricator.watch, config.styles.toolkit.watch], ['styles:watch']);
 
 	gulp.task('scripts:watch', ['scripts']);
-	gulp.watch([config.scripts.fabricator.watch, config.scripts.toolkit.watch], ['scripts:watch']);
+	gulp.watch([config.scripts.fabricator.watch, config.scripts.toolkit.watch, config.scripts.catalyst.watch], ['scripts:watch']);
 
 	gulp.task('images:watch', ['images'], reload);
 	gulp.watch([config.images.fabricator.watch, config.images.toolkit.watch], ['images:watch']);
