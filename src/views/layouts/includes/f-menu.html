@@ -25,13 +25,17 @@
                     </li>
 
                     {{#each views}}
-                    <li id="menu-section-{{@key}}" data-tags="views {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
+                    <li id="menu-section-{{@key}}" data-tags="views {{name}}{{#each items}} {{name}}{{#if this.data.title}} {{this.data.title}}{{/if}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
                         <a class="f-menu__heading" href="javascript:void(0);">{{name}}</a>
                         <button class="f-menu-collapse" type="button" data-f-collapse></button>
                         <ul role="menu">
                             {{#each items}}
                             <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}" role="menuitem">
+                                {{#if this.data.title}}
+                                <a href="{{@../key}}/{{@key}}.html" target="_blank">{{this.data.title}}</a>
+                                {{else}}
                                 <a href="{{@../key}}/{{@key}}.html" target="_blank">{{name}}</a>
+                                {{/if}}
                             </li>
                             {{/each}}
                         </ul>
@@ -53,13 +57,17 @@
                     {{/if}}
 
                     {{#each materials}}
-                    <li id="menu-section-materials-{{@key}}" data-tags="materials {{name}}{{#each items}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
+                    <li id="menu-section-materials-{{@key}}" data-tags="materials {{name}}{{#each items}} {{name}}{{#if this.data.title}} {{this.data.title}}{{/if}}{{#if data.atomic}} {{data.atomic}}{{/if}}{{/each}}" role="listitem" aria-expanded="true">
                         <a href="{{@key}}.html" class="f-menu__heading">{{name}}</a>
                         <button class="f-menu-collapse" type="button" data-f-collapse></button>
                         <ul role="menu">
                             {{#each items}}
                             <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}" role="menuitem">
+                                {{#if this.data.title}}
+                                <a href="{{@../key}}.html#{{@key}}">{{this.data.title}}</a>
+                                {{else}}
                                 <a href="{{@../key}}.html#{{@key}}">{{name}}</a>
+                                {{/if}}
                             </li>
                             {{/each}}
                         </ul>

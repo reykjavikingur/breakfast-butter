@@ -1,22 +1,32 @@
-<div class="f-item-group" id="{{@key}}">
+<div class="f-item-group" id="{{serial}}">
 
-{{#if items}}
-	<div class="f-item-heading-group">
-		<h2 class="f-item-heading">{{name}}</h2>
-	</div>
-	{{#each items}}
-		<div class="f-item-group" id="{{@key}}">
-			<div class="f-item-heading-group">
-				<h3 class="f-item-heading">{{name}}</h3>
-				{{> f-item-controls}}
-			</div>{{> f-item-content this}}
-		</div>
-	{{/each}}
-{{else}}
-	<div class="f-item-heading-group">
-		<h2 class="f-item-heading">{{name}}</h2>
-		{{> f-item-controls id=@key }}
-	</div>{{> f-item-content this id=@key}}
-{{/if}}
+    {{#if items}}
+    <div class="f-item-heading-group">
+        <h2 class="f-item-heading">{{name}}</h2>
+    </div>
+    {{#each items}}
+    <div class="f-item-group">
+        <div class="f-item-heading-group">
+            {{#if this.data.title}}
+            <h3 class="f-item-heading">{{{this.data.title}}}</h3>
+            {{else}}
+            <h3 class="f-item-heading">{{name}}</h3>
+            {{/if}}
+            {{> f-item-controls id=serial}}
+        </div>
+        {{> f-item-content this id=serial}}
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="f-item-heading-group">
+        {{#if this.data.title}}
+        <h2 class="f-item-heading">{{{this.data.title}}}</h2>
+        {{else}}
+        <h2 class="f-item-heading">{{name}}</h2>
+        {{/if}}
+        {{> f-item-controls id=serial }}
+    </div>
+    {{> f-item-content this id=serial}}
+    {{/if}}
 
 </div>
