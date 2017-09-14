@@ -157,6 +157,16 @@ menu.init = () => {
     menu.initListeners();
     menu.collapse.init();
     $('.f-menu').nanoScroller();
+
+    let firstRun = window.localStorage.getItem('init');
+    if (!firstRun) {
+        window.localStorage.setItem('init', true);
+
+        $('#f-menu-container').addClass('active');
+        setTimeout(function () {
+            $('#f-menu-container').removeClass('active');
+        }, 1000);
+    }
 };
 
 $(function() {
