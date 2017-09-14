@@ -44,6 +44,13 @@ toggler.toggle = function (id, state) {
 
     target.attr('aria-expanded', state);
 
+    if (target.hasClass('f-item-notes')) {
+        target.closest('.f-item-group').find('.toggle-notes').attr('aria-expanded', state);
+    }
+    if (target.hasClass('f-item-code')) {
+        target.closest('.f-item-group').find('.toggle-code').attr('aria-expanded', state);
+    }
+
     if (state === true) {
         toggler.add(id);
     } else {

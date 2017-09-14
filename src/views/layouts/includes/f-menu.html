@@ -32,7 +32,7 @@
                             {{#each items}}
                             <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}" role="menuitem">
                                 {{#if this.data.title}}
-                                <a href="{{@../key}}/{{@key}}.html" target="_blank">{{this.data.title}}</a>
+                                <a href="{{@../key}}/{{@key}}.html" target="_blank">{{{this.data.title}}}</a>
                                 {{else}}
                                 <a href="{{@../key}}/{{@key}}.html" target="_blank">{{name}}</a>
                                 {{/if}}
@@ -64,7 +64,7 @@
                             {{#each items}}
                             <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}" role="menuitem">
                                 {{#if this.data.title}}
-                                <a href="{{@../key}}.html#{{@key}}">{{this.data.title}}</a>
+                                <a href="{{@../key}}.html#{{@key}}">{{{this.data.title}}}</a>
                                 {{else}}
                                 <a href="{{@../key}}.html#{{@key}}">{{name}}</a>
                                 {{/if}}

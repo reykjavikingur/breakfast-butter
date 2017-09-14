@@ -1,11 +1,11 @@
-<div class="f-item-group" id="{{serial}}">
+<div class="f-item-group" id="{{@key}}">
 
     {{#if items}}
     <div class="f-item-heading-group">
         <h2 class="f-item-heading">{{name}}</h2>
     </div>
     {{#each items}}
-    <div class="f-item-group">
+    <div class="f-item-group" id="{{serial}}">
         <div class="f-item-heading-group">
             {{#if this.data.title}}
             <h3 class="f-item-heading">{{{this.data.title}}}</h3>
