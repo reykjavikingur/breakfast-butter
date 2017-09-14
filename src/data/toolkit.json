@@ -2,7 +2,7 @@
   "colors"       : 20,
   "menu"         : "right",
   "name"         : "Butter",
-  "version"      : "1.0.21",
+  "version"      : "1.0.22",
   "branding": {
     "logo": false,
     "title": "Butter"
