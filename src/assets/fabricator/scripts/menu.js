@@ -140,14 +140,14 @@ menu.active = () => {
 };
 
 menu.settings.toggle = function () {
-    let d = $(this).data();
-    let target = $(d.fToggleSettings);
+    let d         = $(this).data();
+    let target    = $(d.fToggleSettings);
     target.slideToggle(250);
 };
 
 menu.settings.on.position = (e) => {
-    let me = $(e.currentTarget);
-    let sel = me.data('selected');
+    let me     = $(e.currentTarget);
+    let sel    = me.data('selected');
     window.localStorage.setItem(prefix+'-menu', sel);
     setTimeout(function () {
         $('#f-menu-container').removeClass('right left').addClass(sel);
@@ -156,14 +156,26 @@ menu.settings.on.position = (e) => {
 };
 
 menu.settings.on.fullscreen = (e) => {
-    let me = $(e.currentTarget);
-    let sel = me.data('selected');
+    let me     = $(e.currentTarget);
+    let sel    = me.data('selected');
     window.localStorage.setItem(prefix+'-fullscreen', sel);
 
     if (sel === 'on') {
         $('.f-container').addClass('fullscreen');
     } else {
         $('.f-container').removeClass('fullscreen');
+    }
+};
+
+menu.settings.on.sticky = (e) => {
+    let me     = $(e.currentTarget);
+    let sel    = me.data('selected');
+    window.localStorage.setItem(prefix+'-sticky', sel);
+
+    if (sel === 'on') {
+        $('#f-menu-container').addClass('sticky');
+    } else {
+        $('#f-menu-container').removeClass('sticky');
     }
 };
 
@@ -179,6 +191,8 @@ menu.initListeners = () => {
     $('[data-btn-group="menu"]').on('select', menu.settings.on.position);
 
     $('[data-btn-group="fullscreen"]').on('select', menu.settings.on.fullscreen);
+
+    $('[data-btn-group="sticky"]').on('select', menu.settings.on.sticky);
 };
 
 menu.init = () => {
@@ -206,6 +220,10 @@ menu.init = () => {
     // Fullscreen: on/off
     let fullscreen = window.localStorage.getItem(prefix+'-fullscreen') || config.fullscreen;
     if (fullscreen) { $('[data-btn-group="fullscreen"]').fBtnGroup('select', fullscreen); }
+
+    // Sticky: on/off
+    let sticky = window.localStorage.getItem(prefix+'-sticky') || config.sticky;
+    if (sticky) { $('[data-btn-group="sticky"]').fBtnGroup('select', sticky); }
 };
 
 $(function() {

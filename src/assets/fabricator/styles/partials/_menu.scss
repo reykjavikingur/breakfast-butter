@@ -66,10 +66,14 @@ $hover-width    : 20px;
     &:hover,
     &:focus,
     &:active,
-    &.active {
+    &.active,
+    &.sticky {
         left                   : 0;
         transition             : left ease-in-out .25s;
         box-shadow             : 1px 0 20px 5px rgba(0, 0, 0, .5);
+    }
+    &.sticky {
+        transition: none;
     }
 
     &:before {
@@ -107,13 +111,18 @@ $hover-width    : 20px;
     &:hover,
     &:focus,
     &:active,
-    &.active {
+    &.active,
+    &.sticky {
         right         : 0;
         transition    : right ease-in-out .25s;
         box-shadow    : 1px 0 20px 5px rgba(0, 0, 0, .5);
     }
 
-    
+    &.sticky {
+        transition: none;
+    }
+
+
     &:before {
 
         content : " ";
