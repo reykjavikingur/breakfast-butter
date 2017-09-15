@@ -140,7 +140,7 @@ gulp.task('styles:toolkit', () => {
 	return gulp.src(config.styles.toolkit.src)
 		.pipe(gulpif(config.dev, sourcemaps.init()))
 		.pipe(sass({
-			includePaths: './node_modules',
+			includePaths: ['./node_modules'],
 		}).on('error', sass.logError))
 		.pipe(prefix('last 1 version'))
 		.pipe(gulpif(!config.dev, csso()))
