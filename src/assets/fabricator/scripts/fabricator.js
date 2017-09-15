@@ -1,4 +1,5 @@
 
+require('./f-btn-group');
 require('./prism');
 require('./colors');
 require('./toggler');

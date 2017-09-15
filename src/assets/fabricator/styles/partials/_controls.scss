@@ -15,6 +15,7 @@
         flex: 1;
         border: none;
         background-color: transparent;
+        color: $f-grey-light;
         &:focus {
             outline: none;
         }
@@ -58,10 +59,6 @@
             fill: color(light);
         }
     }
-}
-
-.f-control-bar {
-    padding: 16px 0;
 }
 
 .f-menu-toggle {
