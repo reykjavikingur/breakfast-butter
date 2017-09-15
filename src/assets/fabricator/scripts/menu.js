@@ -201,15 +201,11 @@ menu.init = () => {
 
     // Set menu position: left/right
     let menuPos = window.localStorage.getItem(prefix+'-menu') || config.menu;
-    if (menuPos) { $('.f-btn-group').fBtnGroup('select', menuPos); }
+    if (menuPos) { $('[data-btn-group="menu"]').fBtnGroup('select', menuPos); }
 
-    // Fullscreen
-    let fullscreen = window.localStorage.getItem(prefix+'-fullscreen');
-    if (fullscreen === 'on') {
-        $('.f-container').addClass('fullscreen');
-    } else {
-        $('.f-container').removeClass('fullscreen');
-    }
+    // Fullscreen: on/off
+    let fullscreen = window.localStorage.getItem(prefix+'-fullscreen') || config.fullscreen;
+    if (fullscreen) { $('[data-btn-group="fullscreen"]').fBtnGroup('select', fullscreen); }
 };
 
 $(function() {
