@@ -1,3 +1,4 @@
+$f-x-pad: 30px;
 
 body {
 	margin: 0;
@@ -6,9 +7,13 @@ body {
 
 .f-container {
 	position: relative;
-	padding: 80px 1em 50px 1em;
+	padding: 80px $f-x-pad 50px $f-x-pad;
 	z-index: 0;
     font-family : Roboto, Helvetica, Arial, sans-serif;
+
+    &.fullscreen {
+        padding: 80px 0 50px 0;
+    }
 }
 
 .f-grid {

@@ -54,9 +54,14 @@ $hover-width    : 20px;
         }
     }
 }
+
+.f-menu-container {
+    opacity        : 0;
+}
 .f-menu-container.left {
-    left                       : calc(-#{$navbar-width} + -#{$menu-width});
-    transition                 : left ease-in-out .125s;
+    opacity       : 1;
+    left          : calc(-#{$navbar-width} + -#{$menu-width});
+    transition    : left ease-in-out .125s, opacity ease-in-out .125s;
 
     &:hover,
     &:focus,
@@ -78,22 +83,26 @@ $hover-width    : 20px;
     }
 
     &:after {
-        top                    : 0;
-        content                : ' ';
-        width                  : 60px;
-        height                 : 56px;
-        right                  : -60px;
-        cursor                 : pointer;
-        position               : absolute;
-        background-position    : center center;
-        background-image       : $logo;
-        background-size        : 100% 100%;
-        background-size        : contain;
+        @extend .bicon;
+        top                 : 0;
+        width               : 60px;
+        height              : 56px;
+        right               : -60px;
+        cursor              : pointer;
+        position            : absolute;
+        background-color    : $gray-dark;
+        content             : btr-ico("btr-menu");
+        font-size           : 28px;
+        overflow            : hidden;
+        line-height         : 52px !important;
+        text-align          : center;
+
     }
 }
 .f-menu-container.right {
+    opacity       : 1;
     right         : calc(-#{$navbar-width} + -#{$menu-width});
-    transition    : right ease-in-out .125s;
+    transition    : right ease-in-out .125s, opacity ease-in-out .125s;
 
     &:hover,
     &:focus,
@@ -105,7 +114,7 @@ $hover-width    : 20px;
     }
 
     &:before {
-        content             : " ";
+
         position            : absolute;
         width               : $hover-width;
         height              : 100%;
@@ -115,17 +124,21 @@ $hover-width    : 20px;
     }
 
     &:after {
-        top                    : 0;
-        content                : ' ';
-        width                  : 60px;
-        height                 : 56px;
-        left                   : -60px;
-        cursor                 : pointer;
-        position               : absolute;
-        background-position    : center center;
-        background-image       : $logo;
-        background-size        : 100% 100%;
-        background-size        : contain;
+        @extend .bicon;
+
+        top                 : 0;
+        width               : 60px;
+        height              : 56px;
+        left                : -60px;
+        cursor              : pointer;
+        position            : absolute;
+        background-color    : $gray-dark;
+        content             : btr-ico("btr-menu");
+        font-size           : 28px;
+        overflow            : hidden;
+        line-height         : 52px !important;
+        text-align          : center;
+
     }
 
     .f-flex-columns {
@@ -187,7 +200,6 @@ $hover-width    : 20px;
             svg {
                 fill            : $black;
                 stroke-width    : 2px;
-                transform       : rotate(25deg);
             }
         }
     }
@@ -200,7 +212,7 @@ $hover-width    : 20px;
 
     ul {
         margin-top       : 0;
-        margin-bottom    : 0;
+        margin-bottom    : 15px;
         padding-left     : 0 !important;
         margin-left      : 0 !important;
         font-size        : 16px !important;
@@ -334,6 +346,7 @@ $hover-width    : 20px;
     right                 : 0;
     bottom                : 0;
     left                  : 0;
+    margin-bottom         : 0;
 
     li {
         position: relative;

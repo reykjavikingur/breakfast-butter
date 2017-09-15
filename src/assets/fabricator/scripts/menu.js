@@ -9,8 +9,8 @@ const slugify    = require('slugify');
  * Constructor
  * -----------------------------------------------------------------------------
  */
-const menu = {collapse: {}};
-
+const menu = {collapse: {}, settings: {on: {}}};
+const prefix    = slugify(config.name.toLowerCase());
 
 menu.toggle = () => {
 	$('.f-menu-container').toggleClass('active');
@@ -88,7 +88,6 @@ menu.mouseout = () => {
 };
 
 menu.collapse.add = (id) => {
-    let prefix    = slugify(config.name.toLowerCase());
     let exp       = window.localStorage.getItem(prefix + '-collapsed');
     exp           = (exp) ? JSON.parse(exp) : [];
     exp.push(id);
@@ -98,7 +97,6 @@ menu.collapse.add = (id) => {
 };
 
 menu.collapse.remove = (id) => {
-    let prefix    = slugify(config.name.toLowerCase());
     let exp       = window.localStorage.getItem(prefix + '-collapsed');
     exp           = (typeof exp !== 'undefined') ? JSON.parse(exp) : [];
     exp           = JSON.stringify(_.without(exp, id));
@@ -125,7 +123,6 @@ menu.collapse.toggle = (e) => {
 };
 
 menu.collapse.init = () => {
-    let prefix    = slugify(config.name.toLowerCase());
     let exp       = window.localStorage.getItem(prefix + '-collapsed');
     exp           = (exp) ? JSON.parse(exp) : [];
 
@@ -138,6 +135,38 @@ menu.collapse.init = () => {
     });
 };
 
+menu.active = () => {
+    menu.change();
+};
+
+menu.settings.toggle = function () {
+    let d = $(this).data();
+    let target = $(d.fToggleSettings);
+    target.slideToggle(250);
+};
+
+menu.settings.on.position = (e) => {
+    let me = $(e.currentTarget);
+    let sel = me.data('selected');
+    window.localStorage.setItem(prefix+'-menu', sel);
+    setTimeout(function () {
+        $('#f-menu-container').removeClass('right left').addClass(sel);
+        $('.f-branding').removeClass('right left').addClass(sel);
+    }, 300);
+};
+
+menu.settings.on.fullscreen = (e) => {
+    let me = $(e.currentTarget);
+    let sel = me.data('selected');
+    window.localStorage.setItem(prefix+'-fullscreen', sel);
+
+    if (sel === 'on') {
+        $('.f-container').addClass('fullscreen');
+    } else {
+        $('.f-container').removeClass('fullscreen');
+    }
+};
+
 menu.initListeners = () => {
     $(window).on('hashchange', menu.change).trigger('hashchange');
 	$(document).on('click', '.f-navbar-control', menu.click);
@@ -145,10 +174,11 @@ menu.initListeners = () => {
 	$('.f-menu-container').on('mouseover', menu.mouseover);
     $('.f-menu-container').on('mouseout', menu.mouseout);
     $('[data-f-collapse]').on('click', menu.collapse.toggle);
-};
+    $('[data-f-toggle-settings]').on('click', menu.settings.toggle);
 
-menu.active = () => {
-	menu.change();
+    $('[data-btn-group="menu"]').on('select', menu.settings.on.position);
+
+    $('[data-btn-group="fullscreen"]').on('select', menu.settings.on.fullscreen);
 };
 
 menu.init = () => {
@@ -158,14 +188,27 @@ menu.init = () => {
     menu.collapse.init();
     $('.f-menu').nanoScroller();
 
-    let firstRun = window.localStorage.getItem('init');
+    // Show menu on first run
+    let firstRun = window.localStorage.getItem(prefix+'-init');
     if (!firstRun) {
-        window.localStorage.setItem('init', true);
+        window.localStorage.setItem(prefix+'-init', true);
 
         $('#f-menu-container').addClass('active');
         setTimeout(function () {
             $('#f-menu-container').removeClass('active');
         }, 1000);
+    }
+
+    // Set menu position: left/right
+    let menuPos = window.localStorage.getItem(prefix+'-menu') || config.menu;
+    if (menuPos) { $('.f-btn-group').fBtnGroup('select', menuPos); }
+
+    // Fullscreen
+    let fullscreen = window.localStorage.getItem(prefix+'-fullscreen');
+    if (fullscreen === 'on') {
+        $('.f-container').addClass('fullscreen');
+    } else {
+        $('.f-container').removeClass('fullscreen');
     }
 };
 

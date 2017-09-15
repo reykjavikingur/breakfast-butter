@@ -79,9 +79,13 @@
     }
   },
   "fonts": {
-    "src": "./src/assets/toolkit/fonts/**/*",
+    "src": ["./src/assets/toolkit/fonts/**/*"],
     "dest": "dist/assets/toolkit/fonts",
-    "watch": "src/assets/toolkit/fonts/**/*"
+    "watch": "src/assets/toolkit/fonts/**/*",
+    "butter": {
+      "src": ["./src/assets/fabricator/fonts/**/*"],
+      "dest": "dist/assets/fabricator/fonts"
+    }
   },
   "templates": {
     "watch": [

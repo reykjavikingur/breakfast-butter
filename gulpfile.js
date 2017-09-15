@@ -241,19 +241,23 @@ gulp.task('polyfill', (done) => {
  * @description CAM: Added the font task which copies the fonts directory to the
  * config.dest directory
  */
-gulp.task('fonts', () => {
+gulp.task('fonts:butter', () => {
+    return gulp.src(config.fonts.butter.src)
+    .pipe(gulp.dest(config.fonts.butter.dest));
+});
+gulp.task('fonts', ['fonts:butter'], () => {
 	return gulp.src(config.fonts.src)
-		.pipe(gulp.dest(config.fonts.dest));
+    .pipe(gulp.dest(config.fonts.dest));
 });
 
 
 // assembler
 gulp.task('assembler', (done) => {
 	assembler({
-		logErrors    : config.dev,
-		dest         : config.dest,
+        logErrors    : config.dev,
+        dest         : config.dest,
         hooks        : config.hooks,
-		helpers      : config.scripts.helpers
+        helpers      : config.scripts.helpers
 	});
 	done();
 });
