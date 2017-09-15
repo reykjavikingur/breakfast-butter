@@ -46,6 +46,7 @@
 	@include clearfix;
 	margin-bottom: 15px;
 	vertical-align: middle;
+    display: flex;
 }
 
 .f-item-heading {
@@ -59,15 +60,21 @@
 
 
 .f-item-controls {
-	display: inline-block;
+	//display: inline-block;
+    display: flex;
 	vertical-align: middle;
 	margin-left: 8px;
+    color: color(light);
+
+    &:hover {
+        color: color(normal);
+    }
 
 	.f-control {
 		width: 16px;
 		height: 16px;
-		display: block;
-		float: left;
+		//display: block;
+		//float: left;
 
 		&:hover {
 			use {

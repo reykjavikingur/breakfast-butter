@@ -4,6 +4,7 @@
   "name"         : "Butter",
   "version"      : "1.0.24",
   "fullscreen"   : "off",
+  "sticky"       : "off",
   "branding": {
     "logo": false,
     "title": "Butter"
