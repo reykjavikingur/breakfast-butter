@@ -27,7 +27,7 @@
     "url": "https://github.com/reykjavikingur/breakfast-butter"
   },
   "engines": {
-    "node": ">=7.9.0"
+    "node": ">=8.1.4"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
