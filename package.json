@@ -1,6 +1,6 @@
 {
   "name": "breakfast-butter",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "Atomic design toolkit generator supporting path to functional prototyping",
   "license": "MIT",
   "homepage": "http://resource.github.io/",
@@ -27,7 +27,7 @@
     "url": "https://github.com/reykjavikingur/breakfast-butter"
   },
   "engines": {
-    "node": ">=7.9.0"
+    "node": ">=8.1.4"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
