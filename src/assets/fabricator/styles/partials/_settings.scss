@@ -85,6 +85,7 @@ $f-btn-group-radius: 2px;
         user-select         : none;
         color               : $gray;
         background-color    : darken($gray-darker, 5);
+        margin              : 0 !important;
 
         &:not(:first-child) {
             border-left: 1px solid $gray;
