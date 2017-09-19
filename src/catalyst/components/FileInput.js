@@ -17,7 +17,7 @@ const React = require("react");
  */
 const FileInput = props => (
     <div className="file-input-wrapper">
-        <input type="file" name="file" id="file"/>
+        <input type="file" name="file" id="file" className="input-file" data-multiple-caption="{count} files selected" multiple/>
         <label htmlFor="file"><i className="icon lnr-upload2"></i>{props.message}</label>
     </div>
 );
