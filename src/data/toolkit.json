@@ -5,6 +5,7 @@
   "version"      : "1.0.24",
   "fullscreen"   : "off",
   "sticky"       : "off",
+  "icolor"       : "#00b29f",
   "branding": {
     "logo": false,
     "title": "Butter"
