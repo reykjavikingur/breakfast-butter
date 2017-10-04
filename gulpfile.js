@@ -6,7 +6,7 @@
  * -----------------------------------------------------------------------------
  */
 const assembler      = require('butter-assemble');
-const beautify       = require('js-beautify').js_beautify;
+//const beautify       = require('js-beautify').js_beautify;
 const browsersync    = require('browser-sync');
 const concat         = require('gulp-concat');
 const csso           = require('gulp-csso');
@@ -27,9 +27,10 @@ const source         = require('vinyl-source-stream');
 const sourcemaps     = require('gulp-sourcemaps');
 const webpack        = require('webpack');
 const nodemon        = require('nodemon');
-const log            = console.log.bind(console);
+//const log            = console.log.bind(console);
 const yargs          = require('yargs').argv;
 const zip            = require('zip-folder');
+const eslint         = require('gulp-eslint');
 
 /**
  * configuration
@@ -175,6 +176,13 @@ gulp.task('scripts', (done) => {
 	});
 });
 
+gulp.task('scripts:lint', function () {
+    return gulp.src(config.scripts.toolkit.src)
+        .pipe(eslint())
+        .pipe(eslint.format())
+        .pipe(eslint.failAfterError());
+});
+
 // images
 gulp.task('images:fabricator', ['favicon'], () => {
 	return gulp.src(config.images.fabricator.src)
@@ -292,8 +300,9 @@ gulp.task('serve', () => {
 	gulp.task('styles:watch', ['styles']);
 	gulp.watch([config.styles.fabricator.watch, config.styles.toolkit.watch], ['styles:watch']);
 
-	gulp.task('scripts:watch', ['scripts']);
-	gulp.watch([config.scripts.fabricator.watch, config.scripts.toolkit.watch, config.scripts.catalyst.watch], ['scripts:watch']);
+    gulp.task('scripts:watch', ['scripts','scripts:lint']);
+    gulp.watch([config.scripts.fabricator.watch, config.scripts.toolkit.watch, config.scripts.catalyst.watch], ['scripts:watch']);
+    gulp.watch('config.scripts.toolkit.watch', ['scripts:lint']);
 
 	gulp.task('images:watch', ['images'], reload);
 	gulp.watch([config.images.fabricator.watch, config.images.toolkit.watch], ['images:watch']);
