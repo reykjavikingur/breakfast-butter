@@ -74,9 +74,9 @@
                                 {{#each items}}
                                 <li data-tags="{{../name}} {{name}}{{#if data.atomic}} {{data.atomic}}{{/if}}" role="menuitem">
                                     {{#if this.data.title}}
-                                    <a href="{{@../key}}.html#{{@key}}">{{{this.data.title}}}</a>
+                                    <a href="{{#if this.data.url}}{{this.data.url}}{{else}}{{@../key}}.html#{{@key}}{{/if}}" {{#if this.data.url}}target="_blank"{{/if}}>{{{this.data.title}}}</a>
                                     {{else}}
-                                    <a href="{{@../key}}.html#{{@key}}">{{name}}</a>
+                                    <a href="{{#if this.data.url}}{{this.data.url}}{{else}}{{@../key}}.html#{{@key}}{{/if}}" {{#if this.data.url}}target="_blank"{{/if}}>{{name}}</a>
                                     {{/if}}
                                 </li>
                                 {{/each}}
